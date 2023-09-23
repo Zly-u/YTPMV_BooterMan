@@ -19,7 +19,7 @@ var follow_points: Array[Vector2i]
 
 @onready var follow_spline: Curve2D = Curve2D.new()
 
-const speed: float = 110.0
+const speed: float = 80.0
 var direction: Vector2 = Vector2.ZERO
 
 var is_started: bool = false
@@ -85,7 +85,7 @@ func follow_player():
 	if follow_spline.point_count > 1:
 		position = follow_spline.sample_baked(progress, false)
 	
-	progress += speed * get_process_delta_time()
+	progress += speed * get_physics_process_delta_time()
 	
 	if progress >= first_segment_len:
 		follow_points.remove_at(0)
@@ -124,7 +124,7 @@ func wander():
 	
 	var first_segment_len: float = follow_spline.get_point_position(0).distance_to(follow_spline.get_point_position(1))
 
-	progress += speed * get_process_delta_time()
+	progress += speed * get_physics_process_delta_time()
 
 	if follow_spline.point_count > 1:
 		position = follow_spline.sample_baked(progress, false)

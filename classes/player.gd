@@ -31,13 +31,23 @@ func stop():
 func _physics_process(delta: float) -> void:
 	if just_started: return
 	
-	if direction.x == 0:
+#	if direction.x == 0:
+#		direction.x = Input.get_axis("ui_left", "ui_right")
+#	if direction.y == 0:
+#		if is_on_floor():
+#			position.y -= 3
+#		if is_on_ceiling():
+#			position.y += 3
+#		direction.y = Input.get_axis("ui_up", "ui_down")
+	
+	if Input.get_axis("ui_left", "ui_right") != 0:
 		direction.x = Input.get_axis("ui_left", "ui_right")
-	if direction.y == 0:
-		if is_on_floor():
-			position.y -= 1
-		if is_on_ceiling():
-			position.y += 1
+	
+	if is_on_floor():
+		position.y -= 1
+	if is_on_ceiling():
+		position.y += 1
+	if Input.get_axis("ui_up", "ui_down") != 0:
 		direction.y = Input.get_axis("ui_up", "ui_down")
 
 

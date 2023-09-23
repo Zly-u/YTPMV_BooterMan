@@ -14,8 +14,10 @@ config/name="SladkiyPacman"
 config/tags=PackedStringArray("project")
 run/main_scene="res://scenes/MENU.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-boot_splash/show_image=false
-config/icon="res://icon.svg"
+run/max_fps=60
+boot_splash/image="res://anim/Items_00001.png"
+boot_splash/use_filter=false
+config/icon="res://anim/xniUJZd4tiE_00001.png"
 
 [display]
 
@@ -25,6 +27,7 @@ window/size/window_width_override=672
 window/size/window_height_override=864
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
+mouse_cursor/custom_image="res://anim/Items_00000.png"
 
 [layer_names]
 
