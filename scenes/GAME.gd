@@ -64,6 +64,9 @@ func _on_player_ate_buter(add_score: int) -> void:
 	
 	if $Pellets.get_children().size() == 1:
 		didWin = true
+		
+		for enemy in $Enemies.get_children():
+			enemy.stop()
 		%GameAudio.stream = win
 		%GameAudio.play()
 		player.stop()

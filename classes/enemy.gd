@@ -27,6 +27,9 @@ var is_started: bool = false
 
 func start():
 	is_started = true
+	
+func stop():
+	is_started = false
 
 func init_path_grid() -> void:
 	AStar_grid.size 	 = walls_map.get_used_rect().size
@@ -137,7 +140,7 @@ func wander():
 var spl_pos: float = 0.0
 var timer: float = 0.0
 func _draw() -> void:
-#	if true: return
+	if true: return
 #	timer += get_process_delta_time()
 #	spl_pos = 0.5+sin(timer)*0.5
 	

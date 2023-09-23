@@ -74,7 +74,6 @@ func death():
 
 var sound_num = 0
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body, " ", typeof(body))
 	if body is Pellet:
 		body.queue_free()
 
