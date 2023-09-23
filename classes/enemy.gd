@@ -79,47 +79,51 @@ enum FOUND_STATE {
 	follows = 2
 }
 var found_player_state: FOUND_STATE = FOUND_STATE.sees_nothing
+var initial_start_pos: Vector2 = Vector2(-1, -1)
 var progress: float = 0.0
 func follow_player():
 	if found_player_state == FOUND_STATE.sees_nothing and follow_points.size() == 0: return
 	
+	var is_first = true
 	if found_player_state == FOUND_STATE.just_saw:
 		found_player_state = FOUND_STATE.follows
 		
 		follow_points = update_path()
 		follow_spline.clear_points()
-		var is_first = true
+		
 		for point in follow_points:
 			if is_first:
+				initial_start_pos = position
 				follow_spline.add_point(position)
 				is_first = false
-				continue
-			var pos = path_map.map_to_local(point)
-			follow_spline.add_point(pos)
+			else:
+				var pos = path_map.map_to_local(point)
+				follow_spline.add_point(pos)
 		
-#		var len = follow_spline.get_point_position(0).distance_to(follow_spline.get_point_position(1))
 		progress = 0
-		
-	else:
-		if follow_points.size() < 2: return
-		
-		follow_spline.clear_points()
-		for point in follow_points:
-			var pos = path_map.map_to_local(point)
-			follow_spline.add_point(pos)
 	
 	var first_segment_len: float = follow_spline.get_point_position(0).distance_to(follow_spline.get_point_position(1))
+
+	progress += speed * get_physics_process_delta_time()
 
 	if follow_spline.point_count > 1:
 		position = follow_spline.sample_baked(progress, false)
 	
-	progress += speed * get_physics_process_delta_time()
-	
 	if progress >= first_segment_len:
-		follow_points.remove_at(0)
-		progress = 0
 		if found_player_state == FOUND_STATE.follows:
 			follow_points = update_path()
+		follow_spline.clear_points()
+		
+		for point in follow_points:
+			if is_first:
+				initial_start_pos = position
+				follow_spline.add_point(position)
+				is_first = false
+			else:
+				var pos = path_map.map_to_local(point)
+				follow_spline.add_point(pos)
+		
+		progress = 0
 
 
 
@@ -174,7 +178,8 @@ func _draw() -> void:
 		
 #	draw_polyline(line_points, %enemy_anim.self_modulate, 2)
 	
-#	draw_line(Vector2.ZERO, player.position-position, Color.GREEN if found_player else Color.RED, 1)
+	if found_player_state == FOUND_STATE.follows:
+		draw_line(Vector2.ZERO, player.position-position, Color.RED, 1)
 	
 	var bezier_points = []
 	if follow_spline.point_count != 0:
@@ -212,6 +217,7 @@ func _process(delta: float) -> void:
 			found_player_state = FOUND_STATE.just_saw
 	else:
 		if found_player_state == FOUND_STATE.follows:
+			initial_start_pos = Vector2(-1, -1)
 			found_player_state = FOUND_STATE.sees_nothing
 	
 	if !is_started: return
