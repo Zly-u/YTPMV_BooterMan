@@ -1,34 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://8216fk04jtsk"]
+[gd_scene load_steps=8 format=3 uid="uid://8216fk04jtsk"]
 
 [ext_resource type="AudioStream" uid="uid://cfwu8vg0pssgs" path="res://sounds/orig/munch_1.wav" id="1_hvkoe"]
 [ext_resource type="Script" path="res://classes/enemy.gd" id="1_tiedv"]
-[ext_resource type="Texture2D" uid="uid://vuiwewyssk4k" path="res://anim/xniUJZd4tiE_00000.png" id="3_jp1ac"]
-[ext_resource type="Texture2D" uid="uid://cgx20b4wub2r6" path="res://anim/xniUJZd4tiE_00001.png" id="4_n8n06"]
+[ext_resource type="Texture2D" uid="uid://eybhhght7403" path="res://anim/ghost_1.png" id="2_s5lh4"]
+[ext_resource type="Texture2D" uid="uid://bjajqjhrl2pwe" path="res://anim/ghost_2.png" id="3_ua0dg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_557nl"]
-size = Vector2(4, 4)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1pktd"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_yngaq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_jp1ac")
+"texture": ExtResource("2_s5lh4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_n8n06")
+"texture": ExtResource("3_ua0dg")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayrqa"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_557nl"]
+size = Vector2(8, 8)
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_tiedv")
 
+[node name="enemy_anim" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.17, 0.17)
+sprite_frames = SubResource("SpriteFrames_yngaq")
+frame_progress = 0.726459
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_557nl")
+shape = SubResource("RectangleShape2D_ayrqa")
 
 [node name="Enemy_coll" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -36,14 +45,10 @@ collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemy_coll"]
 shape = SubResource("RectangleShape2D_557nl")
+debug_color = Color(1, 0.0117647, 0.0117647, 0.419608)
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("1_hvkoe")
 max_polyphony = 2
 panning_strength = 0.0
-
-[node name="enemy_anim" type="AnimatedSprite2D" parent="."]
-unique_name_in_owner = true
-scale = Vector2(0.025, 0.025)
-sprite_frames = SubResource("SpriteFrames_1pktd")

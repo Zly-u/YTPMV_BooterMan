@@ -258,10 +258,10 @@ position = Vector2(196, 236)
 position = Vector2(204, 236)
 
 [node name="Pellet155" parent="." instance=ExtResource("1_rkmvc")]
-position = Vector2(196, 211)
+position = Vector2(196, 212)
 
 [node name="Pellet156" parent="." instance=ExtResource("1_rkmvc")]
-position = Vector2(204, 211)
+position = Vector2(204, 212)
 
 [node name="Pellet113" parent="." instance=ExtResource("1_rkmvc")]
 position = Vector2(172, 212)

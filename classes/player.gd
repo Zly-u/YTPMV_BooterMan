@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 signal ate_buter(add_score: int)
 
-const SPEED = 80.0
+const SPEED: float = 60.0
 
 @export var sounds = {
 	start   = preload("res://sounds/orig/game_start.wav"),
@@ -16,6 +16,7 @@ const SPEED = 80.0
 }
 
 var direction: Vector2
+var movement: Vector2
 
 var just_started = true
 
@@ -28,35 +29,17 @@ func stop():
 	just_started = true
 	%player_anim.speed_scale = 5
 
+func _process(delta: float) -> void:
+	pass
+
+
 func _physics_process(delta: float) -> void:
 	if just_started: return
 	
-#	if direction.x == 0:
-#		direction.x = Input.get_axis("ui_left", "ui_right")
-#	if direction.y == 0:
-#		if is_on_floor():
-#			position.y -= 3
-#		if is_on_ceiling():
-#			position.y += 3
-#		direction.y = Input.get_axis("ui_up", "ui_down")
-	
 	if Input.get_axis("ui_left", "ui_right") != 0:
 		direction.x = Input.get_axis("ui_left", "ui_right")
-	
-	if is_on_floor():
-		position.y -= 1
-	if is_on_ceiling():
-		position.y += 1
-	if Input.get_axis("ui_up", "ui_down") != 0:
+	elif Input.get_axis("ui_up", "ui_down") != 0:
 		direction.y = Input.get_axis("ui_up", "ui_down")
-
-
-	if is_on_wall() and direction.x != 0:
-		position.x -= sign(direction.x)
-		direction.x = 0
-	if (is_on_ceiling() or is_on_floor()) and direction.y != 0:
-		position.y -= sign(direction.y)
-		direction.y = 0
 		
 	
 	if direction.x > 0:
@@ -75,6 +58,12 @@ func _physics_process(delta: float) -> void:
 		%player_anim.flip_h = false
 	
 	velocity = direction * SPEED
+	
+	if is_on_wall() and direction.x != 0:
+		direction.x = 0
+	if (is_on_ceiling() or is_on_floor()) and direction.y != 0:
+		direction.y = 0
+	
 	move_and_slide()
 
 
@@ -94,7 +83,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		ate_buter.emit(body.points)
 	elif body.name == "Enemy_coll":
 		death()
+#	elif body.name == "walls_coll":
+#		print("wall")
 	else:
 		pass
-	
-	
+#		print(body)
