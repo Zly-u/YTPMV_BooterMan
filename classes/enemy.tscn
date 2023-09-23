@@ -34,7 +34,7 @@ script = ExtResource("1_tiedv")
 unique_name_in_owner = true
 scale = Vector2(0.17, 0.17)
 sprite_frames = SubResource("SpriteFrames_yngaq")
-frame_progress = 0.488341
+frame_progress = 0.772423
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ayrqa")

@@ -130,3 +130,11 @@ func _on_enemy_disable_force_move_r_body_entered(body: Enemy) -> void:
 	if not body is Enemy: return
 	
 	body.stop_force_move()
+
+
+func _on_player_died() -> void:
+	for enemy in $Enemies.get_children():
+		enemy.stop()
+		enemy.visible = false
+	
+	%GameAudio.stop()

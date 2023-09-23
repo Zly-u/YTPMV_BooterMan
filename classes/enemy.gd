@@ -163,20 +163,20 @@ func wander():
 		follow_points.remove_at(0)
 		progress = 0
 		timing = 0
-
+#====================================================================================
 
 var spl_pos: float = 0.0
 var timer: float = 0.0
 func _draw() -> void:
 	if true: return
-#	timer += get_process_delta_time()
-#	spl_pos = 0.5+sin(timer)*0.5
-	
-#	var line_points = []
-#	for point in follow_spline.point_count:
-#		line_points.append(follow_spline.get_point_position(point)-position)
-		
-#	draw_polyline(line_points, %enemy_anim.self_modulate, 2)
+	timer += get_process_delta_time()
+	spl_pos = 0.5+sin(timer)*0.5
+
+	var line_points = []
+	for point in follow_spline.point_count:
+		line_points.append(follow_spline.get_point_position(point)-position)
+
+	draw_polyline(line_points, %enemy_anim.self_modulate, 2)
 	
 	if found_player_state == FOUND_STATE.follows:
 		draw_line(Vector2.ZERO, player.position-position, Color.RED, 1)
@@ -188,8 +188,8 @@ func _draw() -> void:
 			bezier_points.append(follow_spline.samplef(follow_spline.point_count*(sample/bezier_samples))-position)
 		draw_polyline(bezier_points, Color.RED, 3)
 		
-	#	draw_circle(follow_spline.samplef(spl_pos*follow_spline.point_count)-position, 2, Color.ORANGE)
-	#	draw_circle(follow_spline.sample(0, spl_pos)-position, 2, Color.DARK_KHAKI)
+		draw_circle(follow_spline.samplef(spl_pos*follow_spline.point_count)-position, 2, Color.ORANGE)
+		draw_circle(follow_spline.sample(0, spl_pos)-position, 2, Color.DARK_KHAKI)
 		
 
 

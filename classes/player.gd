@@ -3,6 +3,7 @@ class_name Player
 extends CharacterBody2D
 
 signal ate_buter(add_score: int)
+signal died
 
 const SPEED: float = 60.0
 
@@ -12,25 +13,38 @@ const SPEED: float = 60.0
 	munch_1 = preload("res://sounds/orig/munch_1.wav"),
 	munch_2 = preload("res://sounds/orig/munch_2.wav"),
 	death_1 = preload("res://sounds/orig/death_1.wav"),
-	death_2 = preload("res://sounds/orig/death_2.wav"),
+	death_2 = preload("res://sounds/orig/death_2_full.wav"),
 }
 
 var direction: Vector2
 var movement: Vector2
 
 var just_started = true
-
+var is_dead = false
 func start():
 	just_started = false
 	%player_anim.speed_scale = 1
 	%player_anim.play("default")
 
-func stop():
+func stop(speed_scl: float = 5):
 	just_started = true
-	%player_anim.speed_scale = 5
+	
+	%player_anim.speed_scale = speed_scl
+	%player_anim.flip_h = false
+	%player_anim.flip_v = false
+	%player_anim.rotation = 0
 
 func _process(delta: float) -> void:
-	pass
+	
+	if is_dead and !%Audio.playing:
+		if %player_anim.frame == 1:
+			%Audio.stream = sounds.death_1
+			%Audio.play()
+	elif is_dead and %Audio.playing:
+		if %player_anim.frame == 6:
+			%Audio.stream = sounds.death_2
+			%Audio.play()
+		
 
 
 func _physics_process(delta: float) -> void:
@@ -68,7 +82,11 @@ func _physics_process(delta: float) -> void:
 
 
 func death():
-	get_tree().reload_current_scene()
+	%player_anim.play("death")
+	
+	stop(1)
+	died.emit()
+	is_dead = true
 
 
 var sound_num = 0
@@ -83,8 +101,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		ate_buter.emit(body.points)
 	elif body.name == "Enemy_coll":
 		death()
-#	elif body.name == "walls_coll":
-#		print("wall")
 	else:
 		pass
-#		print(body)
+
+
+
+func _on_player_anim_animation_finished() -> void:
+	match(%player_anim.animation):
+		"death":
+			get_tree().reload_current_scene()
+		_:
+			pass

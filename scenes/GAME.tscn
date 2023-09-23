@@ -602,6 +602,7 @@ scale = Vector2(0.421875, 1)
 polygon = PackedVector2Array(-7.62939e-06, -1.52588e-05, 7.11111, 0, 7.11119, -8, 7.62939e-05, -8.00002)
 
 [connection signal="ate_buter" from="Player" to="." method="_on_player_ate_buter"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="finished" from="GameAudio" to="." method="_on_game_audio_finished"]
 [connection signal="body_entered" from="LeftSide" to="." method="_on_left_side_body_entered"]
 [connection signal="body_entered" from="RightSide" to="." method="_on_right_side_body_entered"]
