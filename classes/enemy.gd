@@ -60,11 +60,13 @@ func update_path(dest_point: Vector2i = Vector2i(-1, -1)) -> Array[Vector2i]:
 
 #====================================================================================
 
+var just_found_player: int = 0
 var progress: float = 0.0
 func follow_player():
 	if !found_player and follow_points.size() == 0: return
 	
-	if found_player and follow_points.size() <= 1:
+	if found_player and follow_points.size() <= 1 or just_found_player == 1:
+		just_found_player = 2
 		progress = 0
 		follow_points = update_path()
 	
@@ -192,5 +194,8 @@ func _physics_process(delta):
 	
 	if result and result.collider is Player:
 		found_player = true
+		if just_found_player != 2:
+			just_found_player = 1
 	else:
 		found_player = false
+		just_found_player = 0

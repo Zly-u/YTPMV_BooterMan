@@ -18,11 +18,11 @@ func _ready() -> void:
 
 	# DEBUG CODE
 #	player.start()
-	
+#	for enemy in $Enemies.get_children():
+#		enemy.start()
 #	%GameAudio.stream = siren
 #	%GameAudio.play()
 #	isGameStarted = true
-#
 #	%AnimationPlayer.stop()
 #	%READY.visible = false
 
