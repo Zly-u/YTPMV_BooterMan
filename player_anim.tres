@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://cckxcrix50kkt"]
+
+[ext_resource type="Texture2D" uid="uid://vuiwewyssk4k" path="res://anim/xniUJZd4tiE_00000.png" id="1_no7e4"]
+[ext_resource type="Texture2D" uid="uid://cgx20b4wub2r6" path="res://anim/xniUJZd4tiE_00001.png" id="2_k3umc"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_no7e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_k3umc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

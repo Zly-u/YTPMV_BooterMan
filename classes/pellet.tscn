@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh5xlvvcocg1r"]
+
+[ext_resource type="Script" path="res://classes/pellet.gd" id="1_df44c"]
+[ext_resource type="Texture2D" uid="uid://dfcieqfykbn27" path="res://anim/Items_00001.png" id="2_kp2cy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_72v7x"]
+radius = 2.0
+
+[node name="Pellet" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_df44c")
+image = ExtResource("2_kp2cy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1.90994e-11, -3.8147e-06)
+scale = Vector2(0.0166667, 0.0222222)
+texture = ExtResource("2_kp2cy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.62939e-06, -3.8147e-06)
+shape = SubResource("CircleShape2D_72v7x")

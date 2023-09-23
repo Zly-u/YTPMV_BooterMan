@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://84xgxie3ech4"]
+
+[ext_resource type="Script" path="res://classes/player.gd" id="1_p82ou"]
+[ext_resource type="AudioStream" uid="uid://6mefl6n1y630" path="res://sounds/sweet_start.mp3" id="2_ipn3y"]
+[ext_resource type="AudioStream" uid="uid://cfwu8vg0pssgs" path="res://sounds/orig/munch_1.wav" id="3_6xsua"]
+[ext_resource type="AudioStream" uid="uid://cuq8n000eyydf" path="res://sounds/munch1.mp3" id="3_urc4d"]
+[ext_resource type="AudioStream" uid="uid://cmuurcvyqruxu" path="res://sounds/munch2.mp3" id="4_4u527"]
+[ext_resource type="AudioStream" uid="uid://do8e2cjim8hwi" path="res://sounds/orig/death_1.wav" id="5_6bduo"]
+[ext_resource type="AudioStream" uid="uid://ci2nv7xvwi24m" path="res://sounds/orig/death_2.wav" id="6_vkgvh"]
+[ext_resource type="SpriteFrames" uid="uid://cckxcrix50kkt" path="res://player_anim.tres" id="7_6c5io"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu6qa"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4ufc"]
+size = Vector2(10, 10)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_p82ou")
+sounds = {
+"death_1": ExtResource("5_6bduo"),
+"death_2": ExtResource("6_vkgvh"),
+"munch_1": ExtResource("3_urc4d"),
+"munch_2": ExtResource("4_4u527"),
+"start": ExtResource("2_ipn3y")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wu6qa")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_n4ufc")
+debug_color = Color(0.729412, 0.47451, 0, 0.419608)
+
+[node name="player_anim" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.025, 0.025)
+sprite_frames = ExtResource("7_6c5io")
+frame_progress = 0.626847
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_6xsua")
+max_polyphony = 2
+panning_strength = 0.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
