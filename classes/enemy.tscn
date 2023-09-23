@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://8216fk04jtsk"]
+[gd_scene load_steps=7 format=3 uid="uid://8216fk04jtsk"]
 
 [ext_resource type="AudioStream" uid="uid://cfwu8vg0pssgs" path="res://sounds/orig/munch_1.wav" id="1_hvkoe"]
 [ext_resource type="Script" path="res://classes/enemy.gd" id="1_tiedv"]
@@ -6,10 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgx20b4wub2r6" path="res://anim/xniUJZd4tiE_00001.png" id="4_n8n06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_557nl"]
-size = Vector2(14, 14)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_l74wo"]
-radius = 51.0392
+size = Vector2(4, 4)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1pktd"]
 animations = [{
@@ -25,17 +22,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_tiedv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_557nl")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Enemy_coll" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_l74wo")
-debug_color = Color(0.835294, 0.388235, 0, 0.419608)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemy_coll"]
+shape = SubResource("RectangleShape2D_557nl")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
@@ -45,9 +45,5 @@ panning_strength = 0.0
 
 [node name="enemy_anim" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-self_modulate = Color(0.65098, 0, 0.32549, 1)
 scale = Vector2(0.025, 0.025)
 sprite_frames = SubResource("SpriteFrames_1pktd")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-unique_name_in_owner = true

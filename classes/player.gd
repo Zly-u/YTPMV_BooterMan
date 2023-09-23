@@ -68,15 +68,24 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func death():
+	get_tree().reload_current_scene()
+
 
 var sound_num = 0
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if not (body is Pellet): return
+	print(body, " ", typeof(body))
+	if body is Pellet:
+		body.queue_free()
+
+		%Audio.stream = sounds["munch_" + str(sound_num+1)]
+		%Audio.play()
+		sound_num = (sound_num + 1) % 2
+		
+		ate_buter.emit(body.points)
+	elif body.name == "Enemy_coll":
+		death()
+	else:
+		pass
 	
-	body.queue_free()
 	
-	%Audio.stream = sounds["munch_" + str(sound_num+1)]
-	%Audio.play()
-	sound_num = (sound_num + 1) % 2
-	
-	ate_buter.emit(body.points)

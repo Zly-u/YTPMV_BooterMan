@@ -17,14 +17,14 @@ func _ready() -> void:
 	%READY.visible = true
 
 	# DEBUG CODE
-	player.start()
+#	player.start()
 	
-	%GameAudio.stream = siren
-	%GameAudio.play()
-	isGameStarted = true
-	
-	%AnimationPlayer.stop()
-	%READY.visible = false
+#	%GameAudio.stream = siren
+#	%GameAudio.play()
+#	isGameStarted = true
+#
+#	%AnimationPlayer.stop()
+#	%READY.visible = false
 
 var timer = 0
 func _process(delta: float) -> void:
@@ -72,6 +72,8 @@ func _on_player_ate_buter(add_score: int) -> void:
 func _on_game_audio_finished() -> void:
 	if player.just_started and not isGameStarted:
 		player.start()
+		for enemy in $Enemies.get_children():
+			enemy.start()
 		
 		%GameAudio.stream = siren
 		%GameAudio.play()
