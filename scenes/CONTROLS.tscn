@@ -1,0 +1,111 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcmssoeoi0jt3"]
+
+[ext_resource type="FontFile" uid="uid://cqh46prfs5mg7" path="res://fonts/Emulogic-zrEw.ttf" id="1_eox6t"]
+[ext_resource type="Script" path="res://scenes/CONTROLS.gd" id="1_nuyjx"]
+
+[node name="CONTROLS" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nuyjx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eox6t")
+theme_override_font_sizes/font_size = 8
+text = "Back:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eox6t")
+theme_override_font_sizes/font_size = 8
+text = "Skip intro:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eox6t")
+theme_override_font_sizes/font_size = 8
+text = "restart:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eox6t")
+theme_override_font_sizes/font_size = 8
+text = "ARROWs:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eox6t")
+theme_override_font_sizes/font_size = 8
+text = "ESc"
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eox6t")
+theme_override_font_sizes/font_size = 8
+text = "S"
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="HBoxContainer/VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eox6t")
+theme_override_font_sizes/font_size = 8
+text = "R"
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="HBoxContainer/VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eox6t")
+theme_override_font_sizes/font_size = 8
+text = "Movement"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("1_eox6t")
+theme_override_font_sizes/font_size = 6
+text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bp5fwagy2vin5"]
+[gd_scene load_steps=31 format=3 uid="uid://bp5fwagy2vin5"]
 
 [ext_resource type="Script" path="res://scenes/GAME.gd" id="1_wcaae"]
 [ext_resource type="AudioStream" uid="uid://bcxydohemrvf4" path="res://sounds/siren_v2.mp3" id="2_a4x1w"]
@@ -57,6 +57,9 @@ sources/0 = SubResource("TileSetAtlasSource_lo362")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rro6i"]
 size = Vector2(32, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drys0"]
+size = Vector2(48, 4)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flekn"]
 size = Vector2(24, 8)
 
@@ -73,7 +76,7 @@ size = Vector2(20, 224)
 size = Vector2(31.9999, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kwqun"]
-size = Vector2(32.0001, 56)
+size = Vector2(32.0001, 3.99998)
 
 [sub_resource type="Animation" id="Animation_yledm"]
 resource_name = "READY"
@@ -125,7 +128,7 @@ unique_name_in_owner = true
 visible = false
 tile_set = SubResource("TileSet_k52ph")
 format = 2
-layer_0/tile_data = PackedInt32Array(196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 196628, 1, 0, 196629, 1, 0, 196630, 1, 0, 196631, 1, 0, 196632, 1, 0, 196633, 1, 0, 196634, 1, 0, 196635, 1, 0, 327702, 1, 0, 393238, 1, 0, 458774, 1, 0, 327703, 1, 0, 393239, 1, 0, 458775, 1, 0, 327704, 1, 0, 393240, 1, 0, 458776, 1, 0, 327705, 1, 0, 393241, 1, 0, 458777, 1, 0, 327696, 1, 0, 393232, 1, 0, 458768, 1, 0, 327697, 1, 0, 393233, 1, 0, 458769, 1, 0, 327699, 1, 0, 393235, 1, 0, 458771, 1, 0, 327700, 1, 0, 393236, 1, 0, 458772, 1, 0, 327687, 1, 0, 393223, 1, 0, 458759, 1, 0, 327688, 1, 0, 327690, 1, 0, 393226, 1, 0, 458762, 1, 0, 327691, 1, 0, 393227, 1, 0, 458763, 1, 0, 327682, 1, 0, 393218, 1, 0, 458754, 1, 0, 327683, 1, 0, 393219, 1, 0, 458755, 1, 0, 327684, 1, 0, 393220, 1, 0, 458756, 1, 0, 327685, 1, 0, 393221, 1, 0, 458757, 1, 0, 589826, 1, 0, 655362, 1, 0, 589827, 1, 0, 655363, 1, 0, 589828, 1, 0, 655364, 1, 0, 589829, 1, 0, 655365, 1, 0, 589834, 1, 0, 655370, 1, 0, 589835, 1, 0, 655371, 1, 0, 589837, 1, 0, 655373, 1, 0, 589838, 1, 0, 655374, 1, 0, 589840, 1, 0, 655376, 1, 0, 589841, 1, 0, 655377, 1, 0, 786445, 1, 0, 851981, 1, 0, 786446, 1, 0, 851982, 1, 0, 589846, 1, 0, 655382, 1, 0, 589847, 1, 0, 655383, 1, 0, 589848, 1, 0, 655384, 1, 0, 589849, 1, 0, 655385, 1, 0, 262171, 1, 0, 327707, 1, 0, 393243, 1, 0, 458779, 1, 0, 524315, 1, 0, 589851, 1, 0, 655387, 1, 0, 720923, 1, 0, 786459, 1, 0, 786455, 1, 0, 851991, 1, 0, 917527, 1, 0, 983063, 1, 0, 1048599, 1, 0, 786456, 1, 0, 851992, 1, 0, 917528, 1, 0, 983064, 1, 0, 1048600, 1, 0, 786457, 1, 0, 851993, 1, 0, 917529, 1, 0, 983065, 1, 0, 1048601, 1, 0, 786458, 1, 0, 851994, 1, 0, 917530, 1, 0, 983066, 1, 0, 1048602, 1, 0, 851995, 1, 0, 917531, 1, 0, 983067, 1, 0, 1048603, 1, 0, 786454, 1, 0, 851990, 1, 0, 917526, 1, 0, 983062, 1, 0, 1048598, 1, 0, 589843, 1, 0, 655379, 1, 0, 720915, 1, 0, 786451, 1, 0, 851987, 1, 0, 983059, 1, 0, 1048595, 1, 0, 589844, 1, 0, 655380, 1, 0, 720916, 1, 0, 786452, 1, 0, 851988, 1, 0, 983060, 1, 0, 1048596, 1, 0, 786448, 1, 0, 851984, 1, 0, 786449, 1, 0, 851985, 1, 0, 786450, 1, 0, 851986, 1, 0, 786439, 1, 0, 851975, 1, 0, 786440, 1, 0, 851976, 1, 0, 786441, 1, 0, 851977, 1, 0, 786442, 1, 0, 851978, 1, 0, 786443, 1, 0, 851979, 1, 0, 589831, 1, 0, 655367, 1, 0, 720903, 1, 0, 983047, 1, 0, 1048583, 1, 0, 589832, 1, 0, 655368, 1, 0, 720904, 1, 0, 983048, 1, 0, 1048584, 1, 0, 786432, 1, 0, 851968, 1, 0, 917504, 1, 0, 983040, 1, 0, 1048576, 1, 0, 786433, 1, 0, 851969, 1, 0, 917505, 1, 0, 983041, 1, 0, 1048577, 1, 0, 786434, 1, 0, 851970, 1, 0, 917506, 1, 0, 983042, 1, 0, 1048578, 1, 0, 786435, 1, 0, 851971, 1, 0, 917507, 1, 0, 983043, 1, 0, 1048579, 1, 0, 786436, 1, 0, 851972, 1, 0, 917508, 1, 0, 983044, 1, 0, 1048580, 1, 0, 786437, 1, 0, 851973, 1, 0, 917509, 1, 0, 983045, 1, 0, 1048581, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 720896, 1, 0, 262157, 1, 0, 327693, 1, 0, 393229, 1, 0, 458765, 1, 0, 262158, 1, 0, 327694, 1, 0, 393230, 1, 0, 458766, 1, 0, 1179648, 1, 0, 1245184, 1, 0, 1310720, 1, 0, 1376256, 1, 0, 1441792, 1, 0, 1179649, 1, 0, 1245185, 1, 0, 1310721, 1, 0, 1376257, 1, 0, 1441793, 1, 0, 1179650, 1, 0, 1245186, 1, 0, 1310722, 1, 0, 1376258, 1, 0, 1441794, 1, 0, 1179651, 1, 0, 1245187, 1, 0, 1310723, 1, 0, 1376259, 1, 0, 1441795, 1, 0, 1179652, 1, 0, 1245188, 1, 0, 1310724, 1, 0, 1376260, 1, 0, 1441796, 1, 0, 1179653, 1, 0, 1245189, 1, 0, 1310725, 1, 0, 1376261, 1, 0, 1441797, 1, 0, 1179670, 1, 0, 1245206, 1, 0, 1310742, 1, 0, 1376278, 1, 0, 1441814, 1, 0, 1179671, 1, 0, 1245207, 1, 0, 1310743, 1, 0, 1376279, 1, 0, 1441815, 1, 0, 1179672, 1, 0, 1245208, 1, 0, 1310744, 1, 0, 1376280, 1, 0, 1441816, 1, 0, 1179673, 1, 0, 1245209, 1, 0, 1310745, 1, 0, 1376281, 1, 0, 1441817, 1, 0, 1179674, 1, 0, 1245210, 1, 0, 1310746, 1, 0, 1376282, 1, 0, 1441818, 1, 0, 1179675, 1, 0, 1245211, 1, 0, 1310747, 1, 0, 1376283, 1, 0, 1441819, 1, 0, 1179667, 1, 0, 1245203, 1, 0, 1376275, 1, 0, 1441811, 1, 0, 1179668, 1, 0, 1245204, 1, 0, 1376276, 1, 0, 1441812, 1, 0, 1179655, 1, 0, 1245191, 1, 0, 1376263, 1, 0, 1441799, 1, 0, 1179656, 1, 0, 1245192, 1, 0, 1376264, 1, 0, 1441800, 1, 0, 1376266, 1, 0, 1441802, 1, 0, 1376267, 1, 0, 1441803, 1, 0, 1376269, 1, 0, 1441805, 1, 0, 1376270, 1, 0, 1441806, 1, 0, 1376272, 1, 0, 1441808, 1, 0, 1376273, 1, 0, 1441809, 1, 0, 983050, 1, 0, 1048586, 1, 0, 1114122, 1, 0, 1179658, 1, 0, 1245194, 1, 0, 1245195, 1, 0, 1245196, 1, 0, 1245197, 1, 0, 1245198, 1, 0, 1245199, 1, 0, 1245200, 1, 0, 1245201, 1, 0, 983057, 1, 0, 1048593, 1, 0, 1114129, 1, 0, 1179665, 1, 0, 983055, 1, 0, 983056, 1, 0, 983051, 1, 0, 983052, 1, 0, 1507328, 1, 0, 1572864, 1, 0, 1638400, 1, 0, 1703936, 1, 0, 1769472, 1, 0, 1835008, 1, 0, 1900544, 1, 0, 1966080, 1, 0, 2031616, 1, 0, 2097152, 1, 0, 2162688, 1, 0, 2162689, 1, 0, 2162690, 1, 0, 2162691, 1, 0, 2162692, 1, 0, 2162693, 1, 0, 2162694, 1, 0, 2162695, 1, 0, 2162696, 1, 0, 2162697, 1, 0, 2162698, 1, 0, 2162699, 1, 0, 2162700, 1, 0, 2162701, 1, 0, 2162702, 1, 0, 2162703, 1, 0, 2162704, 1, 0, 2162705, 1, 0, 2162706, 1, 0, 2162707, 1, 0, 2162708, 1, 0, 2162709, 1, 0, 2162710, 1, 0, 2162711, 1, 0, 2162712, 1, 0, 2162713, 1, 0, 2162714, 1, 0, 2162715, 1, 0, 1966096, 1, 0, 2031632, 1, 0, 1966097, 1, 0, 2031633, 1, 0, 1966098, 1, 0, 2031634, 1, 0, 1966099, 1, 0, 2031635, 1, 0, 1966100, 1, 0, 2031636, 1, 0, 1966101, 1, 0, 2031637, 1, 0, 1966102, 1, 0, 2031638, 1, 0, 1966103, 1, 0, 2031639, 1, 0, 1966104, 1, 0, 2031640, 1, 0, 1966105, 1, 0, 2031641, 1, 0, 1966082, 1, 0, 2031618, 1, 0, 1966083, 1, 0, 2031619, 1, 0, 1966084, 1, 0, 2031620, 1, 0, 1966085, 1, 0, 2031621, 1, 0, 1966086, 1, 0, 2031622, 1, 0, 1966087, 1, 0, 2031623, 1, 0, 1966088, 1, 0, 2031624, 1, 0, 1966089, 1, 0, 2031625, 1, 0, 1966090, 1, 0, 2031626, 1, 0, 1966091, 1, 0, 2031627, 1, 0, 1769473, 1, 0, 1835009, 1, 0, 1769474, 1, 0, 1835010, 1, 0, 1572866, 1, 0, 1638402, 1, 0, 1572867, 1, 0, 1638403, 1, 0, 1572868, 1, 0, 1638404, 1, 0, 1572869, 1, 0, 1638405, 1, 0, 1703940, 1, 0, 1769476, 1, 0, 1703941, 1, 0, 1769477, 1, 0, 1835012, 1, 0, 1835013, 1, 0, 1572871, 1, 0, 1638407, 1, 0, 1572872, 1, 0, 1638408, 1, 0, 1572874, 1, 0, 1638410, 1, 0, 1572875, 1, 0, 1638411, 1, 0, 1507341, 1, 0, 1572877, 1, 0, 1507342, 1, 0, 1572878, 1, 0, 1638413, 1, 0, 1638414, 1, 0, 1769482, 1, 0, 1835018, 1, 0, 1769483, 1, 0, 1835019, 1, 0, 1769484, 1, 0, 1835020, 1, 0, 1769485, 1, 0, 1835021, 1, 0, 1769486, 1, 0, 1835022, 1, 0, 1769487, 1, 0, 1835023, 1, 0, 1769488, 1, 0, 1835024, 1, 0, 1769489, 1, 0, 1835025, 1, 0, 1900557, 1, 0, 1966093, 1, 0, 2031629, 1, 0, 1900558, 1, 0, 1966094, 1, 0, 2031630, 1, 0, 1572880, 1, 0, 1638416, 1, 0, 1572881, 1, 0, 1638417, 1, 0, 1572882, 1, 0, 1638418, 1, 0, 1572883, 1, 0, 1638419, 1, 0, 1572884, 1, 0, 1638420, 1, 0, 1572886, 1, 0, 1638422, 1, 0, 1572887, 1, 0, 1638423, 1, 0, 1572888, 1, 0, 1638424, 1, 0, 1572889, 1, 0, 1638425, 1, 0, 1703958, 1, 0, 1769494, 1, 0, 1835030, 1, 0, 1703959, 1, 0, 1769495, 1, 0, 1835031, 1, 0, 1769497, 1, 0, 1835033, 1, 0, 1769498, 1, 0, 1835034, 1, 0, 1769499, 1, 0, 1835035, 1, 0, 1507355, 1, 0, 1572891, 1, 0, 1638427, 1, 0, 1703963, 1, 0, 1900571, 1, 0, 1966107, 1, 0, 2031643, 1, 0, 2097179, 1, 0, 1769491, 1, 0, 1835027, 1, 0, 1900563, 1, 0, 1769492, 1, 0, 1835028, 1, 0, 1900564, 1, 0, 1769479, 1, 0, 1835015, 1, 0, 1900551, 1, 0, 1769480, 1, 0, 1835016, 1, 0, 1900552, 1, 0, 2228224, 1, 0, 2293760, 1, 0, 2228225, 1, 0, 2293761, 1, 0, 2228226, 1, 0, 2293762, 1, 0, 2228227, 1, 0, 2293763, 1, 0, 2228228, 1, 0, 2293764, 1, 0, 2228229, 1, 0, 2293765, 1, 0, 2228230, 1, 0, 2293766, 1, 0, 2228231, 1, 0, 2293767, 1, 0, 2228232, 1, 0, 2293768, 1, 0, 2228233, 1, 0, 2293769, 1, 0, 2228234, 1, 0, 2293770, 1, 0, 2228235, 1, 0, 2293771, 1, 0, 2228236, 1, 0, 2293772, 1, 0, 2228237, 1, 0, 2293773, 1, 0, 2228238, 1, 0, 2293774, 1, 0, 2228239, 1, 0, 2293775, 1, 0, 2228240, 1, 0, 2293776, 1, 0, 2228241, 1, 0, 2293777, 1, 0, 2228242, 1, 0, 2293778, 1, 0, 2228243, 1, 0, 2293779, 1, 0, 2228244, 1, 0, 2293780, 1, 0, 2228245, 1, 0, 2293781, 1, 0, 2228246, 1, 0, 2293782, 1, 0, 2228247, 1, 0, 2293783, 1, 0, 2228248, 1, 0, 2293784, 1, 0, 2228249, 1, 0, 2293785, 1, 0, 2228250, 1, 0, 2293786, 1, 0, 2228251, 1, 0, 2293787, 1, 0, 0, 1, 0, 65536, 1, 0, 131072, 1, 0, 1, 1, 0, 65537, 1, 0, 131073, 1, 0, 2, 1, 0, 65538, 1, 0, 131074, 1, 0, 3, 1, 0, 65539, 1, 0, 131075, 1, 0, 4, 1, 0, 65540, 1, 0, 131076, 1, 0, 5, 1, 0, 65541, 1, 0, 131077, 1, 0, 6, 1, 0, 65542, 1, 0, 131078, 1, 0, 7, 1, 0, 65543, 1, 0, 131079, 1, 0, 8, 1, 0, 65544, 1, 0, 131080, 1, 0, 9, 1, 0, 65545, 1, 0, 131081, 1, 0, 10, 1, 0, 65546, 1, 0, 131082, 1, 0, 11, 1, 0, 65547, 1, 0, 131083, 1, 0, 12, 1, 0, 65548, 1, 0, 131084, 1, 0, 13, 1, 0, 65549, 1, 0, 131085, 1, 0, 14, 1, 0, 65550, 1, 0, 131086, 1, 0, 15, 1, 0, 65551, 1, 0, 131087, 1, 0, 16, 1, 0, 65552, 1, 0, 131088, 1, 0, 17, 1, 0, 65553, 1, 0, 131089, 1, 0, 18, 1, 0, 65554, 1, 0, 131090, 1, 0, 19, 1, 0, 65555, 1, 0, 131091, 1, 0, 20, 1, 0, 65556, 1, 0, 131092, 1, 0, 21, 1, 0, 65557, 1, 0, 131093, 1, 0, 22, 1, 0, 65558, 1, 0, 131094, 1, 0, 23, 1, 0, 65559, 1, 0, 131095, 1, 0, 24, 1, 0, 65560, 1, 0, 131096, 1, 0, 25, 1, 0, 65561, 1, 0, 131097, 1, 0, 26, 1, 0, 65562, 1, 0, 131098, 1, 0, 27, 1, 0, 65563, 1, 0, 131099, 1, 0, 1048588, 1, 0, 1048587, 1, 0, 1179659, 1, 0, 1179660, 1, 0, 1179661, 1, 0, 1179662, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1048592, 1, 0, 1048591, 1, 0, 458761, 1, 0, 327689, 1, 0, 393225, 1, 0, 393224, 1, 0, 458760, 1, 0, 458770, 1, 0, 393234, 1, 0, 327698, 1, 0, 655375, 1, 0, 589839, 1, 0, 720909, 1, 0, 720910, 1, 0, 655372, 1, 0, 589836, 1, 0, 1638409, 1, 0, 1572873, 1, 0, 1441807, 1, 0, 1376271, 1, 0, 1441804, 1, 0, 1376268, 1, 0, 1310728, 1, 0, 1310727, 1, 0, 1310740, 1, 0, 1310739, 1, 0, 917524, 1, 0, 917523, 1, 0, 917512, 1, 0, 917511, 1, 0, 1114112, 1, 0, 1114139, 1, 0)
+layer_0/tile_data = PackedInt32Array(196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 196628, 1, 0, 196629, 1, 0, 196630, 1, 0, 196631, 1, 0, 196632, 1, 0, 196633, 1, 0, 196634, 1, 0, 196635, 1, 0, 327702, 1, 0, 393238, 1, 0, 458774, 1, 0, 327703, 1, 0, 393239, 1, 0, 458775, 1, 0, 327704, 1, 0, 393240, 1, 0, 458776, 1, 0, 327705, 1, 0, 393241, 1, 0, 458777, 1, 0, 327696, 1, 0, 393232, 1, 0, 458768, 1, 0, 327697, 1, 0, 393233, 1, 0, 458769, 1, 0, 327699, 1, 0, 393235, 1, 0, 458771, 1, 0, 327700, 1, 0, 393236, 1, 0, 458772, 1, 0, 327687, 1, 0, 393223, 1, 0, 458759, 1, 0, 327688, 1, 0, 327690, 1, 0, 393226, 1, 0, 458762, 1, 0, 327691, 1, 0, 393227, 1, 0, 458763, 1, 0, 327682, 1, 0, 393218, 1, 0, 458754, 1, 0, 327683, 1, 0, 393219, 1, 0, 458755, 1, 0, 327684, 1, 0, 393220, 1, 0, 458756, 1, 0, 327685, 1, 0, 393221, 1, 0, 458757, 1, 0, 589826, 1, 0, 655362, 1, 0, 589827, 1, 0, 655363, 1, 0, 589828, 1, 0, 655364, 1, 0, 589829, 1, 0, 655365, 1, 0, 589834, 1, 0, 655370, 1, 0, 589835, 1, 0, 655371, 1, 0, 589837, 1, 0, 655373, 1, 0, 589838, 1, 0, 655374, 1, 0, 589840, 1, 0, 655376, 1, 0, 589841, 1, 0, 655377, 1, 0, 786445, 1, 0, 851981, 1, 0, 786446, 1, 0, 851982, 1, 0, 589846, 1, 0, 655382, 1, 0, 589847, 1, 0, 655383, 1, 0, 589848, 1, 0, 655384, 1, 0, 589849, 1, 0, 655385, 1, 0, 262171, 1, 0, 327707, 1, 0, 393243, 1, 0, 458779, 1, 0, 524315, 1, 0, 589851, 1, 0, 655387, 1, 0, 720923, 1, 0, 786459, 1, 0, 786455, 1, 0, 851991, 1, 0, 917527, 1, 0, 983063, 1, 0, 1048599, 1, 0, 786456, 1, 0, 851992, 1, 0, 917528, 1, 0, 983064, 1, 0, 1048600, 1, 0, 786457, 1, 0, 851993, 1, 0, 917529, 1, 0, 983065, 1, 0, 1048601, 1, 0, 786458, 1, 0, 851994, 1, 0, 917530, 1, 0, 983066, 1, 0, 1048602, 1, 0, 851995, 1, 0, 917531, 1, 0, 983067, 1, 0, 1048603, 1, 0, 786454, 1, 0, 851990, 1, 0, 917526, 1, 0, 983062, 1, 0, 1048598, 1, 0, 589843, 1, 0, 655379, 1, 0, 720915, 1, 0, 786451, 1, 0, 851987, 1, 0, 983059, 1, 0, 1048595, 1, 0, 589844, 1, 0, 655380, 1, 0, 720916, 1, 0, 786452, 1, 0, 851988, 1, 0, 983060, 1, 0, 1048596, 1, 0, 786448, 1, 0, 851984, 1, 0, 786449, 1, 0, 851985, 1, 0, 786450, 1, 0, 851986, 1, 0, 786439, 1, 0, 851975, 1, 0, 786440, 1, 0, 851976, 1, 0, 786441, 1, 0, 851977, 1, 0, 786442, 1, 0, 851978, 1, 0, 786443, 1, 0, 851979, 1, 0, 589831, 1, 0, 655367, 1, 0, 720903, 1, 0, 983047, 1, 0, 1048583, 1, 0, 589832, 1, 0, 655368, 1, 0, 720904, 1, 0, 983048, 1, 0, 1048584, 1, 0, 786432, 1, 0, 851968, 1, 0, 917504, 1, 0, 983040, 1, 0, 1048576, 1, 0, 786433, 1, 0, 851969, 1, 0, 917505, 1, 0, 983041, 1, 0, 1048577, 1, 0, 786434, 1, 0, 851970, 1, 0, 917506, 1, 0, 983042, 1, 0, 1048578, 1, 0, 786435, 1, 0, 851971, 1, 0, 917507, 1, 0, 983043, 1, 0, 1048579, 1, 0, 786436, 1, 0, 851972, 1, 0, 917508, 1, 0, 983044, 1, 0, 1048580, 1, 0, 786437, 1, 0, 851973, 1, 0, 917509, 1, 0, 983045, 1, 0, 1048581, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 720896, 1, 0, 262157, 1, 0, 327693, 1, 0, 393229, 1, 0, 458765, 1, 0, 262158, 1, 0, 327694, 1, 0, 393230, 1, 0, 458766, 1, 0, 1179648, 1, 0, 1245184, 1, 0, 1310720, 1, 0, 1376256, 1, 0, 1441792, 1, 0, 1179649, 1, 0, 1245185, 1, 0, 1310721, 1, 0, 1376257, 1, 0, 1441793, 1, 0, 1179650, 1, 0, 1245186, 1, 0, 1310722, 1, 0, 1376258, 1, 0, 1441794, 1, 0, 1179651, 1, 0, 1245187, 1, 0, 1310723, 1, 0, 1376259, 1, 0, 1441795, 1, 0, 1179652, 1, 0, 1245188, 1, 0, 1310724, 1, 0, 1376260, 1, 0, 1441796, 1, 0, 1179653, 1, 0, 1245189, 1, 0, 1310725, 1, 0, 1376261, 1, 0, 1441797, 1, 0, 1179670, 1, 0, 1245206, 1, 0, 1310742, 1, 0, 1376278, 1, 0, 1441814, 1, 0, 1179671, 1, 0, 1245207, 1, 0, 1310743, 1, 0, 1376279, 1, 0, 1441815, 1, 0, 1179672, 1, 0, 1245208, 1, 0, 1310744, 1, 0, 1376280, 1, 0, 1441816, 1, 0, 1179673, 1, 0, 1245209, 1, 0, 1310745, 1, 0, 1376281, 1, 0, 1441817, 1, 0, 1179674, 1, 0, 1245210, 1, 0, 1310746, 1, 0, 1376282, 1, 0, 1441818, 1, 0, 1179675, 1, 0, 1245211, 1, 0, 1310747, 1, 0, 1376283, 1, 0, 1441819, 1, 0, 1179667, 1, 0, 1245203, 1, 0, 1376275, 1, 0, 1441811, 1, 0, 1179668, 1, 0, 1245204, 1, 0, 1376276, 1, 0, 1441812, 1, 0, 1179655, 1, 0, 1245191, 1, 0, 1376263, 1, 0, 1441799, 1, 0, 1179656, 1, 0, 1245192, 1, 0, 1376264, 1, 0, 1441800, 1, 0, 1376266, 1, 0, 1441802, 1, 0, 1376267, 1, 0, 1441803, 1, 0, 1376269, 1, 0, 1441805, 1, 0, 1376270, 1, 0, 1441806, 1, 0, 1376272, 1, 0, 1441808, 1, 0, 1376273, 1, 0, 1441809, 1, 0, 983050, 1, 0, 1048586, 1, 0, 1114122, 1, 0, 1179658, 1, 0, 1245194, 1, 0, 1245195, 1, 0, 1245196, 1, 0, 1245197, 1, 0, 1245198, 1, 0, 1245199, 1, 0, 1245200, 1, 0, 1245201, 1, 0, 983057, 1, 0, 1048593, 1, 0, 1114129, 1, 0, 1179665, 1, 0, 983055, 1, 0, 983056, 1, 0, 983051, 1, 0, 983052, 1, 0, 1507328, 1, 0, 1572864, 1, 0, 1638400, 1, 0, 1703936, 1, 0, 1769472, 1, 0, 1835008, 1, 0, 1900544, 1, 0, 1966080, 1, 0, 2031616, 1, 0, 2097152, 1, 0, 2162688, 1, 0, 2162689, 1, 0, 2162690, 1, 0, 2162691, 1, 0, 2162692, 1, 0, 2162693, 1, 0, 2162694, 1, 0, 2162695, 1, 0, 2162696, 1, 0, 2162697, 1, 0, 2162698, 1, 0, 2162699, 1, 0, 2162700, 1, 0, 2162701, 1, 0, 2162702, 1, 0, 2162703, 1, 0, 2162704, 1, 0, 2162705, 1, 0, 2162706, 1, 0, 2162707, 1, 0, 2162708, 1, 0, 2162709, 1, 0, 2162710, 1, 0, 2162711, 1, 0, 2162712, 1, 0, 2162713, 1, 0, 2162714, 1, 0, 2162715, 1, 0, 1966096, 1, 0, 2031632, 1, 0, 1966097, 1, 0, 2031633, 1, 0, 1966098, 1, 0, 2031634, 1, 0, 1966099, 1, 0, 2031635, 1, 0, 1966100, 1, 0, 2031636, 1, 0, 1966101, 1, 0, 2031637, 1, 0, 1966102, 1, 0, 2031638, 1, 0, 1966103, 1, 0, 2031639, 1, 0, 1966104, 1, 0, 2031640, 1, 0, 1966105, 1, 0, 2031641, 1, 0, 1966082, 1, 0, 2031618, 1, 0, 1966083, 1, 0, 2031619, 1, 0, 1966084, 1, 0, 2031620, 1, 0, 1966085, 1, 0, 2031621, 1, 0, 1966086, 1, 0, 2031622, 1, 0, 1966087, 1, 0, 2031623, 1, 0, 1966088, 1, 0, 2031624, 1, 0, 1966089, 1, 0, 2031625, 1, 0, 1966090, 1, 0, 2031626, 1, 0, 1966091, 1, 0, 2031627, 1, 0, 1769473, 1, 0, 1835009, 1, 0, 1769474, 1, 0, 1835010, 1, 0, 1572866, 1, 0, 1638402, 1, 0, 1572867, 1, 0, 1638403, 1, 0, 1572868, 1, 0, 1638404, 1, 0, 1572869, 1, 0, 1638405, 1, 0, 1703940, 1, 0, 1769476, 1, 0, 1703941, 1, 0, 1769477, 1, 0, 1835012, 1, 0, 1835013, 1, 0, 1572871, 1, 0, 1638407, 1, 0, 1572872, 1, 0, 1638408, 1, 0, 1572874, 1, 0, 1638410, 1, 0, 1572875, 1, 0, 1638411, 1, 0, 1507341, 1, 0, 1572877, 1, 0, 1507342, 1, 0, 1572878, 1, 0, 1638413, 1, 0, 1638414, 1, 0, 1769482, 1, 0, 1835018, 1, 0, 1769483, 1, 0, 1835019, 1, 0, 1769484, 1, 0, 1835020, 1, 0, 1769485, 1, 0, 1835021, 1, 0, 1769486, 1, 0, 1835022, 1, 0, 1769487, 1, 0, 1835023, 1, 0, 1769488, 1, 0, 1835024, 1, 0, 1769489, 1, 0, 1835025, 1, 0, 1900557, 1, 0, 1966093, 1, 0, 2031629, 1, 0, 1900558, 1, 0, 1966094, 1, 0, 2031630, 1, 0, 1572880, 1, 0, 1638416, 1, 0, 1572881, 1, 0, 1638417, 1, 0, 1572882, 1, 0, 1638418, 1, 0, 1572883, 1, 0, 1638419, 1, 0, 1572884, 1, 0, 1638420, 1, 0, 1572886, 1, 0, 1638422, 1, 0, 1572887, 1, 0, 1638423, 1, 0, 1572888, 1, 0, 1638424, 1, 0, 1572889, 1, 0, 1638425, 1, 0, 1703958, 1, 0, 1769494, 1, 0, 1835030, 1, 0, 1703959, 1, 0, 1769495, 1, 0, 1835031, 1, 0, 1769497, 1, 0, 1835033, 1, 0, 1769498, 1, 0, 1835034, 1, 0, 1769499, 1, 0, 1835035, 1, 0, 1507355, 1, 0, 1572891, 1, 0, 1638427, 1, 0, 1703963, 1, 0, 1900571, 1, 0, 1966107, 1, 0, 2031643, 1, 0, 2097179, 1, 0, 1769491, 1, 0, 1835027, 1, 0, 1900563, 1, 0, 1769492, 1, 0, 1835028, 1, 0, 1900564, 1, 0, 1769479, 1, 0, 1835015, 1, 0, 1900551, 1, 0, 1769480, 1, 0, 1835016, 1, 0, 1900552, 1, 0, 2228224, 1, 0, 2293760, 1, 0, 2228225, 1, 0, 2293761, 1, 0, 2228226, 1, 0, 2293762, 1, 0, 2228227, 1, 0, 2293763, 1, 0, 2228228, 1, 0, 2293764, 1, 0, 2228229, 1, 0, 2293765, 1, 0, 2228230, 1, 0, 2293766, 1, 0, 2228231, 1, 0, 2293767, 1, 0, 2228232, 1, 0, 2293768, 1, 0, 2228233, 1, 0, 2293769, 1, 0, 2228234, 1, 0, 2293770, 1, 0, 2228235, 1, 0, 2293771, 1, 0, 2228236, 1, 0, 2293772, 1, 0, 2228237, 1, 0, 2293773, 1, 0, 2228238, 1, 0, 2293774, 1, 0, 2228239, 1, 0, 2293775, 1, 0, 2228240, 1, 0, 2293776, 1, 0, 2228241, 1, 0, 2293777, 1, 0, 2228242, 1, 0, 2293778, 1, 0, 2228243, 1, 0, 2293779, 1, 0, 2228244, 1, 0, 2293780, 1, 0, 2228245, 1, 0, 2293781, 1, 0, 2228246, 1, 0, 2293782, 1, 0, 2228247, 1, 0, 2293783, 1, 0, 2228248, 1, 0, 2293784, 1, 0, 2228249, 1, 0, 2293785, 1, 0, 2228250, 1, 0, 2293786, 1, 0, 2228251, 1, 0, 2293787, 1, 0, 0, 1, 0, 65536, 1, 0, 131072, 1, 0, 1, 1, 0, 65537, 1, 0, 131073, 1, 0, 2, 1, 0, 65538, 1, 0, 131074, 1, 0, 3, 1, 0, 65539, 1, 0, 131075, 1, 0, 4, 1, 0, 65540, 1, 0, 131076, 1, 0, 5, 1, 0, 65541, 1, 0, 131077, 1, 0, 6, 1, 0, 65542, 1, 0, 131078, 1, 0, 7, 1, 0, 65543, 1, 0, 131079, 1, 0, 8, 1, 0, 65544, 1, 0, 131080, 1, 0, 9, 1, 0, 65545, 1, 0, 131081, 1, 0, 10, 1, 0, 65546, 1, 0, 131082, 1, 0, 11, 1, 0, 65547, 1, 0, 131083, 1, 0, 12, 1, 0, 65548, 1, 0, 131084, 1, 0, 13, 1, 0, 65549, 1, 0, 131085, 1, 0, 14, 1, 0, 65550, 1, 0, 131086, 1, 0, 15, 1, 0, 65551, 1, 0, 131087, 1, 0, 16, 1, 0, 65552, 1, 0, 131088, 1, 0, 17, 1, 0, 65553, 1, 0, 131089, 1, 0, 18, 1, 0, 65554, 1, 0, 131090, 1, 0, 19, 1, 0, 65555, 1, 0, 131091, 1, 0, 20, 1, 0, 65556, 1, 0, 131092, 1, 0, 21, 1, 0, 65557, 1, 0, 131093, 1, 0, 22, 1, 0, 65558, 1, 0, 131094, 1, 0, 23, 1, 0, 65559, 1, 0, 131095, 1, 0, 24, 1, 0, 65560, 1, 0, 131096, 1, 0, 25, 1, 0, 65561, 1, 0, 131097, 1, 0, 26, 1, 0, 65562, 1, 0, 131098, 1, 0, 27, 1, 0, 65563, 1, 0, 131099, 1, 0, 1048588, 1, 0, 1048587, 1, 0, 1179659, 1, 0, 1179660, 1, 0, 1179661, 1, 0, 1179662, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1048592, 1, 0, 1048591, 1, 0, 458761, 1, 0, 327689, 1, 0, 393225, 1, 0, 393224, 1, 0, 458760, 1, 0, 458770, 1, 0, 393234, 1, 0, 327698, 1, 0, 655375, 1, 0, 589839, 1, 0, 720909, 1, 0, 720910, 1, 0, 655372, 1, 0, 589836, 1, 0, 1638409, 1, 0, 1572873, 1, 0, 1441807, 1, 0, 1376271, 1, 0, 1441804, 1, 0, 1376268, 1, 0, 1310728, 1, 0, 1310727, 1, 0, 1310740, 1, 0, 1310739, 1, 0, 917524, 1, 0, 917523, 1, 0, 917512, 1, 0, 917511, 1, 0, 1114111, 1, 0, 1114110, 1, 0, 1114109, 1, 0, 1114108, 1, 0, 1114107, 1, 0, 1179643, 1, 0, 1245179, 1, 0, 1245180, 1, 0, 1245181, 1, 0, 1245182, 1, 0, 1245183, 1, 0, 1048604, 1, 0, 1048605, 1, 0, 1048606, 1, 0, 1048607, 1, 0, 1048608, 1, 0, 1114144, 1, 0, 1179680, 1, 0, 1179679, 1, 0, 1179678, 1, 0, 1179677, 1, 0, 1179676, 1, 0)
 
 [node name="debug" type="TileMap" parent="."]
 unique_name_in_owner = true
@@ -166,7 +169,7 @@ walls_map = NodePath("../../walls")
 path_map = NodePath("../../debug")
 tint = Color(0.717647, 0, 1, 1)
 group_of_return_points = NodePath("../../RetreatPoints")
-delay_before_active = 10.0
+delay_before_active = 12.0
 
 [node name="Enemy3" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
 unique_name_in_owner = true
@@ -179,7 +182,7 @@ walls_map = NodePath("../../walls")
 path_map = NodePath("../../debug")
 tint = Color(0, 0.984314, 1, 1)
 group_of_return_points = NodePath("../../RetreatPoints")
-delay_before_active = 20.0
+delay_before_active = 24.0
 
 [node name="Enemy4" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
 unique_name_in_owner = true
@@ -192,10 +195,9 @@ walls_map = NodePath("../../walls")
 path_map = NodePath("../../debug")
 tint = Color(1, 0.784314, 0, 1)
 group_of_return_points = NodePath("../../RetreatPoints")
-delay_before_active = 30.0
+delay_before_active = 36.0
 
 [node name="Player_FieldColl" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_FieldColl"]
 position = Vector2(76, 200)
@@ -212,6 +214,14 @@ shape = SubResource("RectangleShape2D_rro6i")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Player_FieldColl"]
 position = Vector2(76, 104)
 shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(112, 126)
+shape = SubResource("RectangleShape2D_drys0")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(112, 154)
+shape = SubResource("RectangleShape2D_drys0")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Player_FieldColl"]
 position = Vector2(76, 48)
@@ -409,7 +419,12 @@ rotation = 1.57079
 shape = SubResource("RectangleShape2D_c57ed")
 
 [node name="CollisionShape2D57" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(112, 140)
+position = Vector2(86, 140)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_kwqun")
+
+[node name="CollisionShape2D64" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(138, 140)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_kwqun")
 
@@ -483,18 +498,6 @@ offset_bottom = 172.0
 theme_override_fonts/font = ExtResource("5_5aq8y")
 theme_override_font_sizes/font_size = 8
 text = "READY!"
-metadata/_edit_use_anchors_ = true
-
-[node name="SCORE" type="Label" parent="."]
-unique_name_in_owner = true
-texture_filter = 1
-offset_left = 26.0
-offset_top = 8.0
-offset_right = 74.0
-offset_bottom = 31.0
-theme_override_fonts/font = ExtResource("5_5aq8y")
-theme_override_font_sizes/font_size = 8
-text = "0000"
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -609,211 +612,159 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Pellet" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 188)
-is_power = false
 
 [node name="Pellet2" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(60, 188)
-is_power = false
 
 [node name="Pellet3" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(68, 188)
-is_power = false
 
 [node name="Pellet4" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(76, 188)
-is_power = false
 
 [node name="Pellet5" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(84, 188)
-is_power = false
 
 [node name="Pellet8" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 188)
-is_power = false
 
 [node name="Pellet9" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(20, 188)
-is_power = false
 
 [node name="Pellet10" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(28, 188)
-is_power = false
 
 [node name="Pellet11" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(36, 188)
-is_power = false
 
 [node name="Pellet12" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(44, 188)
-is_power = false
 
 [node name="Pellet6" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(92, 188)
-is_power = false
 
 [node name="Pellet7" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 188)
-is_power = false
 
 [node name="Pellet13" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(164, 188)
-is_power = false
 
 [node name="Pellet14" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 188)
-is_power = false
 
 [node name="Pellet15" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(180, 188)
-is_power = false
 
 [node name="Pellet16" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(188, 188)
-is_power = false
 
 [node name="Pellet17" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(196, 188)
-is_power = false
 
 [node name="Pellet18" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 188)
-is_power = false
 
 [node name="Pellet19" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(132, 188)
-is_power = false
 
 [node name="Pellet20" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(140, 188)
-is_power = false
 
 [node name="Pellet21" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(148, 188)
-is_power = false
 
 [node name="Pellet22" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(156, 188)
-is_power = false
 
 [node name="Pellet23" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(204, 188)
-is_power = false
 
 [node name="Pellet24" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 188)
-is_power = false
 
 [node name="Pellet25" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 260)
-is_power = false
 
 [node name="Pellet26" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(60, 260)
-is_power = false
 
 [node name="Pellet27" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(68, 260)
-is_power = false
 
 [node name="Pellet28" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(76, 260)
-is_power = false
 
 [node name="Pellet29" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(84, 260)
-is_power = false
 
 [node name="Pellet30" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 260)
-is_power = false
 
 [node name="Pellet31" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(20, 260)
-is_power = false
 
 [node name="Pellet32" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(28, 260)
-is_power = false
 
 [node name="Pellet33" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(36, 260)
-is_power = false
 
 [node name="Pellet34" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(44, 260)
-is_power = false
 
 [node name="Pellet101" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 236)
-is_power = false
 
 [node name="Pellet102" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 236)
-is_power = false
 
 [node name="Pellet127" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 244)
-is_power = false
 
 [node name="Pellet128" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 252)
-is_power = false
 
 [node name="Pellet129" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 244)
-is_power = false
 
 [node name="Pellet130" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 252)
-is_power = false
 
 [node name="Pellet131" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 244)
-is_power = false
 
 [node name="Pellet132" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 252)
-is_power = false
 
 [node name="Pellet133" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 244)
-is_power = false
 
 [node name="Pellet134" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 252)
-is_power = false
 
 [node name="Pellet135" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 196)
-is_power = false
 
 [node name="Pellet136" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 204)
-is_power = false
 
 [node name="Pellet137" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 196)
-is_power = false
 
 [node name="Pellet138" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 204)
-is_power = false
 
 [node name="Pellet139" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 196)
-is_power = false
 
 [node name="Pellet140" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 204)
-is_power = false
 
 [node name="Pellet141" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 196)
-is_power = false
 
 [node name="Pellet142" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 204)
-is_power = false
 
 [node name="Pellet243" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 212)
@@ -823,91 +774,69 @@ is_power = true
 
 [node name="Pellet143" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 220)
-is_power = false
 
 [node name="Pellet144" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 228)
-is_power = false
 
 [node name="Pellet145" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(28, 220)
-is_power = false
 
 [node name="Pellet165" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(28, 212)
-is_power = false
 
 [node name="Pellet166" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(20, 212)
-is_power = false
 
 [node name="Pellet146" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(28, 228)
-is_power = false
 
 [node name="Pellet147" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(76, 220)
-is_power = false
 
 [node name="Pellet148" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(76, 228)
-is_power = false
 
 [node name="Pellet149" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(148, 220)
-is_power = false
 
 [node name="Pellet150" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(148, 228)
-is_power = false
 
 [node name="Pellet159" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 196)
-is_power = false
 
 [node name="Pellet160" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 204)
-is_power = false
 
 [node name="Pellet151" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 220)
-is_power = false
 
 [node name="Pellet152" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 228)
-is_power = false
 
 [node name="Pellet153" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(196, 220)
-is_power = false
 
 [node name="Pellet154" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(196, 228)
-is_power = false
 
 [node name="Pellet103" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(20, 236)
-is_power = false
 
 [node name="Pellet104" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(28, 236)
-is_power = false
 
 [node name="Pellet105" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(36, 236)
-is_power = false
 
 [node name="Pellet106" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(44, 236)
-is_power = false
 
 [node name="Pellet107" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 236)
-is_power = false
 
 [node name="Pellet157" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 203)
-is_power = false
 
 [node name="Pellet244" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 212)
@@ -917,487 +846,368 @@ is_power = true
 
 [node name="Pellet158" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 196)
-is_power = false
 
 [node name="Pellet108" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 236)
-is_power = false
 
 [node name="Pellet109" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(180, 236)
-is_power = false
 
 [node name="Pellet110" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(188, 236)
-is_power = false
 
 [node name="Pellet111" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(196, 236)
-is_power = false
 
 [node name="Pellet112" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(204, 236)
-is_power = false
 
 [node name="Pellet155" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(196, 212)
-is_power = false
 
 [node name="Pellet156" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(204, 212)
-is_power = false
 
 [node name="Pellet113" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 212)
-is_power = false
 
 [node name="Pellet114" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(132, 212)
-is_power = false
 
 [node name="Pellet125" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 212)
-is_power = false
 
 [node name="Pellet126" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 212)
-is_power = false
 
 [node name="Pellet115" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(140, 212)
-is_power = false
 
 [node name="Pellet116" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(148, 212)
-is_power = false
 
 [node name="Pellet117" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(156, 212)
-is_power = false
 
 [node name="Pellet118" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(164, 212)
-is_power = false
 
 [node name="Pellet119" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 212)
-is_power = false
 
 [node name="Pellet120" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(60, 212)
-is_power = false
 
 [node name="Pellet121" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(68, 212)
-is_power = false
 
 [node name="Pellet122" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(76, 212)
-is_power = false
 
 [node name="Pellet123" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(84, 212)
-is_power = false
 
 [node name="Pellet124" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(92, 212)
-is_power = false
 
 [node name="Pellet35" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(92, 260)
-is_power = false
 
 [node name="Pellet36" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 260)
-is_power = false
 
 [node name="Pellet167" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(76, 236)
-is_power = false
 
 [node name="Pellet168" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(84, 236)
-is_power = false
 
 [node name="Pellet169" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(92, 236)
-is_power = false
 
 [node name="Pellet170" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 236)
-is_power = false
 
 [node name="Pellet99" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(108, 260)
-is_power = false
 
 [node name="Pellet100" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(116, 260)
-is_power = false
 
 [node name="Pellet37" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(164, 260)
-is_power = false
 
 [node name="Pellet38" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 260)
-is_power = false
 
 [node name="Pellet39" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(180, 260)
-is_power = false
 
 [node name="Pellet40" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(188, 260)
-is_power = false
 
 [node name="Pellet41" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(196, 260)
-is_power = false
 
 [node name="Pellet42" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 260)
-is_power = false
 
 [node name="Pellet43" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(132, 260)
-is_power = false
 
 [node name="Pellet44" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(140, 260)
-is_power = false
 
 [node name="Pellet45" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(148, 260)
-is_power = false
 
 [node name="Pellet161" parent="Pellets" instance=ExtResource("9_a4gwu")]
-position = Vector2(125, 236)
-is_power = false
+position = Vector2(124, 236)
 
 [node name="Pellet162" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(132, 236)
-is_power = false
 
 [node name="Pellet163" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(140, 236)
-is_power = false
 
 [node name="Pellet164" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(148, 236)
-is_power = false
 
 [node name="Pellet46" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(156, 260)
-is_power = false
 
 [node name="Pellet47" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(204, 260)
-is_power = false
 
 [node name="Pellet48" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 260)
-is_power = false
 
 [node name="Pellet49" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 36)
-is_power = false
 
 [node name="Pellet50" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(60, 36)
-is_power = false
 
 [node name="Pellet51" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(68, 36)
-is_power = false
 
 [node name="Pellet52" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(76, 36)
-is_power = false
 
 [node name="Pellet53" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(84, 36)
-is_power = false
 
 [node name="Pellet54" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 36)
-is_power = false
 
 [node name="Pellet55" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(20, 36)
-is_power = false
 
 [node name="Pellet56" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(28, 36)
-is_power = false
 
 [node name="Pellet57" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(36, 36)
-is_power = false
 
 [node name="Pellet58" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(44, 36)
-is_power = false
 
 [node name="Pellet59" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(92, 36)
-is_power = false
 
 [node name="Pellet60" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 36)
-is_power = false
 
 [node name="Pellet61" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(164, 36)
-is_power = false
 
 [node name="Pellet62" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 36)
-is_power = false
 
 [node name="Pellet63" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(180, 36)
-is_power = false
 
 [node name="Pellet64" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(188, 36)
-is_power = false
 
 [node name="Pellet65" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(196, 36)
-is_power = false
 
 [node name="Pellet66" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 36)
-is_power = false
 
 [node name="Pellet67" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(132, 36)
-is_power = false
 
 [node name="Pellet68" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(140, 36)
-is_power = false
 
 [node name="Pellet69" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(148, 36)
-is_power = false
 
 [node name="Pellet70" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(156, 36)
-is_power = false
 
 [node name="Pellet71" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(204, 36)
-is_power = false
 
 [node name="Pellet72" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 36)
-is_power = false
 
 [node name="Pellet73" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 68)
-is_power = false
 
 [node name="Pellet74" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(60, 68)
-is_power = false
 
 [node name="Pellet75" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(68, 68)
-is_power = false
 
 [node name="Pellet76" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(76, 68)
-is_power = false
 
 [node name="Pellet77" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(84, 68)
-is_power = false
 
 [node name="Pellet78" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 68)
-is_power = false
 
 [node name="Pellet79" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(20, 68)
-is_power = false
 
 [node name="Pellet80" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(28, 68)
-is_power = false
 
 [node name="Pellet81" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(36, 68)
-is_power = false
 
 [node name="Pellet82" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(44, 68)
-is_power = false
 
 [node name="Pellet215" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(20, 92)
-is_power = false
 
 [node name="Pellet216" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(28, 92)
-is_power = false
 
 [node name="Pellet217" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(36, 92)
-is_power = false
 
 [node name="Pellet218" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(44, 92)
-is_power = false
 
 [node name="Pellet83" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(92, 68)
-is_power = false
 
 [node name="Pellet84" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 68)
-is_power = false
 
 [node name="Pellet171" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 60)
-is_power = false
 
 [node name="Pellet172" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 52)
-is_power = false
 
 [node name="Pellet173" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 44)
-is_power = false
 
 [node name="Pellet184" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 60)
-is_power = false
 
 [node name="Pellet185" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 52)
-is_power = false
 
 [node name="Pellet186" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 44)
-is_power = false
 
 [node name="Pellet187" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 92)
-is_power = false
 
 [node name="Pellet188" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 84)
-is_power = false
 
 [node name="Pellet189" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 76)
-is_power = false
 
 [node name="Pellet190" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 92)
-is_power = false
 
 [node name="Pellet191" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 84)
-is_power = false
 
 [node name="Pellet192" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 76)
-is_power = false
 
 [node name="Pellet193" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(76, 92)
-is_power = false
 
 [node name="Pellet194" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(76, 84)
-is_power = false
 
 [node name="Pellet195" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(76, 76)
-is_power = false
 
 [node name="Pellet196" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(148, 92)
-is_power = false
 
 [node name="Pellet197" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(148, 84)
-is_power = false
 
 [node name="Pellet198" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(148, 76)
-is_power = false
 
 [node name="Pellet199" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 92)
-is_power = false
 
 [node name="Pellet200" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 84)
-is_power = false
 
 [node name="Pellet201" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 76)
-is_power = false
 
 [node name="Pellet202" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 92)
-is_power = false
 
 [node name="Pellet214" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(204, 92)
-is_power = false
 
 [node name="Pellet203" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 84)
-is_power = false
 
 [node name="Pellet204" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 76)
-is_power = false
 
 [node name="Pellet174" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 60)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet175" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 52)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet176" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 44)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet177" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 60)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet178" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 52)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet179" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 44)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet180" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 60)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet181" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 44)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet242" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 52)
@@ -1409,12 +1219,10 @@ is_power = true
 [node name="Pellet182" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 60)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet183" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 44)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet241" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(12, 52)
@@ -1425,189 +1233,144 @@ is_power = true
 
 [node name="Pellet97" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(108, 68)
-is_power = false
 
 [node name="Pellet98" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(116, 68)
-is_power = false
 
 [node name="Pellet85" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(164, 68)
-is_power = false
 
 [node name="Pellet86" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 68)
-is_power = false
 
 [node name="Pellet219" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 100)
-is_power = false
 
 [node name="Pellet220" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 156)
-is_power = false
 
 [node name="Pellet221" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 148)
-is_power = false
 
 [node name="Pellet222" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 140)
-is_power = false
 
 [node name="Pellet223" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 124)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet224" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 116)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet225" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 108)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet226" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 132)
-is_power = false
 
 [node name="Pellet227" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 100)
-is_power = false
 
 [node name="Pellet228" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 156)
-is_power = false
 
 [node name="Pellet229" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 148)
-is_power = false
 
 [node name="Pellet230" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 140)
-is_power = false
 
 [node name="Pellet235" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 180)
-is_power = false
 
 [node name="Pellet236" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 172)
-is_power = false
 
 [node name="Pellet237" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 164)
-is_power = false
 
 [node name="Pellet238" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 180)
-is_power = false
 
 [node name="Pellet239" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 172)
-is_power = false
 
 [node name="Pellet240" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(172, 164)
-is_power = false
 
 [node name="Pellet231" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 124)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet232" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 116)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet233" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 108)
 rotation = 0.0651579
-is_power = false
 
 [node name="Pellet234" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(52, 132)
-is_power = false
 
 [node name="Pellet87" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(180, 68)
-is_power = false
 
 [node name="Pellet88" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(188, 68)
-is_power = false
 
 [node name="Pellet89" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(196, 68)
-is_power = false
 
 [node name="Pellet90" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 68)
-is_power = false
 
 [node name="Pellet91" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(132, 68)
-is_power = false
 
 [node name="Pellet92" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(140, 68)
-is_power = false
 
 [node name="Pellet205" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(124, 92)
-is_power = false
 
 [node name="Pellet206" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(132, 92)
-is_power = false
 
 [node name="Pellet207" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(140, 92)
-is_power = false
 
 [node name="Pellet208" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(84, 92)
-is_power = false
 
 [node name="Pellet209" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(92, 92)
-is_power = false
 
 [node name="Pellet210" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(100, 92)
-is_power = false
 
 [node name="Pellet211" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(180, 92)
-is_power = false
 
 [node name="Pellet212" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(188, 92)
-is_power = false
 
 [node name="Pellet213" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(196, 92)
-is_power = false
 
 [node name="Pellet93" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(148, 68)
-is_power = false
 
 [node name="Pellet94" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(156, 68)
-is_power = false
 
 [node name="Pellet95" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(204, 68)
-is_power = false
 
 [node name="Pellet96" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 68)
-is_power = false
 
 [node name="RetreatPoints" type="Node2D" parent="."]
 
@@ -1638,6 +1401,35 @@ position = Vector2(132, 140)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RetreatPoints/RetreatPoint_4"]
 polygon = PackedVector2Array(-2, 0, 0, 2, 2, 0, 0, -2)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 224.0
+offset_bottom = 24.0
+alignment = 1
+
+[node name="SCORE" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("5_5aq8y")
+theme_override_font_sizes/font_size = 8
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BEST_SCORE" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("5_5aq8y")
+theme_override_font_sizes/font_size = 8
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="ate_buter" from="Player" to="." method="_on_player_ate_buter"]
 [connection signal="ate_ghost" from="Player" to="." method="_on_player_ate_ghost"]

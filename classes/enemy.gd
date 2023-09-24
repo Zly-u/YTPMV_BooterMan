@@ -45,13 +45,14 @@ func stop():
 var is_weak: bool = false
 func make_weak():
 	if delay_before_active > 0: return
-	
+	found_player_state = FOUND_STATE.sees_nothing
 	is_weak = true
 	%enemy_anim.self_modulate = Color.BLUE
 	%enemy_anim.play("runnin")
 
 
 func make_strong():
+	found_player_state = FOUND_STATE.sees_nothing
 	is_weak = false
 	is_fleeing = false
 	follow_spline.clear_points()
@@ -70,6 +71,7 @@ func pause(sec: float):
 var is_move_forced: bool = false
 var forced_dir: Vector2 = Vector2.ZERO
 func start_force_move_dir(dir: Vector2):
+	found_player_state = FOUND_STATE.sees_nothing
 	is_move_forced = true
 	forced_dir = dir
 	progress = 0
@@ -119,8 +121,10 @@ enum FOUND_STATE {
 	follows = 2
 }
 var found_player_state: FOUND_STATE = FOUND_STATE.sees_nothing
-var initial_start_pos: Vector2 = Vector2(-1, -1)
+var initial_start_pos: Vector2
+var prev_player_pos: Vector2 = Vector2(-1, -1)
 var progress: float = 0.0
+var prev_follow_points: Array = []
 func follow_player():
 	if found_player_state == FOUND_STATE.sees_nothing: return
 	
@@ -128,9 +132,18 @@ func follow_player():
 		found_player_state = FOUND_STATE.follows
 		initial_start_pos = position
 		progress = 0
-		
+	
+	
 	follow_points = update_path(initial_start_pos, player.position)
 	
+	if prev_follow_points.size() != 0:
+		if follow_points != prev_follow_points:
+			progress = 0
+			initial_start_pos = position
+			follow_points = update_path(initial_start_pos, player.position)
+	
+	prev_follow_points = follow_points
+
 	follow_spline.clear_points()
 	var is_first: bool = true
 	for point in follow_points:
@@ -161,17 +174,22 @@ var pick_timing: float = 1.0 # in seconds
 var search_rad: int = 10
 var found_pos: Vector2 = Vector2(-1, 0)
 func wander():
-	if follow_spline.point_count <= 1:
-		valid_positions.shuffle()
+	if follow_spline.point_count <= 1 or prev_player_pos.x != -1:
+		progress = 0
+		if prev_player_pos.x == -1:
+			valid_positions.shuffle()
+			var cur_tile_pos: Vector2 = path_map.local_to_map(position)
+			for valid_pos in valid_positions:
+				if cur_tile_pos.distance_to(valid_pos) <= search_rad:
+					found_pos = path_map.map_to_local(valid_pos)
+					break
 		
-		var cur_tile_pos: Vector2 = path_map.local_to_map(position)
-		
-		for valid_pos in valid_positions:
-			if cur_tile_pos.distance_to(valid_pos) <= search_rad:
-				found_pos = path_map.map_to_local(valid_pos)
-				break
-		
-		follow_points = update_path(position, found_pos)
+			follow_points = update_path(position, found_pos)
+		else:
+			follow_spline.clear_points()
+			follow_points = update_path(position, prev_player_pos)
+			prev_player_pos.x = -1
+			
 		
 		var is_first: bool = true
 		for point in follow_points:
@@ -192,7 +210,6 @@ func wander():
 	
 	if progress >= follow_spline.get_baked_length():
 		follow_spline.clear_points()
-		progress = 0
 
 
 var is_fleeing: bool = false
@@ -200,6 +217,7 @@ func make_flee():
 	is_fleeing = true
 	follow_points.clear()
 	follow_spline.clear_points()
+	found_player_state = FOUND_STATE.sees_nothing
 	%enemy_anim.play("retreat")
 	%enemy_anim.self_modulate = Color.WHITE
 
@@ -230,7 +248,9 @@ func flee():
 var spl_pos: float = 0.0
 var timer: float = 0.0
 func _draw() -> void:
-	if true: return
+#	if true: return
+	if !OS.is_debug_build(): return
+	
 	timer += get_process_delta_time()
 	spl_pos = 0.5+sin(timer)*0.5
 
@@ -289,9 +309,9 @@ func _process(delta: float) -> void:
 				found_player_state = FOUND_STATE.just_saw
 		else:
 			if found_player_state == FOUND_STATE.follows:
-				initial_start_pos = Vector2(-1, -1)
 				found_player_state = FOUND_STATE.sees_nothing
-	
+				prev_player_pos = player.position
+				
 	# Movement
 	if !is_fleeing:
 		if !is_move_forced:
@@ -302,6 +322,7 @@ func _process(delta: float) -> void:
 		else:
 			position += forced_dir * speed * delta
 	else:
+		found_player_state = FOUND_STATE.sees_nothing
 		flee()
 	
 	queue_redraw()

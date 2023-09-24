@@ -18,13 +18,31 @@ var power_pill_time: float = 7.0
 var cur_power_pill_timer: float = 0.0
 
 var child_count = 0
+
+func add_score(new_add_score: int):
+	score += new_add_score
+	%SCORE.text = "%04d" % score
+
+func set_score(new_score: int):
+	score = new_score
+	%SCORE.text = "%04d" % score
+
+func set_best_score(best_score: int):
+	%BEST_SCORE.text = "%04d" % best_score
+
 func _ready() -> void:
 #	get_tree().set_debug_collisions_hint(true)
 	
-	%GameAudio.stream = game_sounds.start
-	%GameAudio.play()
-	%AnimationPlayer.play("READY")
-	%READY.visible = true
+	set_best_score(Global.load_score())
+	set_score(Global.get_carry_score())
+	
+	if !Global.has_restarted:
+		%GameAudio.stream = game_sounds.start
+		%GameAudio.play()
+		%AnimationPlayer.play("READY")
+		%READY.visible = true
+	else:
+		start_game()
 	
 	# Collision Generation for player
 #	var walls_tiles_size: Vector2i = %walls.get_used_rect().size
@@ -60,6 +78,16 @@ func _ready() -> void:
 var timer: float = 0
 func _process(delta: float) -> void:
 #	queue_redraw()
+	
+	# Winning
+	if didWin:
+		timer += delta
+		player.scale = Vector2(sin(timer*3)*1.5, cos(timer*3)*1.5)
+		return
+
+	# Start skip
+	if Input.is_action_pressed("back"):
+		get_tree().change_scene_to_file("res://scenes/MENU.tscn")
 
 	# Start skip
 	if player.just_started and not isGameStarted:
@@ -67,7 +95,7 @@ func _process(delta: float) -> void:
 			start_game()
 	
 	if Input.is_action_pressed("restart"):
-		get_tree().reload_current_scene()
+		Global.restart(get_tree())
 	
 	if player.is_dead: return
 	
@@ -85,12 +113,6 @@ func _process(delta: float) -> void:
 		for enemy in $Enemies.get_children():
 			if !enemy.is_weak: continue
 			enemy.anim.self_modulate = Color.BLUE if enemy.anim.frame == 1 else Color.WHITE
-			
-	
-	# Winning
-	if didWin:
-		timer += delta
-		player.scale = Vector2(sin(timer*3)*1.5, cos(timer*3)*1.5)
 
 
 func _on_right_side_body_entered(body: Node2D) -> void:
@@ -115,6 +137,8 @@ func _on_player_ate_buter(add_score: int, is_power_pill: bool) -> void:
 	
 	if $Pellets.get_children().size() == 1:
 		didWin = true
+		Global.save(score)
+		Global.set_carry_score(score)
 		
 		for enemy in $Enemies.get_children():
 			enemy.stop()
@@ -184,6 +208,8 @@ func _on_enemy_disable_force_move_r_body_entered(body: Enemy) -> void:
 
 
 func _on_player_died() -> void:
+	Global.clear_carry_score()
+	
 	for enemy in $Enemies.get_children():
 		enemy.stop()
 		enemy.visible = false
