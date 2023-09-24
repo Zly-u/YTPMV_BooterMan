@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://8216fk04jtsk"]
+[gd_scene load_steps=11 format=3 uid="uid://8216fk04jtsk"]
 
 [ext_resource type="AudioStream" uid="uid://cfwu8vg0pssgs" path="res://sounds/orig/munch_1.wav" id="1_hvkoe"]
 [ext_resource type="Script" path="res://classes/enemy.gd" id="1_tiedv"]
 [ext_resource type="Texture2D" uid="uid://eybhhght7403" path="res://anim/ghost_1.png" id="2_s5lh4"]
 [ext_resource type="Texture2D" uid="uid://bjajqjhrl2pwe" path="res://anim/ghost_2.png" id="3_ua0dg"]
+[ext_resource type="Texture2D" uid="uid://bf0k3p8buqkor" path="res://anim/ghost_flee_1.png" id="4_eb8mx"]
+[ext_resource type="Texture2D" uid="uid://bnmarsed2faae" path="res://anim/ghost_retreat.png" id="4_o4gp7"]
+[ext_resource type="Texture2D" uid="uid://d16gx54vm5njn" path="res://anim/ghost_flee_2.png" id="5_se0y6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yngaq"]
 animations = [{
@@ -16,6 +19,25 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_o4gp7")
+}],
+"loop": true,
+"name": &"retreat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_eb8mx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_se0y6")
+}],
+"loop": true,
+"name": &"runnin",
 "speed": 5.0
 }]
 
@@ -34,7 +56,6 @@ script = ExtResource("1_tiedv")
 unique_name_in_owner = true
 scale = Vector2(0.17, 0.17)
 sprite_frames = SubResource("SpriteFrames_yngaq")
-frame_progress = 0.772423
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ayrqa")

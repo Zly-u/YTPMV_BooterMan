@@ -2,12 +2,17 @@ class_name Enemy
 
 extends CharacterBody2D
 
+signal returned
+
 @export var player: Player = null
 
 @export var walls_map: TileMap = null
 @export var path_map: TileMap = null
 
 @export var tint: Color = Color.RED
+@export var score: int = 200
+
+@export var group_of_return_points: Node2D = null
 
 @onready var AStar_grid: AStarGrid2D = AStarGrid2D.new()
 var valid_positions: Array[Vector2i]
@@ -19,16 +24,45 @@ var follow_points: Array[Vector2i]
 @onready var follow_spline: Curve2D = Curve2D.new()
 
 const speed: float = 60.0
+const flee_speed: float = 120.0
 var direction: Vector2 = Vector2.ZERO
 
 var is_started: bool = false
 @export var delay_before_active: float = 0.0
+#====================================
 
 func start():
 	is_started = true
 	
 func stop():
 	is_started = false
+
+#====================================
+
+var is_weak: bool = false
+func make_weak():
+	if delay_before_active > 0: return
+	
+	is_weak = true
+	%enemy_anim.self_modulate = Color.BLUE
+	%enemy_anim.play("runnin")
+
+
+func make_strong():
+	is_weak = false
+	is_fleeing = false
+	follow_spline.clear_points()
+	follow_points.clear()
+	%enemy_anim.self_modulate = tint
+	%enemy_anim.play("default")
+
+
+var pause_timer: float = 0.0
+func pause(sec: float):
+	pause_timer = sec
+	
+
+#====================================
 
 var is_move_forced: bool = false
 var forced_dir: Vector2 = Vector2.ZERO
@@ -41,6 +75,8 @@ func start_force_move_dir(dir: Vector2):
 func stop_force_move():
 	is_move_forced = false
 	forced_dir = Vector2.ZERO
+
+#====================================
 
 func init_path_grid() -> void:
 	AStar_grid.size 	 = walls_map.get_used_rect().size
@@ -127,9 +163,6 @@ func follow_player():
 
 
 
-
-
-
 var pick_timing: float = 1.0 # in seconds
 var timing: float = 0.0
 var search_rad: int = 20
@@ -140,7 +173,7 @@ func wander():
 	if follow_points.size() <= 1:
 		valid_positions.shuffle()
 		var cur_tile_pos: Vector2 = path_map.local_to_map(position)
-#
+
 		for valid_pos in valid_positions:
 			if cur_tile_pos.distance_to(valid_pos) <= search_rad:
 				found_pos = valid_pos
@@ -163,6 +196,39 @@ func wander():
 		follow_points.remove_at(0)
 		progress = 0
 		timing = 0
+
+
+var is_fleeing: bool = false
+func make_flee():
+	is_fleeing = true
+	follow_points.clear()
+	follow_spline.clear_points()
+	%enemy_anim.play("retreat")
+	%enemy_anim.self_modulate = Color.WHITE
+
+
+func flee():
+	if follow_points.size() == 0:
+		var flee_point: Vector2 = path_map.local_to_map(group_of_return_points.get_children().pick_random().position)
+		
+		follow_points = update_path(flee_point)
+		progress = 0
+		
+		for point in follow_points:
+			var point_pos = path_map.map_to_local(point)
+			follow_spline.add_point(point_pos)
+	
+	progress += flee_speed * get_physics_process_delta_time()
+
+	if follow_spline.point_count > 1:
+		position = follow_spline.sample_baked(progress, false)
+	
+	if progress >= follow_spline.get_baked_length():
+		make_strong()
+		returned.emit()
+		progress = 0
+		timing = 0
+
 #====================================================================================
 
 var spl_pos: float = 0.0
@@ -188,8 +254,8 @@ func _draw() -> void:
 			bezier_points.append(follow_spline.samplef(follow_spline.point_count*(sample/bezier_samples))-position)
 		draw_polyline(bezier_points, Color.RED, 3)
 		
-		draw_circle(follow_spline.samplef(spl_pos*follow_spline.point_count)-position, 2, Color.ORANGE)
-		draw_circle(follow_spline.sample(0, spl_pos)-position, 2, Color.DARK_KHAKI)
+#		draw_circle(follow_spline.samplef(spl_pos*follow_spline.point_count)-position, 2, Color.ORANGE)
+#		draw_circle(follow_spline.sample(0, spl_pos)-position, 2, Color.DARK_KHAKI)
 		
 
 
@@ -201,12 +267,21 @@ func _ready():
 
 
 func _process(delta: float) -> void:
-	queue_redraw()
+	# Gates
 	
 	if !is_started: return
 	
 	if delay_before_active > 0:
 		delay_before_active -= delta
+		if pause_timer > 0:
+			pause_timer -= delta
+		return
+	
+	if pause_timer > 0:
+		pause_timer -= delta
+		return
+	
+	# States and RayCast
 	
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(position, player.position, 1)
@@ -220,18 +295,16 @@ func _process(delta: float) -> void:
 			initial_start_pos = Vector2(-1, -1)
 			found_player_state = FOUND_STATE.sees_nothing
 	
-	if !is_started: return
-	if delay_before_active > 0: return
-	
-	
-	if !is_move_forced:
-		if found_player_state == FOUND_STATE.sees_nothing:
-			wander()
+	# Movement
+	if !is_fleeing:
+		if !is_move_forced:
+			if found_player_state == FOUND_STATE.sees_nothing:
+				wander()
+			else:
+				follow_player()
 		else:
-			follow_player()
+			position += forced_dir * speed * delta
 	else:
-		position += forced_dir * speed * delta
-
-
-func _physics_process(delta):
-	pass
+		flee()
+	
+	queue_redraw()

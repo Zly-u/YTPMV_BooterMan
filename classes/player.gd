@@ -2,18 +2,20 @@ class_name Player
 
 extends CharacterBody2D
 
-signal ate_buter(add_score: int)
+signal ate_buter(add_score: int, is_power_pill: bool)
+signal ate_ghost(add_score: int)
 signal died
 
 const SPEED: float = 60.0
 
 @export var sounds = {
-	start   = preload("res://sounds/orig/game_start.wav"),
+	munch_1 = preload("res://sounds/orig_mp3/munch_1.mp3"),
+	munch_2 = preload("res://sounds/orig_mp3/munch_2.mp3"),
+	death_1 = preload("res://sounds/orig_mp3/death_1.mp3"),
+	death_2 = preload("res://sounds/orig_mp3/death_2_full.mp3"),
 	
-	munch_1 = preload("res://sounds/orig/munch_1.wav"),
-	munch_2 = preload("res://sounds/orig/munch_2.wav"),
-	death_1 = preload("res://sounds/orig/death_1.wav"),
-	death_2 = preload("res://sounds/orig/death_2_full.wav"),
+	eat_ghost = preload("res://sounds/orig_mp3/eat_ghost.mp3"),
+	eat_fruit = preload("res://sounds/orig_mp3/eat_fruit.mp3"),
 }
 
 var direction: Vector2
@@ -34,7 +36,14 @@ func stop(speed_scl: float = 5):
 	%player_anim.flip_v = false
 	%player_anim.rotation = 0
 
+var pause_timer: float = 0.0
+func pause(sec: float):
+	pause_timer = sec
+
 func _process(delta: float) -> void:
+	if pause_timer > 0:
+		pause_timer -= delta
+		return
 	
 	if is_dead and !%Audio.playing:
 		if %player_anim.frame == 1:
@@ -49,6 +58,8 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if just_started: return
+	if pause_timer > 0: return
+	
 	
 	if Input.get_axis("ui_left", "ui_right") != 0:
 		direction.x = Input.get_axis("ui_left", "ui_right")
@@ -98,11 +109,20 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		%Audio.play()
 		sound_num = (sound_num + 1) % 2
 		
-		ate_buter.emit(body.points)
+		ate_buter.emit(body.points, body.is_power)
+		
 	elif body.name == "Enemy_coll":
-		death()
-	else:
-		pass
+		var enemy: Enemy = body.get_parent()
+		if enemy.is_fleeing: return
+		
+		if !enemy.is_weak:
+			death()
+		else:
+			enemy.make_flee()
+			ate_ghost.emit(enemy.score)
+			
+			%Audio.stream = sounds.eat_ghost
+			%Audio.play()
 
 
 

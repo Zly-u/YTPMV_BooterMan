@@ -11,7 +11,7 @@ extends StaticBody2D
 		
 		
 @export var points: int = 10
-@export var isSpecial: bool = false
+@export var is_power: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

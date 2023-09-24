@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://84xgxie3ech4"]
+[gd_scene load_steps=12 format=3 uid="uid://84xgxie3ech4"]
 
 [ext_resource type="Script" path="res://classes/player.gd" id="1_p82ou"]
-[ext_resource type="AudioStream" uid="uid://6mefl6n1y630" path="res://sounds/sweet_start.mp3" id="2_ipn3y"]
 [ext_resource type="AudioStream" uid="uid://cfwu8vg0pssgs" path="res://sounds/orig/munch_1.wav" id="3_6xsua"]
-[ext_resource type="AudioStream" uid="uid://cuq8n000eyydf" path="res://sounds/munch1.mp3" id="3_urc4d"]
 [ext_resource type="AudioStream" uid="uid://dkn7rxebra4wr" path="res://sounds/orig/death_2_full.wav" id="3_xpslu"]
-[ext_resource type="AudioStream" uid="uid://cmuurcvyqruxu" path="res://sounds/munch2.mp3" id="4_4u527"]
+[ext_resource type="AudioStream" uid="uid://cs2wisv1jnl60" path="res://sounds/munch1_v2.mp3" id="4_s6t2x"]
 [ext_resource type="AudioStream" uid="uid://do8e2cjim8hwi" path="res://sounds/orig/death_1.wav" id="5_6bduo"]
+[ext_resource type="AudioStream" uid="uid://b4nre1n846p88" path="res://sounds/munch2_v2.mp3" id="5_cymhm"]
+[ext_resource type="AudioStream" uid="uid://d1076iybgj1js" path="res://sounds/orig/eat_ghost.wav" id="6_0hhys"]
 [ext_resource type="SpriteFrames" uid="uid://cckxcrix50kkt" path="res://player_anim.tres" id="7_6c5io"]
+[ext_resource type="AudioStream" uid="uid://cmes88mi35xkd" path="res://sounds/orig/eat_fruit.wav" id="7_ugqi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wu6qa"]
 size = Vector2(15, 15)
@@ -20,9 +21,10 @@ script = ExtResource("1_p82ou")
 sounds = {
 "death_1": ExtResource("5_6bduo"),
 "death_2": ExtResource("3_xpslu"),
-"munch_1": ExtResource("3_urc4d"),
-"munch_2": ExtResource("4_4u527"),
-"start": ExtResource("2_ipn3y")
+"eat_fruit": ExtResource("7_ugqi4"),
+"eat_ghost": ExtResource("6_0hhys"),
+"munch_1": ExtResource("4_s6t2x"),
+"munch_2": ExtResource("5_cymhm")
 }
 
 [node name="player_anim" type="AnimatedSprite2D" parent="."]
