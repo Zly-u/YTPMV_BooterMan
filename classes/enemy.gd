@@ -4,6 +4,8 @@ extends CharacterBody2D
 
 signal returned
 
+var IGNORE_PLAYER: bool = true
+
 @export var player: Player = null
 
 @export var walls_map: TileMap = null
@@ -72,6 +74,7 @@ var forced_dir: Vector2 = Vector2.ZERO
 func start_force_move_dir(dir: Vector2):
 	is_move_forced = true
 	forced_dir = dir
+	progress = 0
 	follow_spline.clear_points()
 	follow_points.clear()
 
@@ -170,41 +173,41 @@ func follow_player():
 
 
 var pick_timing: float = 1.0 # in seconds
-var timing: float = 0.0
-var search_rad: int = 20
+var search_rad: int = 10
 var found_pos: Vector2 = Vector2(-1, 0)
 func wander():
-	follow_spline.clear_points()
-	
-	if follow_points.size() <= 1:
+	if follow_spline.point_count <= 1:
 		valid_positions.shuffle()
+		
 		var cur_tile_pos: Vector2 = path_map.local_to_map(position)
-
+		
 		for valid_pos in valid_positions:
 			if cur_tile_pos.distance_to(valid_pos) <= search_rad:
 				found_pos = valid_pos
-				break;
+				break
 		
 		follow_points = update_path(found_pos)
+		
+		var is_first: bool = true
+		for point in follow_points:
+			if is_first:
+				follow_spline.add_point(position)
+				is_first = false
+			else:
+				var local_pos = path_map.map_to_local(point)
+				follow_spline.add_point(local_pos)
+	#---------------------------------------------------------------------------------
 	
-	for point in follow_points:
-		var pos = path_map.map_to_local(point)
-		follow_spline.add_point(pos)
-	
-	var first_segment_len: float = follow_spline.get_point_position(0).distance_to(follow_spline.get_point_position(1))
-
 	if !is_weak:
 		progress += speed * get_physics_process_delta_time()
 	else:
 		progress += weak_speed * get_physics_process_delta_time()
 
-	if follow_spline.point_count > 1:
-		position = follow_spline.sample_baked(progress, false)
+	if follow_spline.point_count > 1: position = follow_spline.sample_baked(progress, false)
 	
-	if progress >= first_segment_len:
-		follow_points.remove_at(0)
+	if progress >= follow_spline.get_baked_length():
+		follow_spline.clear_points()
 		progress = 0
-		timing = 0
 
 
 var is_fleeing: bool = false
@@ -236,14 +239,13 @@ func flee():
 		make_strong()
 		returned.emit()
 		progress = 0
-		timing = 0
 
 #====================================================================================
 
 var spl_pos: float = 0.0
 var timer: float = 0.0
 func _draw() -> void:
-	if true: return
+#	if true: return
 	timer += get_process_delta_time()
 	spl_pos = 0.5+sin(timer)*0.5
 
@@ -292,17 +294,18 @@ func _process(delta: float) -> void:
 	
 	# States and RayCast
 	
-	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(position, player.position, 1)
-	var result = space_state.intersect_ray(query)
-	
-	if result and result.collider is Player:
-		if found_player_state == FOUND_STATE.sees_nothing:
-			found_player_state = FOUND_STATE.just_saw
-	else:
-		if found_player_state == FOUND_STATE.follows:
-			initial_start_pos = Vector2(-1, -1)
-			found_player_state = FOUND_STATE.sees_nothing
+	if !IGNORE_PLAYER:
+		var space_state = get_world_2d().direct_space_state
+		var query = PhysicsRayQueryParameters2D.create(position, player.position, 1)
+		var result = space_state.intersect_ray(query)
+		
+		if result and result.collider is Player:
+			if found_player_state == FOUND_STATE.sees_nothing:
+				found_player_state = FOUND_STATE.just_saw
+		else:
+			if found_player_state == FOUND_STATE.follows:
+				initial_start_pos = Vector2(-1, -1)
+				found_player_state = FOUND_STATE.sees_nothing
 	
 	# Movement
 	if !is_fleeing:

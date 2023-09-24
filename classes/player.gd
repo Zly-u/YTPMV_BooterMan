@@ -113,6 +113,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	elif body.name == "Enemy_coll":
 		var enemy: Enemy = body.get_parent()
 		if enemy.is_fleeing: return
+		if enemy.IGNORE_PLAYER: return
 		
 		if !enemy.is_weak:
 			death()

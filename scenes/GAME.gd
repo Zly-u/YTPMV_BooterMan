@@ -8,7 +8,7 @@ extends Node2D
 	ghost_retreat 		= preload("res://sounds/orig_mp3/retreating.mp3")
 }
 
-@onready var player = %Player
+@onready var player: Player = %Player
 
 var score = 0
 var isGameStarted: bool = false
@@ -60,6 +60,7 @@ func _ready() -> void:
 var timer: float = 0
 func _process(delta: float) -> void:
 #	queue_redraw()
+	if player.is_dead: return
 	
 	# Start skip
 	if player.just_started and not isGameStarted:
@@ -78,6 +79,7 @@ func _process(delta: float) -> void:
 	
 	if cur_power_pill_timer > 0 and cur_power_pill_timer < 2:
 		for enemy in $Enemies.get_children():
+			if !enemy.is_weak: continue
 			enemy.anim.self_modulate = Color.BLUE if enemy.anim.frame == 1 else Color.WHITE
 			
 	
