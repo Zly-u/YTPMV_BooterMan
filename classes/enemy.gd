@@ -23,7 +23,10 @@ var follow_points: Array[Vector2i]
 
 @onready var follow_spline: Curve2D = Curve2D.new()
 
+@onready var anim = %enemy_anim
+
 const speed: float = 60.0
+const weak_speed: float = 40.0
 const flee_speed: float = 120.0
 var direction: Vector2 = Vector2.ZERO
 
@@ -140,7 +143,10 @@ func follow_player():
 	
 	var first_segment_len: float = follow_spline.get_point_position(0).distance_to(follow_spline.get_point_position(1))
 
-	progress += speed * get_physics_process_delta_time()
+	if !is_weak:
+		progress += speed * get_physics_process_delta_time()
+	else:
+		progress += weak_speed * get_physics_process_delta_time()
 
 	if follow_spline.point_count > 1:
 		position = follow_spline.sample_baked(progress, false)
@@ -187,7 +193,10 @@ func wander():
 	
 	var first_segment_len: float = follow_spline.get_point_position(0).distance_to(follow_spline.get_point_position(1))
 
-	progress += speed * get_physics_process_delta_time()
+	if !is_weak:
+		progress += speed * get_physics_process_delta_time()
+	else:
+		progress += weak_speed * get_physics_process_delta_time()
 
 	if follow_spline.point_count > 1:
 		position = follow_spline.sample_baked(progress, false)
@@ -298,7 +307,7 @@ func _process(delta: float) -> void:
 	# Movement
 	if !is_fleeing:
 		if !is_move_forced:
-			if found_player_state == FOUND_STATE.sees_nothing:
+			if found_player_state == FOUND_STATE.sees_nothing or is_weak:
 				wander()
 			else:
 				follow_player()

@@ -53,7 +53,6 @@ func _process(delta: float) -> void:
 		if %player_anim.frame == 6:
 			%Audio.stream = sounds.death_2
 			%Audio.play()
-		
 
 
 func _physics_process(delta: float) -> void:

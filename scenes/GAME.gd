@@ -14,7 +14,7 @@ var score = 0
 var isGameStarted: bool = false
 var didWin: bool = false
 
-var power_pill_time: float = 5.0
+var power_pill_time: float = 7.0
 var cur_power_pill_timer: float = 0.0
 
 var child_count = 0
@@ -75,6 +75,11 @@ func _process(delta: float) -> void:
 			
 			for enemy in $Enemies.get_children():
 				enemy.make_strong()
+	
+	if cur_power_pill_timer > 0 and cur_power_pill_timer < 2:
+		for enemy in $Enemies.get_children():
+			enemy.anim.self_modulate = Color.BLUE if enemy.anim.frame == 1 else Color.WHITE
+			
 	
 	# Winning
 	if didWin:
@@ -183,9 +188,9 @@ func _on_player_died() -> void:
 
 var num_of_returning_ghosts: int = 0
 func _on_player_ate_ghost(add_score) -> void:
-	%Player.pause(0.5)
+	%Player.pause(0.7)
 	for enemy in $Enemies.get_children():
-		enemy.pause(0.5)
+		enemy.pause(0.7)
 	
 	score += add_score
 	%SCORE.text = "%04d" % score
