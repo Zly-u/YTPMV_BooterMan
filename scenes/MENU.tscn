@@ -45,7 +45,16 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("2_mw1nb")
 theme_override_font_sizes/font_size = 8
-text = "EAT"
+text = "Play"
+
+[node name="Button_Controls" type="Button" parent="VBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("2_mw1nb")
+theme_override_font_sizes/font_size = 8
+text = "Controls"
 
 [node name="Button_Credits" type="Button" parent="VBoxContainer/VBoxContainer"]
 texture_filter = 1
@@ -57,4 +66,5 @@ theme_override_font_sizes/font_size = 8
 text = "Credits"
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Button_Play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Button_Controls" to="." method="_on_button_controls_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Button_Credits" to="." method="_on_button_credits_pressed"]

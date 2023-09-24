@@ -60,12 +60,16 @@ func _ready() -> void:
 var timer: float = 0
 func _process(delta: float) -> void:
 #	queue_redraw()
-	if player.is_dead: return
-	
+
 	# Start skip
 	if player.just_started and not isGameStarted:
 		if Input.is_action_pressed("skip"):
 			start_game()
+	
+	if Input.is_action_pressed("restart"):
+		get_tree().reload_current_scene()
+	
+	if player.is_dead: return
 	
 	# Power Pill mode
 	if cur_power_pill_timer > 0 and player.pause_timer <= 0:

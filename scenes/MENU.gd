@@ -2,6 +2,7 @@ extends Control
 
 @export var game_scene: PackedScene = null
 @export var credits_scene: PackedScene = null
+@export var controls_scene: PackedScene = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,3 +20,7 @@ func _on_button_pressed() -> void:
 
 func _on_button_credits_pressed() -> void:
 	get_tree().change_scene_to_packed(credits_scene)
+
+
+func _on_button_controls_pressed() -> void:
+	get_tree().change_scene_to_packed(controls_scene)

@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 signal returned
 
-var IGNORE_PLAYER: bool = true
+var IGNORE_PLAYER: bool = false
 
 @export var player: Player = null
 
@@ -18,8 +18,6 @@ var IGNORE_PLAYER: bool = true
 
 @onready var AStar_grid: AStarGrid2D = AStarGrid2D.new()
 var valid_positions: Array[Vector2i]
-var start_cell: Vector2i
-var end_cell: Vector2i
 
 var follow_points: Array[Vector2i]
 
@@ -101,9 +99,9 @@ func init_path_grid() -> void:
 				valid_positions.append(tile_pos)
 
 
-func update_path(dest_point: Vector2i = Vector2i(-1, -1)) -> Array[Vector2i]:
-	start_cell = path_map.local_to_map(position)
-	end_cell   = path_map.local_to_map(player.position) if dest_point.x == -1 else dest_point
+func update_path(start: Vector2, dest_point: Vector2 = Vector2(-1, -1)) -> Array[Vector2i]:
+	var start_cell = path_map.local_to_map(start)
+	var end_cell   = path_map.local_to_map(dest_point)
 	
 	if start_cell == end_cell or \
 		!AStar_grid.is_in_boundsv(start_cell) or \
@@ -124,50 +122,37 @@ var found_player_state: FOUND_STATE = FOUND_STATE.sees_nothing
 var initial_start_pos: Vector2 = Vector2(-1, -1)
 var progress: float = 0.0
 func follow_player():
-	if found_player_state == FOUND_STATE.sees_nothing and follow_points.size() == 0: return
+	if found_player_state == FOUND_STATE.sees_nothing: return
 	
-	var is_first = true
 	if found_player_state == FOUND_STATE.just_saw:
 		found_player_state = FOUND_STATE.follows
-		
-		follow_points = update_path()
-		follow_spline.clear_points()
-		
-		for point in follow_points:
-			if is_first:
-				initial_start_pos = position
-				follow_spline.add_point(position)
-				is_first = false
-			else:
-				var pos = path_map.map_to_local(point)
-				follow_spline.add_point(pos)
-		
+		initial_start_pos = position
 		progress = 0
+		
+	follow_points = update_path(initial_start_pos, player.position)
+	
+	follow_spline.clear_points()
+	var is_first: bool = true
+	for point in follow_points:
+		if is_first:
+			follow_spline.add_point(initial_start_pos)
+			is_first = false
+		else:
+			var local_pos = path_map.map_to_local(point)
+			follow_spline.add_point(local_pos)
+	#---------------------------------------------------------------------------------
 	
 	var first_segment_len: float = follow_spline.get_point_position(0).distance_to(follow_spline.get_point_position(1))
-
+	
 	if !is_weak:
 		progress += speed * get_physics_process_delta_time()
 	else:
 		progress += weak_speed * get_physics_process_delta_time()
 
-	if follow_spline.point_count > 1:
-		position = follow_spline.sample_baked(progress, false)
+	if follow_spline.point_count > 1: position = follow_spline.sample_baked(progress, false)
 	
 	if progress >= first_segment_len:
-		if found_player_state == FOUND_STATE.follows:
-			follow_points = update_path()
-		follow_spline.clear_points()
-		
-		for point in follow_points:
-			if is_first:
-				initial_start_pos = position
-				follow_spline.add_point(position)
-				is_first = false
-			else:
-				var pos = path_map.map_to_local(point)
-				follow_spline.add_point(pos)
-		
+		initial_start_pos = position
 		progress = 0
 
 
@@ -183,10 +168,10 @@ func wander():
 		
 		for valid_pos in valid_positions:
 			if cur_tile_pos.distance_to(valid_pos) <= search_rad:
-				found_pos = valid_pos
+				found_pos = path_map.map_to_local(valid_pos)
 				break
 		
-		follow_points = update_path(found_pos)
+		follow_points = update_path(position, found_pos)
 		
 		var is_first: bool = true
 		for point in follow_points:
@@ -221,9 +206,9 @@ func make_flee():
 
 func flee():
 	if follow_points.size() == 0:
-		var flee_point: Vector2 = path_map.local_to_map(group_of_return_points.get_children().pick_random().position)
+		var flee_point: Vector2 = group_of_return_points.get_children().pick_random().position
 		
-		follow_points = update_path(flee_point)
+		follow_points = update_path(position, flee_point)
 		progress = 0
 		
 		for point in follow_points:
@@ -245,7 +230,7 @@ func flee():
 var spl_pos: float = 0.0
 var timer: float = 0.0
 func _draw() -> void:
-#	if true: return
+	if true: return
 	timer += get_process_delta_time()
 	spl_pos = 0.5+sin(timer)*0.5
 
