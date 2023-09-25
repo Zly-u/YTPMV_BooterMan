@@ -32,8 +32,7 @@ func set_best_score(best_score: int):
 
 func _ready() -> void:
 	var g_MenuAmbient = get_tree().get_root().get_node("MenuAmbient")
-	if g_MenuAmbient:
-		g_MenuAmbient.queue_free()
+	if g_MenuAmbient: g_MenuAmbient.stop()
 	
 #	get_tree().set_debug_collisions_hint(true)
 	

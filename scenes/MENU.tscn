@@ -12,20 +12,6 @@
 [ext_resource type="Shader" path="res://shaders/BG.gdshader" id="9_js153"]
 [ext_resource type="FontFile" uid="uid://bx4u0v38a8cmo" path="res://fonts/little-pixel.ttf" id="11_gssu0"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_pk0wj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_hco3f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_otij1")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_15xos"]
 shader = ExtResource("9_js153")
 shader_parameter/amplitude_horizontal = 0.02
@@ -46,6 +32,20 @@ shader_parameter/iteration_scaling = 0.02
 shader_parameter/keep_original_on_top = false
 shader_parameter/make_gradual = false
 shader_parameter/use_screen_texture = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pk0wj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hco3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_otij1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MENU" type="Control"]
 layout_mode = 3
@@ -68,31 +68,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-unique_name_in_owner = true
-visible = false
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(113, 57.815)
-scale = Vector2(0.0625, 0.0625)
-sprite_frames = SubResource("SpriteFrames_pk0wj")
-frame_progress = 0.357225
-
 [node name="BgField" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
 texture_repeat = 3
-position = Vector2(112, 144)
-texture = ExtResource("7_5phv5")
-flip_v = true
-region_enabled = true
-region_rect = Rect2(0, 0, 600, 672)
-
-[node name="BgField_SHADER" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-visible = false
-texture_filter = 1
-texture_repeat = 3
-material = SubResource("ShaderMaterial_15xos")
 position = Vector2(112, 144)
 texture = ExtResource("7_5phv5")
 flip_v = true
@@ -191,7 +170,7 @@ shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "Credits"
 
-[node name="Link_Presset" type="LinkButton" parent="."]
+[node name="Link" type="LinkButton" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 7
