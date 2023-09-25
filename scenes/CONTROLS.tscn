@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcmssoeoi0jt3"]
+[gd_scene load_steps=8 format=3 uid="uid://dcmssoeoi0jt3"]
 
 [ext_resource type="FontFile" uid="uid://cqh46prfs5mg7" path="res://fonts/Emulogic-zrEw.ttf" id="1_eox6t"]
 [ext_resource type="Script" path="res://scenes/CONTROLS.gd" id="1_nuyjx"]
-[ext_resource type="Texture2D" uid="uid://nxe53wti5d0i" path="res://BG_field.png" id="2_rm6xu"]
+[ext_resource type="Texture2D" uid="uid://nxe53wti5d0i" path="res://sprites/BG_field.png" id="2_rm6xu"]
 [ext_resource type="Shader" path="res://shaders/BG.gdshader" id="3_iqhg4"]
 [ext_resource type="Theme" uid="uid://ceiclw81oi0lp" path="res://styles/button.theme" id="3_jbrgi"]
+[ext_resource type="FontFile" uid="uid://bx4u0v38a8cmo" path="res://fonts/little-pixel.ttf" id="6_x2xu2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f2wgr"]
 shader = ExtResource("3_iqhg4")
@@ -156,10 +157,11 @@ texture_filter = 1
 layout_mode = 0
 offset_left = 6.0
 offset_top = 1.0
-offset_right = 34.0
-offset_bottom = 12.0
+offset_right = 26.0
+offset_bottom = 15.0
 theme = ExtResource("3_jbrgi")
-theme_override_font_sizes/font_size = 6
+theme_override_fonts/font = ExtResource("6_x2xu2")
+theme_override_font_sizes/font_size = 5
 text = "Back"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

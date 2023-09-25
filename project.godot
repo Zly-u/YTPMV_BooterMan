@@ -10,14 +10,20 @@ config_version=5
 
 [application]
 
-config/name="SladkiyPacman"
+config/name="BooterPacman"
+config/description="A game about the guy that tries to find the truth about why kids love sweets..."
 config/tags=PackedStringArray("project")
 run/main_scene="res://scenes/MENU.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 run/max_fps=60
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://anim/Items_00001.png"
 boot_splash/use_filter=false
-config/icon="res://anim/xniUJZd4tiE_00001.png"
+config/icon="res://anim/xniUJZd4tiE_00000.png"
+
+[autoload]
+
+MenuAmbient="*res://global/menu_ambient.tscn"
 
 [display]
 
@@ -27,7 +33,6 @@ window/size/window_width_override=672
 window/size/window_height_override=864
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
-mouse_cursor/custom_image="res://anim/Items_00000.png"
 
 [input]
 

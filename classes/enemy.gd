@@ -85,7 +85,7 @@ func stop_force_move():
 #====================================
 
 func init_path_grid() -> void:
-	AStar_grid.size 	 = walls_map.get_used_rect().size
+	AStar_grid.size = walls_map.get_used_rect().size
 	AStar_grid.cell_size = walls_map.tile_set.tile_size
 	AStar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	AStar_grid.jumping_enabled = true
@@ -101,8 +101,8 @@ func init_path_grid() -> void:
 				valid_positions.append(tile_pos)
 
 
-func update_path(start: Vector2, dest_point: Vector2 = Vector2(-1, -1)) -> Array[Vector2i]:
-	var start_cell = path_map.local_to_map(start)
+func update_path(start_pos: Vector2, dest_point: Vector2 = Vector2(-1, -1)) -> Array[Vector2i]:
+	var start_cell = path_map.local_to_map(start_pos)
 	var end_cell   = path_map.local_to_map(dest_point)
 	
 	if start_cell == end_cell or \

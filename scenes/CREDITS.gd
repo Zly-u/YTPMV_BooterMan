@@ -29,6 +29,16 @@ var texts = [
 		font = null
 	},
 	{
+		text = "Little_pixel_font",
+		links = [
+			"https://www.dafont.com/little-pixel.font"
+		],
+		font = {
+			file = preload("res://fonts/little-pixel.ttf"),
+			size = 5
+		}
+	},
+	{
 		text = "Roskuro's carpet",
 		links = [
 			
@@ -66,7 +76,10 @@ var texts = [
 		links = [
 			"https://cdn.discordapp.com/attachments/689528380219326472/1155815398458015765/gpvpgs.mp4"
 		],
-		font = preload("res://fonts/Kolifination.ttf")
+		font = {
+			file = preload("res://fonts/Kolifination.ttf"),
+			size = 12
+		}
 	},
 	{
 		text = "SIlva Oruzie Kollab",
@@ -117,8 +130,8 @@ func generate_links():
 		if text.links.size() != 0:
 			new_text.uri = text.links.pick_random()
 		if text.font:
-			new_text.set("theme_override_fonts/font", text.font)
-			new_text.set("theme_override_font_sizes/font_size", 12)
+			new_text.set("theme_override_fonts/font", text.font.file)
+			new_text.set("theme_override_font_sizes/font_size", text.font.size)
 		%VBox_Scroll.add_child(new_text)
 	
 	for n in 10:
@@ -148,7 +161,7 @@ func _process(delta: float) -> void:
 		scroll_dir = -1
 	
 	scroll_progress += scroll_speed * scroll_dir * delta
-	scroll.scroll_vertical = scroll_progress
+	scroll.scroll_vertical = int(scroll_progress)
 
 
 func _input(event: InputEvent) -> void:
@@ -161,7 +174,7 @@ func _input(event: InputEvent) -> void:
 		cur_scroll_pause = scroll_pause
 		scroll_progress = min(scroll_progress+wheel_scroll_speed, total_scroll_progress)
 		
-	scroll.scroll_vertical = scroll_progress
+	scroll.scroll_vertical = int(scroll_progress)
 
 
 func _on_video_stream_player_finished() -> void:

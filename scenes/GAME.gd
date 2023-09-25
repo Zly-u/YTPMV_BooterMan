@@ -31,6 +31,10 @@ func set_best_score(best_score: int):
 	%BEST_SCORE.text = "%04d" % best_score
 
 func _ready() -> void:
+	var g_MenuAmbient = get_tree().get_root().get_node("MenuAmbient")
+	if g_MenuAmbient:
+		g_MenuAmbient.queue_free()
+	
 #	get_tree().set_debug_collisions_hint(true)
 	
 	if !OS.is_debug_build():
@@ -127,8 +131,8 @@ func _on_left_side_body_entered(body: Node2D) -> void:
 	body.position.x = $TeleportPoint_R.position.x
 
 
-func _on_player_ate_buter(add_score: int, is_power_pill: bool) -> void:
-	score += add_score
+func _on_player_ate_buter(_add_score: int, is_power_pill: bool) -> void:
+	score += _add_score
 	%SCORE.text = "%04d" % score
 	
 	if is_power_pill:
@@ -223,12 +227,12 @@ func _on_player_died() -> void:
 #=========================================================
 
 var num_of_returning_ghosts: int = 0
-func _on_player_ate_ghost(add_score) -> void:
+func _on_player_ate_ghost(_add_score) -> void:
 	%Player.pause(0.7)
 	for enemy in $Enemies.get_children():
 		enemy.pause(0.7)
 	
-	score += add_score
+	score += _add_score
 	%SCORE.text = "%04d" % score
 	
 	num_of_returning_ghosts += 1

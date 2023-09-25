@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 			%Audio.play()
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if just_started: return
 	if pause_timer > 0: return
 	
