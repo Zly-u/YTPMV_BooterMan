@@ -66,20 +66,7 @@ func _physics_process(delta: float) -> void:
 		direction.y = Input.get_axis("ui_up", "ui_down")
 		
 	
-	if direction.x > 0:
-		%player_anim.flip_h = false
-	if direction.x < 0:
-		%player_anim.flip_h = true
-		
-	if direction.y > 0:
-		%player_anim.rotation = 90
-	if direction.y < 0:
-		%player_anim.rotation = -90
 	
-	if direction.x != 0:
-		%player_anim.rotation = 0
-	if direction.y != 0:
-		%player_anim.flip_h = false
 	
 	velocity = direction * SPEED
 	
@@ -89,6 +76,22 @@ func _physics_process(delta: float) -> void:
 		direction.y = 0
 	
 	move_and_slide()
+	
+	var norm_velocity = velocity.normalized()
+	if norm_velocity.x > 0:
+		%player_anim.flip_h = false
+	if norm_velocity.x < 0:
+		%player_anim.flip_h = true
+		
+	if norm_velocity.y > 0:
+		%player_anim.rotation = 90
+	if norm_velocity.y < 0:
+		%player_anim.rotation = -90
+	
+	if norm_velocity.x != 0:
+		%player_anim.rotation = 0
+	if norm_velocity.y != 0:
+		%player_anim.flip_h = false
 
 
 func death():

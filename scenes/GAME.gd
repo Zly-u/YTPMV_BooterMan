@@ -33,6 +33,10 @@ func set_best_score(best_score: int):
 func _ready() -> void:
 #	get_tree().set_debug_collisions_hint(true)
 	
+	if !OS.is_debug_build():
+		for debug_element in [%walls, %debug]:
+			debug_element.visible = false
+	
 	set_best_score(Global.load_score())
 	set_score(Global.get_carry_score())
 	
