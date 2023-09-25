@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi5vkb6rvejm1"]
+[gd_scene load_steps=8 format=3 uid="uid://bi5vkb6rvejm1"]
 
 [ext_resource type="Script" path="res://scenes/CREDITS.gd" id="1_i86nt"]
 [ext_resource type="VideoStream" path="res://anim/aa.ogv" id="1_ru37e"]
 [ext_resource type="FontFile" uid="uid://cqh46prfs5mg7" path="res://fonts/Emulogic-zrEw.ttf" id="1_ulgo5"]
+[ext_resource type="Script" path="res://classes/LinkButton_Better.gd" id="4_qgo7b"]
 [ext_resource type="Theme" uid="uid://ceiclw81oi0lp" path="res://styles/button.theme" id="5_858lg"]
 [ext_resource type="SpriteFrames" uid="uid://cckxcrix50kkt" path="res://anim/player_anim.tres" id="6_jri2u"]
 [ext_resource type="FontFile" uid="uid://bx4u0v38a8cmo" path="res://fonts/little-pixel.ttf" id="6_kii3g"]
@@ -353,6 +354,7 @@ theme_override_font_sizes/font_size = 6
 text = "Test"
 underline = 1
 structured_text_bidi_override = 1
+script = ExtResource("4_qgo7b")
 
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
@@ -381,8 +383,12 @@ scale = Vector2(0.03, 0.03)
 sprite_frames = ExtResource("6_jri2u")
 frame = 1
 
+[node name="Sounds" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
 [connection signal="scroll_started" from="VBoxContainer2/VBoxContainer3/Control/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]
+[connection signal="link_pressed" from="Link_Presset" to="." method="_on_link_presset_link_pressed"]
 [connection signal="pressed" from="Link_Presset" to="." method="_on_link_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="Sprite" to="." method="_on_sprite_mouse_entered"]

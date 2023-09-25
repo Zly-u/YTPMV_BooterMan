@@ -935,7 +935,7 @@ position = Vector2(212, 68)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Enemy" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
+[node name="Enemy" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "group_of_return_points") instance=ExtResource("8_rawur")]
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 0, 1)
 position = Vector2(112, 116)
@@ -943,10 +943,9 @@ collision_layer = 4
 collision_mask = 4
 player = NodePath("../../Player")
 walls_map = NodePath("../../walls")
-path_map = NodePath("../../walls")
 group_of_return_points = NodePath("../../RetreatPoints")
 
-[node name="Enemy2" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
+[node name="Enemy2" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "group_of_return_points") instance=ExtResource("8_rawur")]
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 0, 1)
 position = Vector2(112, 140)
@@ -954,12 +953,11 @@ collision_layer = 4
 collision_mask = 4
 player = NodePath("../../Player")
 walls_map = NodePath("../../walls")
-path_map = NodePath("../../walls")
 tint = Color(0.717647, 0, 1, 1)
 group_of_return_points = NodePath("../../RetreatPoints")
 delay_before_active = 12.0
 
-[node name="Enemy3" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
+[node name="Enemy3" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "group_of_return_points") instance=ExtResource("8_rawur")]
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 0, 1)
 position = Vector2(96, 140)
@@ -967,12 +965,11 @@ collision_layer = 4
 collision_mask = 4
 player = NodePath("../../Player")
 walls_map = NodePath("../../walls")
-path_map = NodePath("../../walls")
 tint = Color(0, 0.984314, 1, 1)
 group_of_return_points = NodePath("../../RetreatPoints")
 delay_before_active = 24.0
 
-[node name="Enemy4" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
+[node name="Enemy4" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "group_of_return_points") instance=ExtResource("8_rawur")]
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 0, 1)
 position = Vector2(128, 140)
@@ -980,7 +977,6 @@ collision_layer = 4
 collision_mask = 4
 player = NodePath("../../Player")
 walls_map = NodePath("../../walls")
-path_map = NodePath("../../walls")
 tint = Color(1, 0.784314, 0, 1)
 group_of_return_points = NodePath("../../RetreatPoints")
 delay_before_active = 36.0

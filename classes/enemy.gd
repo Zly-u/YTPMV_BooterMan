@@ -9,7 +9,6 @@ var IGNORE_PLAYER: bool = false
 @export var player: Player = null
 
 @export var walls_map: TileMap = null
-@export var path_map: TileMap = null
 
 @export var tint: Color = Color.RED
 @export var score: int = 200
@@ -47,8 +46,8 @@ func make_weak():
 	if delay_before_active > 0: return
 	found_player_state = FOUND_STATE.sees_nothing
 	is_weak = true
-	%enemy_anim.self_modulate = Color.BLUE
-	%enemy_anim.play("runnin")
+	anim.self_modulate = Color.BLUE
+	anim.play("runnin")
 
 
 func make_strong():
@@ -57,8 +56,8 @@ func make_strong():
 	is_fleeing = false
 	follow_spline.clear_points()
 	follow_points.clear()
-	%enemy_anim.self_modulate = tint
-	%enemy_anim.play("default")
+	anim.self_modulate = tint
+	anim.play("default")
 
 
 var pause_timer: float = 0.0
@@ -102,8 +101,8 @@ func init_path_grid() -> void:
 
 
 func update_path(start_pos: Vector2, dest_point: Vector2 = Vector2(-1, -1)) -> Array[Vector2i]:
-	var start_cell = path_map.local_to_map(start_pos)
-	var end_cell   = path_map.local_to_map(dest_point)
+	var start_cell = walls_map.local_to_map(start_pos)
+	var end_cell   = walls_map.local_to_map(dest_point)
 	
 	if start_cell == end_cell or \
 		!AStar_grid.is_in_boundsv(start_cell) or \
@@ -151,7 +150,7 @@ func follow_player():
 			follow_spline.add_point(initial_start_pos)
 			is_first = false
 		else:
-			var local_pos = path_map.map_to_local(point)
+			var local_pos = walls_map.map_to_local(point)
 			follow_spline.add_point(local_pos)
 	#---------------------------------------------------------------------------------
 	
@@ -178,10 +177,10 @@ func wander():
 		progress = 0
 		if prev_player_pos.x == -1:
 			valid_positions.shuffle()
-			var cur_tile_pos: Vector2 = path_map.local_to_map(position)
+			var cur_tile_pos: Vector2 = walls_map.local_to_map(position)
 			for valid_pos in valid_positions:
 				if cur_tile_pos.distance_to(valid_pos) <= search_rad:
-					found_pos = path_map.map_to_local(valid_pos)
+					found_pos = walls_map.map_to_local(valid_pos)
 					break
 		
 			follow_points = update_path(position, found_pos)
@@ -197,7 +196,7 @@ func wander():
 				follow_spline.add_point(position)
 				is_first = false
 			else:
-				var local_pos = path_map.map_to_local(point)
+				var local_pos = walls_map.map_to_local(point)
 				follow_spline.add_point(local_pos)
 	#---------------------------------------------------------------------------------
 	
@@ -218,8 +217,8 @@ func make_flee():
 	follow_points.clear()
 	follow_spline.clear_points()
 	found_player_state = FOUND_STATE.sees_nothing
-	%enemy_anim.play("retreat")
-	%enemy_anim.self_modulate = Color.WHITE
+	anim.play("retreat")
+	anim.self_modulate = Color.WHITE
 
 
 func flee():
@@ -230,7 +229,7 @@ func flee():
 		progress = 0
 		
 		for point in follow_points:
-			var point_pos = path_map.map_to_local(point)
+			var point_pos = walls_map.map_to_local(point)
 			follow_spline.add_point(point_pos)
 	
 	progress += flee_speed * get_physics_process_delta_time()
@@ -258,7 +257,7 @@ func _draw() -> void:
 	for point in follow_spline.point_count:
 		line_points.append(follow_spline.get_point_position(point)-position)
 
-	draw_polyline(line_points, %enemy_anim.self_modulate, 2)
+	draw_polyline(line_points, anim.self_modulate, 2)
 	
 	if found_player_state == FOUND_STATE.follows:
 		draw_line(Vector2.ZERO, player.position-position, Color.RED, 1)
@@ -274,13 +273,13 @@ func _draw() -> void:
 #		draw_circle(follow_spline.sample(0, spl_pos)-position, 2, Color.DARK_KHAKI)
 	
 #	for val_point in valid_positions:
-#		var rec = Rect2(path_map.map_to_local(val_point)-position-Vector2(4, 4), Vector2(8, 8))
+#		var rec = Rect2(walls_map.map_to_local(val_point)-position-Vector2(4, 4), Vector2(8, 8))
 #		draw_rect(rec, Color.RED)
 
 
 func _ready():
-	%enemy_anim.self_modulate = tint
-	%enemy_anim.play("default")
+	anim.self_modulate = tint
+	anim.play("default")
 	init_path_grid()
 
 

@@ -11,9 +11,9 @@ var scroll_dir: int = 1
 var scroll_pause: float = 2.0
 var cur_scroll_pause: float = 2.0
 
-var scroll_start: int = 40
+var scroll_start: int = 25
 
-var texts = [
+var texts: Array = [
 	{
 		text = "Sladkiy Chel",
 		links = [
@@ -74,7 +74,7 @@ var texts = [
 	{
 		text = "Kolificent",
 		links = [
-			"https://cdn.discordapp.com/attachments/689528380219326472/1155815398458015765/gpvpgs.mp4"
+			"https://files.catbox.moe/gpvpgs.mp4"
 		],
 		font = {
 			file = preload("res://fonts/Kolifination.ttf"),
@@ -92,7 +92,8 @@ var texts = [
 			"https://cdn.discordapp.com/attachments/696780456213086208/1155910577315643472/Discord_4TlELSB0wE.png",
 			"https://cdn.discordapp.com/attachments/696780456213086208/1155910614485581885/meanwhile_toilet.png"
 		],
-		font = null
+		font = null,
+		sound = preload("res://sounds/credits/dmitry_udalov.mp3"),
 	},
 	{
 		text = "Nikita - moral support",
@@ -105,7 +106,8 @@ var texts = [
 		text = "Vadim",
 		links = [
 			"https://media.discordapp.net/attachments/689528380219326472/1079688057848090664/Discord_D6YMZgFBBY.gif",
-			"https://cdn.discordapp.com/attachments/689528380219326472/1155915853636845578/YouCut_20190831_004407635.mp4.mp4",
+			"https://files.catbox.moe/sugl37.mp4",
+			"https://files.catbox.moe/180bbr.mp4",
 		],
 		font = null
 	},
@@ -119,19 +121,23 @@ func generate_links():
 	for child in %VBox_Scroll.get_children():
 		child.queue_free()
 		
-	for n in 10:
-		var new_text: LinkButton = %Link_Presset.duplicate()
+	for n in 7:
+		var new_text: LinkButton_Better = %Link_Presset.duplicate()
 		new_text.text = ""
 		%VBox_Scroll.add_child(new_text)
 	
 	for text in texts:
-		var new_text: LinkButton = %Link_Presset.duplicate()
+		var new_text: LinkButton_Better = %Link_Presset.duplicate()
 		new_text.text = text.text
 		if text.links.size() != 0:
 			new_text.uri = text.links.pick_random()
 		if text.font:
 			new_text.set("theme_override_fonts/font", text.font.file)
 			new_text.set("theme_override_font_sizes/font_size", text.font.size)
+		
+		if text.has("sound"):
+			new_text.data["sound"] = text.sound
+		
 		%VBox_Scroll.add_child(new_text)
 	
 	for n in 10:
@@ -160,7 +166,7 @@ func _process(delta: float) -> void:
 	if scroll.scroll_vertical == total_scroll_progress and scroll_dir == 1:
 		scroll_dir = -1
 	
-	scroll_progress += scroll_speed * scroll_dir * delta
+	scroll_progress = clamp(scroll_progress + scroll_speed * scroll_dir * delta, 0, total_scroll_progress)
 	scroll.scroll_vertical = int(scroll_progress)
 
 
@@ -170,9 +176,11 @@ func _input(event: InputEvent) -> void:
 	if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 		cur_scroll_pause = scroll_pause
 		scroll_progress = max(scroll_progress-wheel_scroll_speed, 0)
+		scroll_dir = -1
 	if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 		cur_scroll_pause = scroll_pause
 		scroll_progress = min(scroll_progress+wheel_scroll_speed, total_scroll_progress)
+		scroll_dir = 1
 		
 	scroll.scroll_vertical = int(scroll_progress)
 
@@ -186,13 +194,16 @@ func _on_button_pressed() -> void:
 
 
 
-func _on_link_pressed() -> void:
-	generate_links()
-
-
 func _on_sprite_mouse_entered() -> void:
 	%AnimatedSprite2D.play()
 
 
 func _on_sprite_mouse_exited() -> void:
 	%AnimatedSprite2D.pause()
+
+
+func _on_link_presset_link_pressed(_self: LinkButton_Better) -> void:
+	generate_links()
+	if _self.data.has("sound"):
+		%Sounds.stream = _self.data.sound
+		%Sounds.play()
