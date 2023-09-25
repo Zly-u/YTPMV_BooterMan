@@ -35,13 +35,11 @@ shader_parameter/frequency_vertical = 6.89
 shader_parameter/speed_vertical = 1.0
 shader_parameter/scroll_direction = Vector2(0, 0)
 shader_parameter/scrolling_speed = 0.08
-shader_parameter/enable_palette_cycling = false
-shader_parameter/palette_speed = 0.1
 shader_parameter/phase_offset = 5.0
 shader_parameter/hue = 0.0
 shader_parameter/hue_offset = 20.0
 shader_parameter/hue_time_offset_speed = 0.1
-shader_parameter/amount = 10
+shader_parameter/amount = 8
 shader_parameter/line_width = 2
 shader_parameter/iteration_scaling = 0.02
 shader_parameter/keep_original_on_top = false
@@ -76,7 +74,7 @@ self_modulate = Color(1, 1, 0, 1)
 position = Vector2(113, 57.815)
 scale = Vector2(0.0625, 0.0625)
 sprite_frames = SubResource("SpriteFrames_pk0wj")
-frame_progress = 0.108577
+frame_progress = 0.00493256
 
 [node name="BgField" type="Sprite2D" parent="."]
 unique_name_in_owner = true

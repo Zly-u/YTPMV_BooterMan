@@ -18,9 +18,6 @@ uniform float frequency_vertical = 0.0;
 uniform float speed_vertical = 0.0;
 uniform vec2 scroll_direction = vec2(0.0, 0.0);
 uniform float scrolling_speed = 0.08;
-uniform bool enable_palette_cycling = false;
-uniform sampler2D palette;
-uniform float palette_speed = 0.1;
 
 uniform float phase_offset = 45.0;
 uniform float hue = 0.0;
@@ -71,41 +68,54 @@ void fragment()
 	
 	vec2 _UV = use_screen_texture ? SCREEN_UV : UV;
 	for(float i = 0.0; i < float(amount); i++){
-		float diff_x = sin((frequency_horizontal * _UV.y) + (speed_horizontal * TIME) + radians(phase_offset * i)) * amplitude_horizontal;
-		float diff_y = sin((frequency_vertical   * _UV.y) + (speed_vertical   * TIME) + radians(phase_offset * i)) * amplitude_vertical;
+		float diff_x = sin((frequency_horizontal * fract(_UV.y)) + (speed_horizontal * TIME) + radians(phase_offset * i)) * amplitude_horizontal;
+		float diff_y = sin((frequency_vertical   * fract(_UV.y)) + (speed_vertical   * TIME) + radians(phase_offset * i)) * amplitude_vertical;
 		
-		vec2 uv_off;
+		vec2 uv_off = fract(_UV);
 		// To simulate some kind of 3D effect
 		if(make_gradual){
-			uv_off = _UV + vec2(diff_x, diff_y) *(i/float(amount)) + scroll_direction * fract(TIME);
-		} else {
-			uv_off = _UV + vec2(diff_x, diff_y) + scroll_direction * fract(TIME);
+			uv_off += vec2(diff_x, diff_y) * (i/float(amount));
+		}else{
+			uv_off += vec2(diff_x, diff_y);
+		}
+		
+		uv_off += scroll_direction * fract(TIME);
+		uv_off = uv_off * (1.0 + iteration_scaling * i) - vec2(iteration_scaling * i / 2.0);
+		if (uv_off.y <= 0.0 || uv_off.y > 1.0){
+			uv_off.y = fract(-uv_off.y);
+		}else{
+			uv_off.y = fract(uv_off.y);
+		}
+		if (uv_off.x <= 0.0 || uv_off.x > 1.0){
+			uv_off.x = fract(-uv_off.x);
+		}else{
+			uv_off.x = fract(uv_off.x);
 		}
 		
 		vec4 result;
-		vec2 result_uv = uv_off*(1.0+iteration_scaling*i) - vec2(iteration_scaling*i/2.0);
 		if (use_screen_texture){
-			result = texture(SCREEN_TEXTURE, result_uv);
+			result = texture(SCREEN_TEXTURE, uv_off);
 		} else {
-			result = texture(TEXTURE, result_uv);
+			result = texture(TEXTURE, uv_off);
 		}
 		
 		// Hue shift
 		vec3 shifted = rgb2hsb(result.rgb);
-		shifted.r += hue;
-		shifted.r += TIME*hue_time_offset_speed+(hue_offset/360.0)*i;
-	
-		COLOR += vec4(hsb2rgb(shifted), 1.0)/float(amount);
+		shifted.r += hue + TIME * hue_time_offset_speed + (hue_offset / 360.0) * i;
+		
+		// Result
+		COLOR += vec4(hsb2rgb(shifted), 1.0) / float(amount);
 	}
 	
+	
 	if (keep_original_on_top){
-		vec4 text_clr;
-		
+		vec4 text_clr;	
 		if (use_screen_texture){
 			text_clr = texture(SCREEN_TEXTURE, _UV);
 		}else{
 			text_clr = texture(TEXTURE, _UV);
 		}
+	
 		if (sign(text_clr.r) == 1.0){
 			COLOR = text_clr;
 		}
