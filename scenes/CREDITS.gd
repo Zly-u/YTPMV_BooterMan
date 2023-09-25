@@ -188,3 +188,11 @@ func _on_button_pressed() -> void:
 
 func _on_link_pressed() -> void:
 	generate_links()
+
+
+func _on_sprite_mouse_entered() -> void:
+	%AnimatedSprite2D.play()
+
+
+func _on_sprite_mouse_exited() -> void:
+	%AnimatedSprite2D.pause()

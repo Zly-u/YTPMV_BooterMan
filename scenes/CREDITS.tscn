@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/CREDITS.gd" id="1_i86nt"]
 [ext_resource type="VideoStream" path="res://anim/aa.ogv" id="1_ru37e"]
 [ext_resource type="FontFile" uid="uid://cqh46prfs5mg7" path="res://fonts/Emulogic-zrEw.ttf" id="1_ulgo5"]
-[ext_resource type="Texture2D" uid="uid://cgx20b4wub2r6" path="res://anim/xniUJZd4tiE_00001.png" id="3_gjgy4"]
 [ext_resource type="Theme" uid="uid://ceiclw81oi0lp" path="res://styles/button.theme" id="5_858lg"]
+[ext_resource type="SpriteFrames" uid="uid://cckxcrix50kkt" path="res://anim/player_anim.tres" id="6_jri2u"]
 [ext_resource type="FontFile" uid="uid://bx4u0v38a8cmo" path="res://fonts/little-pixel.ttf" id="6_kii3g"]
 
 [node name="CREDITS" type="Control"]
@@ -40,17 +40,6 @@ mouse_filter = 2
 stream = ExtResource("1_ru37e")
 autoplay = true
 expand = true
-
-[node name="TextureRect" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 0, 1)
-custom_minimum_size = Vector2(18.765, 21.76)
-layout_mode = 2
-offset_left = 57.0
-offset_top = 120.0
-offset_right = 78.76
-offset_bottom = 141.76
-texture = ExtResource("3_gjgy4")
-expand_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -377,7 +366,24 @@ theme_override_fonts/font = ExtResource("6_kii3g")
 theme_override_font_sizes/font_size = 5
 text = "back"
 
+[node name="Sprite" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 122.0
+offset_right = 77.0
+offset_bottom = 139.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 0, 1)
+position = Vector2(8, 9)
+scale = Vector2(0.03, 0.03)
+sprite_frames = ExtResource("6_jri2u")
+frame = 1
+
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
 [connection signal="scroll_started" from="VBoxContainer2/VBoxContainer3/Control/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]
 [connection signal="pressed" from="Link_Presset" to="." method="_on_link_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Sprite" to="." method="_on_sprite_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite" to="." method="_on_sprite_mouse_exited"]

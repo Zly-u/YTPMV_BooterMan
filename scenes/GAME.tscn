@@ -1,14 +1,14 @@
 [gd_scene load_steps=29 format=3 uid="uid://bp5fwagy2vin5"]
 
 [ext_resource type="Script" path="res://scenes/GAME.gd" id="1_wcaae"]
-[ext_resource type="AudioStream" uid="uid://bcxydohemrvf4" path="res://sounds/siren_v2.mp3" id="2_a4x1w"]
 [ext_resource type="Texture2D" uid="uid://0wnre555kika" path="res://sprites/field.png" id="2_iycdb"]
-[ext_resource type="AudioStream" uid="uid://gh36imn4amdo" path="res://sounds/sweet_start_v2.mp3" id="2_oripv"]
 [ext_resource type="PackedScene" uid="uid://84xgxie3ech4" path="res://classes/player.tscn" id="3_7g7py"]
-[ext_resource type="AudioStream" uid="uid://dyny4ul8djysc" path="res://sounds/orig_mp3/intermission.mp3" id="4_0luij"]
+[ext_resource type="AudioStream" uid="uid://bcxydohemrvf4" path="res://sounds/roskuro/siren_v2.mp3" id="4_f4u17"]
 [ext_resource type="FontFile" uid="uid://cqh46prfs5mg7" path="res://fonts/Emulogic-zrEw.ttf" id="5_5aq8y"]
+[ext_resource type="AudioStream" uid="uid://gh36imn4amdo" path="res://sounds/roskuro/sweet_start_v2.mp3" id="5_n0mm7"]
 [ext_resource type="AudioStream" uid="uid://81562fmnfmv3" path="res://sounds/orig_mp3/power_pellet.mp3" id="5_onvll"]
 [ext_resource type="Texture2D" uid="uid://d01xvu25bq0kw" path="res://sprites/wall.png" id="5_sv87r"]
+[ext_resource type="AudioStream" uid="uid://kbm6ocrhv8ah" path="res://sounds/quyu/intermission_booter.mp3" id="6_iqc8n"]
 [ext_resource type="AudioStream" uid="uid://bps27lgl82tll" path="res://sounds/orig_mp3/retreating.mp3" id="6_yye8u"]
 [ext_resource type="PackedScene" uid="uid://8216fk04jtsk" path="res://classes/enemy.tscn" id="8_rawur"]
 [ext_resource type="PackedScene" uid="uid://bh5xlvvcocg1r" path="res://classes/pellet.tscn" id="9_a4gwu"]
@@ -114,9 +114,9 @@ script = ExtResource("1_wcaae")
 game_sounds = {
 "ghost_retreat": ExtResource("6_yye8u"),
 "power_pellet_mode": ExtResource("5_onvll"),
-"siren": ExtResource("2_a4x1w"),
-"start": ExtResource("2_oripv"),
-"win": ExtResource("4_0luij")
+"siren": ExtResource("4_f4u17"),
+"start": ExtResource("5_n0mm7"),
+"win": ExtResource("6_iqc8n")
 }
 
 [node name="Field" type="Sprite2D" parent="."]
@@ -943,7 +943,7 @@ walls_map = NodePath("../../walls")
 path_map = NodePath("../../walls")
 group_of_return_points = NodePath("../../RetreatPoints")
 
-[node name="Enemy2" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "group_of_return_points") instance=ExtResource("8_rawur")]
+[node name="Enemy2" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 0, 1)
 position = Vector2(112, 140)
@@ -951,11 +951,12 @@ collision_layer = 4
 collision_mask = 4
 player = NodePath("../../Player")
 walls_map = NodePath("../../walls")
+path_map = NodePath("../../walls")
 tint = Color(0.717647, 0, 1, 1)
 group_of_return_points = NodePath("../../RetreatPoints")
 delay_before_active = 12.0
 
-[node name="Enemy3" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "group_of_return_points") instance=ExtResource("8_rawur")]
+[node name="Enemy3" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 0, 1)
 position = Vector2(96, 140)
@@ -963,11 +964,12 @@ collision_layer = 4
 collision_mask = 4
 player = NodePath("../../Player")
 walls_map = NodePath("../../walls")
+path_map = NodePath("../../walls")
 tint = Color(0, 0.984314, 1, 1)
 group_of_return_points = NodePath("../../RetreatPoints")
 delay_before_active = 24.0
 
-[node name="Enemy4" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "group_of_return_points") instance=ExtResource("8_rawur")]
+[node name="Enemy4" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 0, 1)
 position = Vector2(128, 140)
@@ -975,6 +977,7 @@ collision_layer = 4
 collision_mask = 4
 player = NodePath("../../Player")
 walls_map = NodePath("../../walls")
+path_map = NodePath("../../walls")
 tint = Color(1, 0.784314, 0, 1)
 group_of_return_points = NodePath("../../RetreatPoints")
 delay_before_active = 36.0

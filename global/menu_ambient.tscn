@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cuiv73ro2wu8l"]
 
-[ext_resource type="AudioStream" uid="uid://dnps6gwwk0pjw" path="res://sounds/66_pacman_ambient.mp3" id="1_8i14a"]
+[ext_resource type="AudioStream" uid="uid://dnps6gwwk0pjw" path="res://sounds/kolificent/66_pacman_ambient.mp3" id="1_8i14a"]
 
 [node name="Ambient" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_8i14a")
