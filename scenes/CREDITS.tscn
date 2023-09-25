@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi5vkb6rvejm1"]
+[gd_scene load_steps=6 format=3 uid="uid://bi5vkb6rvejm1"]
 
 [ext_resource type="Script" path="res://scenes/CREDITS.gd" id="1_i86nt"]
 [ext_resource type="VideoStream" path="res://anim/aa.ogv" id="1_ru37e"]
 [ext_resource type="FontFile" uid="uid://cqh46prfs5mg7" path="res://fonts/Emulogic-zrEw.ttf" id="1_ulgo5"]
 [ext_resource type="Texture2D" uid="uid://cgx20b4wub2r6" path="res://anim/xniUJZd4tiE_00001.png" id="3_gjgy4"]
+[ext_resource type="Theme" uid="uid://ceiclw81oi0lp" path="res://styles/button.theme" id="5_858lg"]
 
 [node name="CREDITS" type="Control"]
 layout_mode = 3
@@ -12,15 +13,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_i86nt")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+modulate = Color(1, 1, 1, 0.360784)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+stream = ExtResource("1_ru37e")
+autoplay = true
+expand = true
+
 [node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 0, 1)
 custom_minimum_size = Vector2(18.765, 21.76)
 layout_mode = 2
-offset_left = 56.0
-offset_top = 130.0
-offset_right = 77.76
-offset_bottom = 151.76
+offset_left = 54.0
+offset_top = 133.0
+offset_right = 75.76
+offset_bottom = 154.76
 texture = ExtResource("3_gjgy4")
 expand_mode = 2
 
@@ -161,95 +188,51 @@ text = "spceial thanks"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label13" type="Label" parent="VBoxContainer2/VBoxContainer3"]
-texture_filter = 1
-texture_repeat = 1
+[node name="Control" type="Control" parent="VBoxContainer2/VBoxContainer3"]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("1_ulgo5")
-theme_override_font_sizes/font_size = 6
-text = "roskuro's carpet"
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_vertical = 3
 
-[node name="Label14" type="Label" parent="VBoxContainer2/VBoxContainer3"]
-texture_filter = 1
-texture_repeat = 1
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer2/VBoxContainer3/Control"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("1_ulgo5")
-theme_override_font_sizes/font_size = 6
-text = "Azad"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_right = 234.0
+offset_bottom = 83.0
+size_flags_vertical = 3
+mouse_filter = 2
 
-[node name="Label15" type="Label" parent="VBoxContainer2/VBoxContainer3"]
-texture_filter = 1
-texture_repeat = 1
+[node name="VBox_Scroll" type="VBoxContainer" parent="VBoxContainer2/VBoxContainer3/Control/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("1_ulgo5")
-theme_override_font_sizes/font_size = 6
-text = "Ter"
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Label16" type="Label" parent="VBoxContainer2/VBoxContainer3"]
+[node name="Link_Presset" type="LinkButton" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
-texture_repeat = 1
 layout_mode = 2
-size_flags_vertical = 1
+offset_left = -40.0
+offset_top = -24.0
+offset_right = -16.0
+offset_bottom = -16.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_ulgo5")
 theme_override_font_sizes/font_size = 6
-text = "MUZPOOPER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label17" type="Label" parent="VBoxContainer2/VBoxContainer3"]
-texture_filter = 1
-texture_repeat = 1
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("1_ulgo5")
-theme_override_font_sizes/font_size = 6
-text = "Kolificent"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label18" type="Label" parent="VBoxContainer2/VBoxContainer3"]
-texture_filter = 1
-texture_repeat = 1
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("1_ulgo5")
-theme_override_font_sizes/font_size = 6
-text = "SIlva Oruzie Kollam"
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "Test"
+underline = 1
+structured_text_bidi_override = 1
 
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_fonts/font = ExtResource("1_ulgo5")
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 34.0
+offset_bottom = 12.0
+theme = ExtResource("5_858lg")
 theme_override_font_sizes/font_size = 6
 text = "BACK"
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-modulate = Color(1, 1, 1, 0.360784)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-stream = ExtResource("1_ru37e")
-autoplay = true
-expand = true
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="scroll_started" from="VBoxContainer2/VBoxContainer3/Control/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

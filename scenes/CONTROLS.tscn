@@ -1,7 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcmssoeoi0jt3"]
+[gd_scene load_steps=7 format=3 uid="uid://dcmssoeoi0jt3"]
 
 [ext_resource type="FontFile" uid="uid://cqh46prfs5mg7" path="res://fonts/Emulogic-zrEw.ttf" id="1_eox6t"]
 [ext_resource type="Script" path="res://scenes/CONTROLS.gd" id="1_nuyjx"]
+[ext_resource type="Texture2D" uid="uid://nxe53wti5d0i" path="res://BG_field.png" id="2_rm6xu"]
+[ext_resource type="Shader" path="res://shaders/BG.gdshader" id="3_iqhg4"]
+[ext_resource type="Theme" uid="uid://ceiclw81oi0lp" path="res://styles/button.theme" id="3_jbrgi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wui8"]
+shader = ExtResource("3_iqhg4")
+shader_parameter/amplitude_horizontal = 0.02
+shader_parameter/frequency_horizontal = 2.23
+shader_parameter/speed_horizontal = 1.0
+shader_parameter/amplitude_vertical = 0.04
+shader_parameter/frequency_vertical = 6.89
+shader_parameter/speed_vertical = 1.0
+shader_parameter/scroll_direction = Vector2(0, 0)
+shader_parameter/scrolling_speed = 0.08
+shader_parameter/enable_palette_cycling = false
+shader_parameter/palette_speed = 0.1
+shader_parameter/phase_offset = 5.0
+shader_parameter/hue = 0.0
+shader_parameter/hue_offset = 20.0
+shader_parameter/hue_time_offset_speed = 0.1
+shader_parameter/amount = 10
+shader_parameter/line_width = 2
+shader_parameter/iteration_scaling = 0.02
+shader_parameter/keep_original_on_top = false
+shader_parameter/make_gradual = false
+shader_parameter/use_screen_texture = true
 
 [node name="CONTROLS" type="Control"]
 layout_mode = 3
@@ -11,6 +37,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nuyjx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BgField" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(112, 144)
+texture = ExtResource("2_rm6xu")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 672)
+
+[node name="SHADER" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_4wui8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45098, 0.45098, 1, 0.211765)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -102,9 +156,11 @@ vertical_alignment = 1
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 16.0
-theme_override_fonts/font = ExtResource("1_eox6t")
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 34.0
+offset_bottom = 12.0
+theme = ExtResource("3_jbrgi")
 theme_override_font_sizes/font_size = 6
 text = "Back"
 

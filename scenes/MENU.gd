@@ -4,15 +4,16 @@ extends Control
 @export var credits_scene: PackedScene = null
 @export var controls_scene: PackedScene = null
 
+@export var field_offset_speed = Vector2(0, 0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	%AnimatedSprite2D.play("default")
+	%AnimatedSprite2D2.play("default")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	%BgField.region_rect.position += field_offset_speed * delta
 
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_packed(game_scene)

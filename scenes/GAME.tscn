@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bp5fwagy2vin5"]
+[gd_scene load_steps=33 format=3 uid="uid://bp5fwagy2vin5"]
 
 [ext_resource type="Script" path="res://scenes/GAME.gd" id="1_wcaae"]
 [ext_resource type="AudioStream" uid="uid://bcxydohemrvf4" path="res://sounds/siren_v2.mp3" id="2_a4x1w"]
@@ -15,6 +15,30 @@
 [ext_resource type="PackedScene" uid="uid://8216fk04jtsk" path="res://classes/enemy.tscn" id="8_rawur"]
 [ext_resource type="PackedScene" uid="uid://bh5xlvvcocg1r" path="res://classes/pellet.tscn" id="9_a4gwu"]
 [ext_resource type="Texture2D" uid="uid://cb2wibpkenb1o" path="res://anim/Items_00000.png" id="10_cg841"]
+[ext_resource type="Shader" path="res://shaders/BG.gdshader" id="16_rwdw2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhibq"]
+shader = ExtResource("16_rwdw2")
+shader_parameter/amplitude_horizontal = 0.0
+shader_parameter/frequency_horizontal = 2.23
+shader_parameter/speed_horizontal = 1.0
+shader_parameter/amplitude_vertical = 0.0
+shader_parameter/frequency_vertical = 6.89
+shader_parameter/speed_vertical = 1.0
+shader_parameter/scroll_direction = Vector2(0, 0)
+shader_parameter/scrolling_speed = 0.08
+shader_parameter/enable_palette_cycling = false
+shader_parameter/palette_speed = 0.1
+shader_parameter/phase_offset = 5.0
+shader_parameter/hue = 0.0
+shader_parameter/hue_offset = 10.0
+shader_parameter/hue_time_offset_speed = 0.0
+shader_parameter/amount = 10
+shader_parameter/line_width = 2
+shader_parameter/iteration_scaling = 0.01
+shader_parameter/keep_original_on_top = true
+shader_parameter/make_gradual = true
+shader_parameter/use_screen_texture = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d0ttu"]
 resource_name = "wall"
@@ -118,6 +142,27 @@ texture_filter = 1
 position = Vector2(112, 144)
 texture = ExtResource("2_iycdb")
 
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 224.0
+offset_bottom = 288.0
+
+[node name="SHADER" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_fhibq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_right = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.45098, 0.45098, 1, 0.211765)
+
 [node name="walls_coll" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 4
@@ -144,470 +189,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(112, 212)
 collision_layer = 3
-
-[node name="Enemies" type="Node" parent="."]
-
-[node name="Enemy" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
-unique_name_in_owner = true
-self_modulate = Color(1, 0, 0, 1)
-position = Vector2(112, 116)
-collision_layer = 4
-collision_mask = 4
-player = NodePath("../../Player")
-walls_map = NodePath("../../walls")
-path_map = NodePath("../../debug")
-group_of_return_points = NodePath("../../RetreatPoints")
-
-[node name="Enemy2" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
-unique_name_in_owner = true
-self_modulate = Color(1, 0, 0, 1)
-position = Vector2(112, 140)
-collision_layer = 4
-collision_mask = 4
-player = NodePath("../../Player")
-walls_map = NodePath("../../walls")
-path_map = NodePath("../../debug")
-tint = Color(0.717647, 0, 1, 1)
-group_of_return_points = NodePath("../../RetreatPoints")
-delay_before_active = 12.0
-
-[node name="Enemy3" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
-unique_name_in_owner = true
-self_modulate = Color(1, 0, 0, 1)
-position = Vector2(96, 140)
-collision_layer = 4
-collision_mask = 4
-player = NodePath("../../Player")
-walls_map = NodePath("../../walls")
-path_map = NodePath("../../debug")
-tint = Color(0, 0.984314, 1, 1)
-group_of_return_points = NodePath("../../RetreatPoints")
-delay_before_active = 24.0
-
-[node name="Enemy4" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
-unique_name_in_owner = true
-self_modulate = Color(1, 0, 0, 1)
-position = Vector2(128, 140)
-collision_layer = 4
-collision_mask = 4
-player = NodePath("../../Player")
-walls_map = NodePath("../../walls")
-path_map = NodePath("../../debug")
-tint = Color(1, 0.784314, 0, 1)
-group_of_return_points = NodePath("../../RetreatPoints")
-delay_before_active = 36.0
-
-[node name="Player_FieldColl" type="StaticBody2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(76, 200)
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(148, 200)
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(148, 104)
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(76, 104)
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(112, 126)
-shape = SubResource("RectangleShape2D_drys0")
-
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(112, 154)
-shape = SubResource("RectangleShape2D_drys0")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(76, 48)
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(76, 56)
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(148, 56)
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(100, 80)
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(64, 164)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D29" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(160, 164)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D46" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(112, 44)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(100, 176)
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(100, 224)
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(148, 48)
-shape = SubResource("RectangleShape2D_rro6i")
-
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(192, 80)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D36" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(128, 80)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D37" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(112, 96)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D19" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(192, 56)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D20" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(192, 48)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D21" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(32, 200)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D44" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(-12, 152)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D59" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(-12, 128)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D22" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(192, 200)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D23" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(144, 248)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D42" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(168, 248)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D43" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(192, 248)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D45" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(12, 224)
-shape = SubResource("RectangleShape2D_xcr8f")
-
-[node name="CollisionShape2D60" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(-32, 140)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_xcr8f")
-
-[node name="CollisionShape2D61" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(236, 152)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D62" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(236, 128)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D63" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(256, 140)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_xcr8f")
-
-[node name="CollisionShape2D58" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(212, 224)
-shape = SubResource("RectangleShape2D_xcr8f")
-
-[node name="CollisionShape2D24" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(80, 248)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D39" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(56, 248)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D40" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(32, 248)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D41" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(40, 216)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D25" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(64, 120)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D26" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(160, 120)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D27" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(160, 88)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D28" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(64, 88)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D47" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(-5.99993, 64)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_goavw")
-
-[node name="CollisionShape2D48" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(-6, 222)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_goavw")
-
-[node name="CollisionShape2D51" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(112, 278)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_nj2wl")
-
-[node name="CollisionShape2D52" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(112, 18)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_nj2wl")
-
-[node name="CollisionShape2D53" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(22, 116)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_c57ed")
-
-[node name="CollisionShape2D54" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(202, 116)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_c57ed")
-
-[node name="CollisionShape2D55" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(202, 164)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_c57ed")
-
-[node name="CollisionShape2D56" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(22, 164)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_c57ed")
-
-[node name="CollisionShape2D57" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(86, 140)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_kwqun")
-
-[node name="CollisionShape2D64" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(138, 140)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_kwqun")
-
-[node name="CollisionShape2D49" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(230, 64)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_goavw")
-
-[node name="CollisionShape2D50" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(230, 224)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_goavw")
-
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(32, 80)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D30" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(128, 176)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D38" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(128, 224)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D31" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(112, 192)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D32" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(112, 240)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D33" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(64, 232)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D34" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(160, 232)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D35" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(184, 216)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(32, 56)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="CollisionShape2D18" type="CollisionShape2D" parent="Player_FieldColl"]
-position = Vector2(32, 48)
-shape = SubResource("RectangleShape2D_flekn")
-
-[node name="GameAudio" type="AudioStreamPlayer2D" parent="."]
-unique_name_in_owner = true
-panning_strength = 0.0
-
-[node name="READY" type="Label" parent="."]
-unique_name_in_owner = true
-self_modulate = Color(1, 1, 0, 1)
-texture_filter = 1
-offset_left = 89.0
-offset_top = 159.0
-offset_right = 137.0
-offset_bottom = 172.0
-theme_override_fonts/font = ExtResource("5_5aq8y")
-theme_override_font_sizes/font_size = 8
-text = "READY!"
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-root_node = NodePath("../READY")
-libraries = {
-"": SubResource("AnimationLibrary_6mjmc")
-}
-
-[node name="LeftSide" type="Area2D" parent="."]
-collision_layer = 5
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftSide"]
-position = Vector2(-21, 140)
-shape = SubResource("RectangleShape2D_q0tje")
-debug_color = Color(0.980392, 0, 0.380392, 0.419608)
-
-[node name="RightSide" type="Area2D" parent="."]
-collision_layer = 5
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightSide"]
-position = Vector2(244, 140)
-shape = SubResource("RectangleShape2D_q0tje")
-debug_color = Color(0.980392, 0, 0.380392, 0.419608)
-
-[node name="TeleportPoint_L" type="StaticBody2D" parent="."]
-position = Vector2(-12, 140)
-collision_layer = 0
-collision_mask = 0
-
-[node name="poly" type="CollisionPolygon2D" parent="TeleportPoint_L"]
-position = Vector2(0, 4)
-scale = Vector2(0.421875, 1)
-polygon = PackedVector2Array(0, 0, 0, 0, 8, -4, 0, -8)
-
-[node name="TeleportPoint_R" type="StaticBody2D" parent="."]
-position = Vector2(236, 140)
-rotation = -3.14159
-collision_layer = 0
-collision_mask = 0
-
-[node name="poly" type="CollisionPolygon2D" parent="TeleportPoint_R"]
-position = Vector2(0, 4)
-scale = Vector2(0.421875, 1)
-polygon = PackedVector2Array(0, 0, 0, 0, 8, -4, 0, -8)
-
-[node name="EnemyEnableForceMove_L" type="Area2D" parent="."]
-position = Vector2(32, 140)
-rotation = 3.14159
-collision_layer = 4
-collision_mask = 4
-
-[node name="poly" type="CollisionPolygon2D" parent="EnemyEnableForceMove_L"]
-position = Vector2(-1.3875, 4)
-scale = Vector2(0.421875, 1)
-polygon = PackedVector2Array(0, 0, 0, 0, 8, -4, 0, -8)
-
-[node name="EnemyDisableForceMove_L" type="Area2D" parent="."]
-position = Vector2(45, 140)
-rotation = 3.14159
-collision_layer = 4
-collision_mask = 4
-
-[node name="poly" type="CollisionPolygon2D" parent="EnemyDisableForceMove_L"]
-position = Vector2(-2.00002, 4)
-scale = Vector2(0.421875, 1)
-polygon = PackedVector2Array(-7.62939e-06, -1.52588e-05, 7.11111, 0, 7.11119, -8, 7.62939e-05, -8.00002)
-
-[node name="EnemyEnableForceMove_R" type="Area2D" parent="."]
-position = Vector2(192, 140)
-collision_layer = 4
-collision_mask = 4
-
-[node name="poly" type="CollisionPolygon2D" parent="EnemyEnableForceMove_R"]
-position = Vector2(-1.3875, 4)
-scale = Vector2(0.421875, 1)
-polygon = PackedVector2Array(0, 0, 0, 0, 8, -4, 0, -8)
-
-[node name="EnemyDisableForceMove_R" type="Area2D" parent="."]
-position = Vector2(178, 140)
-rotation = 3.14159
-collision_layer = 4
-collision_mask = 4
-
-[node name="poly" type="CollisionPolygon2D" parent="EnemyDisableForceMove_R"]
-position = Vector2(-2.00002, 4)
-scale = Vector2(0.421875, 1)
-polygon = PackedVector2Array(-7.62939e-06, -1.52588e-05, 7.11111, 0, 7.11119, -8, 7.62939e-05, -8.00002)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_top = 271.0
-offset_right = 224.0
-offset_bottom = 288.0
-alignment = 1
-
-[node name="SKIP" type="Label" parent="VBoxContainer"]
-unique_name_in_owner = true
-self_modulate = Color(1, 1, 0, 1)
-texture_filter = 1
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("5_5aq8y")
-theme_override_font_sizes/font_size = 8
-text = "press 's' to Skip"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Pellets" type="Node2D" parent="."]
 
@@ -1373,6 +954,470 @@ position = Vector2(204, 68)
 [node name="Pellet96" parent="Pellets" instance=ExtResource("9_a4gwu")]
 position = Vector2(212, 68)
 
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(112, 116)
+collision_layer = 4
+collision_mask = 4
+player = NodePath("../../Player")
+walls_map = NodePath("../../walls")
+path_map = NodePath("../../debug")
+group_of_return_points = NodePath("../../RetreatPoints")
+
+[node name="Enemy2" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(112, 140)
+collision_layer = 4
+collision_mask = 4
+player = NodePath("../../Player")
+walls_map = NodePath("../../walls")
+path_map = NodePath("../../debug")
+tint = Color(0.717647, 0, 1, 1)
+group_of_return_points = NodePath("../../RetreatPoints")
+delay_before_active = 12.0
+
+[node name="Enemy3" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(96, 140)
+collision_layer = 4
+collision_mask = 4
+player = NodePath("../../Player")
+walls_map = NodePath("../../walls")
+path_map = NodePath("../../debug")
+tint = Color(0, 0.984314, 1, 1)
+group_of_return_points = NodePath("../../RetreatPoints")
+delay_before_active = 24.0
+
+[node name="Enemy4" parent="Enemies" node_paths=PackedStringArray("player", "walls_map", "path_map", "group_of_return_points") instance=ExtResource("8_rawur")]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(128, 140)
+collision_layer = 4
+collision_mask = 4
+player = NodePath("../../Player")
+walls_map = NodePath("../../walls")
+path_map = NodePath("../../debug")
+tint = Color(1, 0.784314, 0, 1)
+group_of_return_points = NodePath("../../RetreatPoints")
+delay_before_active = 36.0
+
+[node name="Player_FieldColl" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(76, 200)
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(148, 200)
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(148, 104)
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(76, 104)
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(112, 126)
+shape = SubResource("RectangleShape2D_drys0")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(112, 154)
+shape = SubResource("RectangleShape2D_drys0")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(76, 48)
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(76, 56)
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(148, 56)
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(100, 80)
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(64, 164)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D29" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(160, 164)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D46" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(112, 44)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(100, 176)
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(100, 224)
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(148, 48)
+shape = SubResource("RectangleShape2D_rro6i")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(192, 80)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D36" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(128, 80)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D37" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(112, 96)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(192, 56)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(192, 48)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(32, 200)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D44" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(-12, 152)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D59" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(-12, 128)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(192, 200)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D23" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(144, 248)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D42" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(168, 248)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D43" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(192, 248)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D45" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(12, 224)
+shape = SubResource("RectangleShape2D_xcr8f")
+
+[node name="CollisionShape2D60" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(-32, 140)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_xcr8f")
+
+[node name="CollisionShape2D61" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(236, 152)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D62" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(236, 128)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D63" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(256, 140)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_xcr8f")
+
+[node name="CollisionShape2D58" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(212, 224)
+shape = SubResource("RectangleShape2D_xcr8f")
+
+[node name="CollisionShape2D24" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(80, 248)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D39" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(56, 248)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D40" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(32, 248)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D41" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(40, 216)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D25" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(64, 120)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D26" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(160, 120)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D27" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(160, 88)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D28" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(64, 88)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D47" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(-5.99993, 64)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_goavw")
+
+[node name="CollisionShape2D48" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(-6, 222)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_goavw")
+
+[node name="CollisionShape2D51" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(112, 278)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_nj2wl")
+
+[node name="CollisionShape2D52" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(112, 18)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_nj2wl")
+
+[node name="CollisionShape2D53" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(22, 116)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_c57ed")
+
+[node name="CollisionShape2D54" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(202, 116)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_c57ed")
+
+[node name="CollisionShape2D55" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(202, 164)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_c57ed")
+
+[node name="CollisionShape2D56" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(22, 164)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_c57ed")
+
+[node name="CollisionShape2D57" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(86, 140)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_kwqun")
+
+[node name="CollisionShape2D64" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(138, 140)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_kwqun")
+
+[node name="CollisionShape2D49" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(230, 64)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_goavw")
+
+[node name="CollisionShape2D50" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(230, 224)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_goavw")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(32, 80)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D30" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(128, 176)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D38" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(128, 224)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D31" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(112, 192)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D32" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(112, 240)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D33" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(64, 232)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D34" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(160, 232)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D35" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(184, 216)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(32, 56)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="Player_FieldColl"]
+position = Vector2(32, 48)
+shape = SubResource("RectangleShape2D_flekn")
+
+[node name="GameAudio" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+panning_strength = 0.0
+
+[node name="READY" type="Label" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 0, 1)
+texture_filter = 1
+offset_left = 89.0
+offset_top = 159.0
+offset_right = 137.0
+offset_bottom = 172.0
+theme_override_fonts/font = ExtResource("5_5aq8y")
+theme_override_font_sizes/font_size = 8
+text = "READY!"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../READY")
+libraries = {
+"": SubResource("AnimationLibrary_6mjmc")
+}
+
+[node name="LeftSide" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftSide"]
+position = Vector2(-21, 140)
+shape = SubResource("RectangleShape2D_q0tje")
+debug_color = Color(0.980392, 0, 0.380392, 0.419608)
+
+[node name="RightSide" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightSide"]
+position = Vector2(244, 140)
+shape = SubResource("RectangleShape2D_q0tje")
+debug_color = Color(0.980392, 0, 0.380392, 0.419608)
+
+[node name="TeleportPoint_L" type="StaticBody2D" parent="."]
+position = Vector2(-12, 140)
+collision_layer = 0
+collision_mask = 0
+
+[node name="poly" type="CollisionPolygon2D" parent="TeleportPoint_L"]
+position = Vector2(0, 4)
+scale = Vector2(0.421875, 1)
+polygon = PackedVector2Array(0, 0, 0, 0, 8, -4, 0, -8)
+
+[node name="TeleportPoint_R" type="StaticBody2D" parent="."]
+position = Vector2(236, 140)
+rotation = -3.14159
+collision_layer = 0
+collision_mask = 0
+
+[node name="poly" type="CollisionPolygon2D" parent="TeleportPoint_R"]
+position = Vector2(0, 4)
+scale = Vector2(0.421875, 1)
+polygon = PackedVector2Array(0, 0, 0, 0, 8, -4, 0, -8)
+
+[node name="EnemyEnableForceMove_L" type="Area2D" parent="."]
+position = Vector2(32, 140)
+rotation = 3.14159
+collision_layer = 4
+collision_mask = 4
+
+[node name="poly" type="CollisionPolygon2D" parent="EnemyEnableForceMove_L"]
+position = Vector2(-1.3875, 4)
+scale = Vector2(0.421875, 1)
+polygon = PackedVector2Array(0, 0, 0, 0, 8, -4, 0, -8)
+
+[node name="EnemyDisableForceMove_L" type="Area2D" parent="."]
+position = Vector2(45, 140)
+rotation = 3.14159
+collision_layer = 4
+collision_mask = 4
+
+[node name="poly" type="CollisionPolygon2D" parent="EnemyDisableForceMove_L"]
+position = Vector2(-2.00002, 4)
+scale = Vector2(0.421875, 1)
+polygon = PackedVector2Array(-7.62939e-06, -1.52588e-05, 7.11111, 0, 7.11119, -8, 7.62939e-05, -8.00002)
+
+[node name="EnemyEnableForceMove_R" type="Area2D" parent="."]
+position = Vector2(192, 140)
+collision_layer = 4
+collision_mask = 4
+
+[node name="poly" type="CollisionPolygon2D" parent="EnemyEnableForceMove_R"]
+position = Vector2(-1.3875, 4)
+scale = Vector2(0.421875, 1)
+polygon = PackedVector2Array(0, 0, 0, 0, 8, -4, 0, -8)
+
+[node name="EnemyDisableForceMove_R" type="Area2D" parent="."]
+position = Vector2(178, 140)
+rotation = 3.14159
+collision_layer = 4
+collision_mask = 4
+
+[node name="poly" type="CollisionPolygon2D" parent="EnemyDisableForceMove_R"]
+position = Vector2(-2.00002, 4)
+scale = Vector2(0.421875, 1)
+polygon = PackedVector2Array(-7.62939e-06, -1.52588e-05, 7.11111, 0, 7.11119, -8, 7.62939e-05, -8.00002)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_top = 271.0
+offset_right = 224.0
+offset_bottom = 288.0
+alignment = 1
+
+[node name="SKIP" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 0, 1)
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_5aq8y")
+theme_override_font_sizes/font_size = 8
+text = "press 's' to Skip"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="RetreatPoints" type="Node2D" parent="."]
 
 [node name="RetreatPoint_1" type="Area2D" parent="RetreatPoints"]
@@ -1431,6 +1476,11 @@ text = "0000"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="SHADER" type="ColorRect" parent="HBoxContainer"]
+material = SubResource("ShaderMaterial_fhibq")
+layout_mode = 2
+color = Color(0.45098, 0.45098, 1, 0.211765)
 
 [connection signal="ate_buter" from="Player" to="." method="_on_player_ate_buter"]
 [connection signal="ate_ghost" from="Player" to="." method="_on_player_ate_ghost"]
