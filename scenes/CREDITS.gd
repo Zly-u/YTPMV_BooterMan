@@ -5,6 +5,7 @@ extends Control
 var scroll_progress: float = 0.0
 var total_scroll_progress: float = 0.0
 var scroll_speed: float = 10.0
+var wheel_scroll_speed: float = 5.0
 var scroll_dir: int = 1
 
 var scroll_pause: float = 2.0
@@ -13,7 +14,6 @@ var cur_scroll_pause: float = 2.0
 var scroll_start: int = 40
 
 var texts = [
-	["Sladkiy Collab", null, null],
 	["Roskuro's carpet", null, null],
 	["poskudo", null, null],
 	["Azad Festifal", null, null],
@@ -22,6 +22,7 @@ var texts = [
 	["Kolificent", "https://cdn.discordapp.com/attachments/689528380219326472/1155815398458015765/gpvpgs.mp4", preload("res://fonts/Kolifination.ttf")],
 	["SIlva Oruzie Kollam", null, null],
 	["Dmitry udalov", null, null],
+	["Nikita - moral support", "https://media.discordapp.net/attachments/696780456213086208/1155908155537104956/amud_hammed.png?width=605&height=910", null],
 ]
 func _ready() -> void:
 	for n in 10:
@@ -77,9 +78,11 @@ func _input(event: InputEvent) -> void:
 	cur_scroll_pause = scroll_pause
 	
 	if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-		scroll_progress -= scroll_speed * get_process_delta_time()
+		scroll_progress = max(scroll_progress-wheel_scroll_speed, 0)
 	if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-		scroll_progress += scroll_speed * get_process_delta_time()
+		scroll_progress = min(scroll_progress+wheel_scroll_speed, total_scroll_progress)
+		
+	scroll.scroll_vertical = scroll_progress
 
 
 func _on_video_stream_player_finished() -> void:
