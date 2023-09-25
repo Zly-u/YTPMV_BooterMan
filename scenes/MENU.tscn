@@ -74,7 +74,7 @@ self_modulate = Color(1, 1, 0, 1)
 position = Vector2(113, 57.815)
 scale = Vector2(0.0625, 0.0625)
 sprite_frames = SubResource("SpriteFrames_pk0wj")
-frame_progress = 0.00493256
+frame_progress = 0.931801
 
 [node name="BgField" type="Sprite2D" parent="."]
 unique_name_in_owner = true

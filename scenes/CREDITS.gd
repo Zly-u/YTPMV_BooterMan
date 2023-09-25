@@ -15,6 +15,20 @@ var scroll_start: int = 40
 
 var texts = [
 	{
+		text = "Sladkiy Chel",
+		links = [
+			
+		],
+		font = null
+	},
+	{
+		text = "Buterbrodik",
+		links = [
+			
+		],
+		font = null
+	},
+	{
 		text = "Roskuro's carpet",
 		links = [
 			
@@ -102,7 +116,6 @@ func generate_links():
 		new_text.text = text.text
 		if text.links.size() != 0:
 			new_text.uri = text.links.pick_random()
-			print(new_text.uri)
 		if text.font:
 			new_text.set("theme_override_fonts/font", text.font)
 			new_text.set("theme_override_font_sizes/font_size", 12)

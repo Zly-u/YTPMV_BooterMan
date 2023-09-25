@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://shaders/BG.gdshader" id="3_iqhg4"]
 [ext_resource type="Theme" uid="uid://ceiclw81oi0lp" path="res://styles/button.theme" id="3_jbrgi"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wui8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2wgr"]
 shader = ExtResource("3_iqhg4")
 shader_parameter/amplitude_horizontal = 0.02
 shader_parameter/frequency_horizontal = 2.23
@@ -20,7 +20,7 @@ shader_parameter/phase_offset = 5.0
 shader_parameter/hue = 0.0
 shader_parameter/hue_offset = 20.0
 shader_parameter/hue_time_offset_speed = 0.1
-shader_parameter/amount = 10
+shader_parameter/amount = 8
 shader_parameter/line_width = 2
 shader_parameter/iteration_scaling = 0.02
 shader_parameter/keep_original_on_top = false
@@ -55,7 +55,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 600, 672)
 
 [node name="SHADER" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_4wui8")
+material = SubResource("ShaderMaterial_f2wgr")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
