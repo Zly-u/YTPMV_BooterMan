@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://8216fk04jtsk"]
+[gd_scene load_steps=10 format=3 uid="uid://8216fk04jtsk"]
 
 [ext_resource type="AudioStream" uid="uid://cfwu8vg0pssgs" path="res://sounds/orig/munch_1.wav" id="1_hvkoe"]
 [ext_resource type="Script" path="res://classes/enemy.gd" id="1_tiedv"]
@@ -41,9 +41,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayrqa"]
-size = Vector2(8, 8)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_erl73"]
 radius = 4.0
 
@@ -56,16 +53,13 @@ script = ExtResource("1_tiedv")
 unique_name_in_owner = true
 scale = Vector2(0.17, 0.17)
 sprite_frames = SubResource("SpriteFrames_yngaq")
-animation = &"runnin"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ayrqa")
+frame_progress = 0.393906
 
 [node name="Enemy_coll" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemy_coll"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_coll"]
 shape = SubResource("CircleShape2D_erl73")
 debug_color = Color(1, 0.0117647, 0.0117647, 0.419608)
 
