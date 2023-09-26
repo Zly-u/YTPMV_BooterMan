@@ -1,8 +1,17 @@
 [gd_scene load_steps=2 format=3 uid="uid://cuiv73ro2wu8l"]
 
-[ext_resource type="AudioStream" uid="uid://dnps6gwwk0pjw" path="res://sounds/kolificent/66_pacman_ambient.mp3" id="1_8i14a"]
+[sub_resource type="GDScript" id="GDScript_rouih"]
+script/source = "extends AudioStreamPlayer2D
+
+
+@export var delay_before_play: float = 5.0
+func _process(delta: float) -> void:
+	if delay_before_play > 0.0:
+		delay_before_play -= delta
+		if delay_before_play <= 0:
+			play()
+"
 
 [node name="Ambient" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_8i14a")
-autoplay = true
 panning_strength = 0.0
+script = SubResource("GDScript_rouih")

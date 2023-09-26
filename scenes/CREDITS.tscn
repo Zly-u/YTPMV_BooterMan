@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi5vkb6rvejm1"]
+[gd_scene load_steps=10 format=3 uid="uid://bi5vkb6rvejm1"]
 
 [ext_resource type="Script" path="res://scenes/CREDITS.gd" id="1_i86nt"]
 [ext_resource type="VideoStream" path="res://anim/aa.ogv" id="1_ru37e"]
@@ -7,6 +7,11 @@
 [ext_resource type="Theme" uid="uid://ceiclw81oi0lp" path="res://styles/button.theme" id="5_858lg"]
 [ext_resource type="SpriteFrames" uid="uid://cckxcrix50kkt" path="res://anim/player_anim.tres" id="6_jri2u"]
 [ext_resource type="FontFile" uid="uid://bx4u0v38a8cmo" path="res://fonts/little-pixel.ttf" id="6_kii3g"]
+[ext_resource type="Texture2D" uid="uid://dfcieqfykbn27" path="res://anim/Items_00001.png" id="8_x76fo"]
+
+[sub_resource type="Curve" id="Curve_rsh7g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.71579, 0.0, 0, 0]
+point_count = 2
 
 [node name="CREDITS" type="Control"]
 layout_mode = 3
@@ -169,7 +174,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_fonts/font = ExtResource("1_ulgo5")
 theme_override_font_sizes/font_size = 8
-text = "Music:"
+text = "Music?:"
 underline = 2
 
 [node name="Control4" type="Control" parent="VBoxContainer2/VBoxContainer/VBoxContainer"]
@@ -278,7 +283,7 @@ offset_right = 110.0
 offset_bottom = 10.0
 theme_override_fonts/font = ExtResource("1_ulgo5")
 theme_override_font_sizes/font_size = 8
-text = "Roskuro"
+text = "Roskuro, zly"
 underline = 1
 uri = "https://www.youtube.com/@roskuro"
 
@@ -385,6 +390,29 @@ frame = 1
 
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(47, 18)
+emitting = false
+amount = 60
+lifetime = 5.0
+randomness = 0.2
+lifetime_randomness = 0.28
+draw_order = 1
+texture = ExtResource("8_x76fo")
+spread = 132.37
+gravity = Vector2(0, 250)
+initial_velocity_max = 99.42
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+linear_accel_max = 100.0
+radial_accel_max = 35.67
+scale_amount_min = 0.01
+scale_amount_max = 0.02
+scale_amount_curve = SubResource("Curve_rsh7g")
+hue_variation_min = -0.54
+hue_variation_max = 0.55
 
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
 [connection signal="scroll_started" from="VBoxContainer2/VBoxContainer3/Control/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]
