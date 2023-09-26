@@ -55,6 +55,9 @@ scale = Vector2(0.17, 0.17)
 sprite_frames = SubResource("SpriteFrames_yngaq")
 frame_progress = 0.393906
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_erl73")
+
 [node name="Enemy_coll" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 2
