@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://gh36imn4amdo" path="res://sounds/roskuro/sweet_start_v2.mp3" id="5_n0mm7"]
 [ext_resource type="AudioStream" uid="uid://81562fmnfmv3" path="res://sounds/orig_mp3/power_pellet.mp3" id="5_onvll"]
 [ext_resource type="Texture2D" uid="uid://d01xvu25bq0kw" path="res://sprites/wall.png" id="5_sv87r"]
-[ext_resource type="AudioStream" uid="uid://kbm6ocrhv8ah" path="res://sounds/quyu/intermission_booter.mp3" id="6_iqc8n"]
+[ext_resource type="AudioStream" uid="uid://ctw8ir7hr0cnp" path="res://sounds/zly/win.mp3" id="6_142e1"]
 [ext_resource type="AudioStream" uid="uid://bps27lgl82tll" path="res://sounds/orig_mp3/retreating.mp3" id="6_yye8u"]
 [ext_resource type="PackedScene" uid="uid://8216fk04jtsk" path="res://classes/enemy.tscn" id="8_rawur"]
 [ext_resource type="PackedScene" uid="uid://bh5xlvvcocg1r" path="res://classes/pellet.tscn" id="9_a4gwu"]
@@ -116,7 +116,7 @@ game_sounds = {
 "power_pellet_mode": ExtResource("5_onvll"),
 "siren": ExtResource("4_f4u17"),
 "start": ExtResource("5_n0mm7"),
-"win": ExtResource("6_iqc8n")
+"win": ExtResource("6_142e1")
 }
 
 [node name="GameAudio" type="AudioStreamPlayer2D" parent="."]

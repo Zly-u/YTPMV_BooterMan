@@ -17,8 +17,6 @@ var didWin: bool = false
 var power_pill_time: float = 7.0
 var cur_power_pill_timer: float = 0.0
 
-var child_count = 0
-
 func add_score(new_add_score: int):
 	score += new_add_score
 	%SCORE.text = "%04d" % score
@@ -171,11 +169,12 @@ func start_game() -> void:
 	%READY.visible = false
 	%SKIP.visible = false
 	# Debug, deleting most of the buters in order to test win conditions
-#	for child in $Pellets.get_children():
-#		child_count += 1
-#		child.queue_free()
-#		if child_count > $Pellets.get_children().size()-10:
-#			break
+	var child_count = 0
+	for child in $Pellets.get_children():
+		child_count += 1
+		child.queue_free()
+		if child_count > $Pellets.get_children().size()-10:
+			break
 
 func _on_game_audio_finished() -> void:
 	if player.just_started and not isGameStarted:
