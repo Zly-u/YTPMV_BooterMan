@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://84xgxie3ech4"]
 
 [ext_resource type="Script" path="res://classes/player.gd" id="1_p82ou"]
+[ext_resource type="AudioStream" uid="uid://bkykunjympjsc" path="res://sounds/zly/death_2.mp3" id="2_5wopq"]
+[ext_resource type="AudioStream" uid="uid://3bqkrdmld6c7" path="res://sounds/zly/death_1.mp3" id="2_hw200"]
 [ext_resource type="AudioStream" uid="uid://cfwu8vg0pssgs" path="res://sounds/orig/munch_1.wav" id="3_6xsua"]
-[ext_resource type="AudioStream" uid="uid://cxl0itu83o8jo" path="res://sounds/quyu/death_2_full_booter.mp3" id="3_utkml"]
-[ext_resource type="AudioStream" uid="uid://do8e2cjim8hwi" path="res://sounds/orig/death_1.wav" id="5_6bduo"]
-[ext_resource type="AudioStream" uid="uid://cqruilf8jc2hu" path="res://sounds/quyu/eat_ghost_booter.mp3" id="5_54nci"]
+[ext_resource type="AudioStream" uid="uid://cddhc7c7fgcjx" path="res://sounds/zly/ghost_eat.mp3" id="5_0h3sh"]
 [ext_resource type="AudioStream" uid="uid://cs2wisv1jnl60" path="res://sounds/roskuro/munch1_v2.mp3" id="6_sug52"]
 [ext_resource type="AudioStream" uid="uid://b4nre1n846p88" path="res://sounds/roskuro/munch2_v2.mp3" id="7_udada"]
 [ext_resource type="AudioStream" uid="uid://cmes88mi35xkd" path="res://sounds/orig/eat_fruit.wav" id="7_ugqi4"]
@@ -19,10 +19,10 @@ radius = 4.0
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_p82ou")
 sounds = {
-"death_1": ExtResource("5_6bduo"),
-"death_2": ExtResource("3_utkml"),
+"death_1": ExtResource("2_hw200"),
+"death_2": ExtResource("2_5wopq"),
 "eat_fruit": ExtResource("7_ugqi4"),
-"eat_ghost": ExtResource("5_54nci"),
+"eat_ghost": ExtResource("5_0h3sh"),
 "munch_1": ExtResource("6_sug52"),
 "munch_2": ExtResource("7_udada")
 }

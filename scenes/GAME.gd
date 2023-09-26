@@ -169,12 +169,13 @@ func start_game() -> void:
 	%READY.visible = false
 	%SKIP.visible = false
 	# Debug, deleting most of the buters in order to test win conditions
-	var child_count = 0
-	for child in $Pellets.get_children():
-		child_count += 1
-		child.queue_free()
-		if child_count > $Pellets.get_children().size()-10:
-			break
+#	if OS.is_debug_build():
+#		var child_count = 0
+#		for child in $Pellets.get_children():
+#			child_count += 1
+#			child.queue_free()
+#			if child_count > $Pellets.get_children().size()-10:
+#				break
 
 func _on_game_audio_finished() -> void:
 	if player.just_started and not isGameStarted:

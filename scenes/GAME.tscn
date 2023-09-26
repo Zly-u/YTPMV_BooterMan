@@ -1,15 +1,15 @@
 [gd_scene load_steps=29 format=3 uid="uid://bp5fwagy2vin5"]
 
 [ext_resource type="Script" path="res://scenes/GAME.gd" id="1_wcaae"]
+[ext_resource type="AudioStream" uid="uid://c5laufxj014j4" path="res://sounds/zly/retreating.mp3" id="2_0xmdw"]
 [ext_resource type="Texture2D" uid="uid://0wnre555kika" path="res://sprites/field.png" id="2_iycdb"]
+[ext_resource type="AudioStream" uid="uid://m46dpj0fdt8c" path="res://sounds/zly/power_pellet.mp3" id="3_2vj0p"]
 [ext_resource type="PackedScene" uid="uid://84xgxie3ech4" path="res://classes/player.tscn" id="3_7g7py"]
 [ext_resource type="AudioStream" uid="uid://bcxydohemrvf4" path="res://sounds/roskuro/siren_v2.mp3" id="4_f4u17"]
 [ext_resource type="FontFile" uid="uid://cqh46prfs5mg7" path="res://fonts/Emulogic-zrEw.ttf" id="5_5aq8y"]
 [ext_resource type="AudioStream" uid="uid://gh36imn4amdo" path="res://sounds/roskuro/sweet_start_v2.mp3" id="5_n0mm7"]
-[ext_resource type="AudioStream" uid="uid://81562fmnfmv3" path="res://sounds/orig_mp3/power_pellet.mp3" id="5_onvll"]
 [ext_resource type="Texture2D" uid="uid://d01xvu25bq0kw" path="res://sprites/wall.png" id="5_sv87r"]
 [ext_resource type="AudioStream" uid="uid://ctw8ir7hr0cnp" path="res://sounds/zly/win.mp3" id="6_142e1"]
-[ext_resource type="AudioStream" uid="uid://bps27lgl82tll" path="res://sounds/orig_mp3/retreating.mp3" id="6_yye8u"]
 [ext_resource type="PackedScene" uid="uid://8216fk04jtsk" path="res://classes/enemy.tscn" id="8_rawur"]
 [ext_resource type="PackedScene" uid="uid://bh5xlvvcocg1r" path="res://classes/pellet.tscn" id="9_a4gwu"]
 [ext_resource type="Texture2D" uid="uid://cb2wibpkenb1o" path="res://anim/Items_00000.png" id="10_cg841"]
@@ -112,8 +112,8 @@ shader_parameter/use_screen_texture = true
 [node name="GAME" type="Node2D"]
 script = ExtResource("1_wcaae")
 game_sounds = {
-"ghost_retreat": ExtResource("6_yye8u"),
-"power_pellet_mode": ExtResource("5_onvll"),
+"ghost_retreat": ExtResource("2_0xmdw"),
+"power_pellet_mode": ExtResource("3_2vj0p"),
 "siren": ExtResource("4_f4u17"),
 "start": ExtResource("5_n0mm7"),
 "win": ExtResource("6_142e1")
