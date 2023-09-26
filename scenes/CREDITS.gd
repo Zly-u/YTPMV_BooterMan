@@ -29,7 +29,7 @@ var texts: Array = [
 		font = null
 	},
 	{
-		text = "Little_pixel_font",
+		text = "Little-pixel  font",
 		links = [
 			"https://www.dafont.com/little-pixel.font"
 		],
@@ -129,14 +129,12 @@ func generate_links():
 	for text in texts:
 		var new_text: LinkButton_Better = %Link_Presset.duplicate()
 		new_text.text = text.text
-		if text.links.size() != 0:
-			new_text.uri = text.links.pick_random()
-		if text.font:
-			new_text.set("theme_override_fonts/font", text.font.file)
-			new_text.set("theme_override_font_sizes/font_size", text.font.size)
 		
-		if text.has("sound"):
-			new_text.data["sound"] = text.sound
+		new_text.data = text
+		if text.get("font", null):
+			if text.font.has("file"):
+				new_text.set("theme_override_fonts/font", text.font.file)
+			new_text.set("theme_override_font_sizes/font_size", text.font.get("size", 16))
 		
 		%VBox_Scroll.add_child(new_text)
 	
@@ -203,7 +201,9 @@ func _on_sprite_mouse_exited() -> void:
 
 
 func _on_link_presset_link_pressed(_self: LinkButton_Better) -> void:
-	generate_links()
+	if _self.data.links.size() != 0:
+		OS.shell_open(_self.data.links.pick_random())
+
 	if _self.data.has("sound"):
 		%Sounds.stream = _self.data.sound
 		%Sounds.play()
