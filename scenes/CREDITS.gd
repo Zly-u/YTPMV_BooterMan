@@ -124,8 +124,8 @@ var texts: Array = [
 	{
 		text = "Dmitry udalov",
 		links = [
+			"https://t.me/udalov_ytpmv_telegram",
 			"https://cdn.discordapp.com/attachments/696780456213086208/1155910577315643472/Discord_4TlELSB0wE.png",
-			"https://cdn.discordapp.com/attachments/696780456213086208/1155910614485581885/meanwhile_toilet.png",
 			"https://files.catbox.moe/rh6pau.mp4",
 			"https://files.catbox.moe/n19c7e.mp4",
 			"https://cdn.discordapp.com/attachments/850104634197409902/1029341877222260826/FaceApp_1665484609736.jpg?ex=651405d3&is=6512b453&hm=9dab78834b6eb4d55c59d8f7466cb62a6ff7b2f43bf40add3178bba94a322462&",
@@ -379,3 +379,4 @@ func _on_link_presset_link_pressed(_self: LinkButton_Better) -> void:
 	if _self.data.text == "Buterbrodik":
 		%CPUParticles2D.emitting = true
 		buter_text_pos = _self.global_position
+		buter_text_pos.y += scroll_progress-scroll_start
