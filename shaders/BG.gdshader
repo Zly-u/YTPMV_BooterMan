@@ -1,11 +1,3 @@
-/* 
-Earthbound battle backgrounds shader with scrolling effect and palette cycling like in the original game.
-@retr0_dev
-	
-Apply the shader to a TextureRect or a Sprite. Use a texture with some shapes in a transparent background for best results.
-You can then use a ColorRect or another method to paint the background.
-You can use the shader on multiple TextureRects and obtain a double-buffer effect tweaking the values for each one, remember to Make Unique the shader material.
-*/
 shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;

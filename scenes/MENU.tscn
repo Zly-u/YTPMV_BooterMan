@@ -32,7 +32,7 @@ shader_parameter/iteration_scaling = 0.02
 shader_parameter/keep_original_on_top = false
 shader_parameter/make_gradual = false
 shader_parameter/use_screen_texture = true
-shader_parameter/scale_up = -0.5
+shader_parameter/scale_up = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pk0wj"]
 animations = [{
@@ -59,8 +59,8 @@ script = ExtResource("1_wemyi")
 game_scene = ExtResource("2_cuxti")
 credits_scene = ExtResource("3_eniym")
 controls_scene = ExtResource("4_xvbxi")
-angle_dir = 214.73
-field_offset_speed = 30.0
+angle_dir = 225.0
+field_offset_speed = 15.0
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
