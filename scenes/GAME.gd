@@ -29,8 +29,9 @@ func set_best_score(best_score: int):
 	%BEST_SCORE.text = "%04d" % best_score
 
 func _ready() -> void:
-#	var g_MenuAmbient = get_tree().get_root().get_node("MenuAmbient")
-#	if g_MenuAmbient: g_MenuAmbient.stop()
+	var g_MenuAmbient = get_tree().get_root().get_node("MenuAmbient")
+	if g_MenuAmbient:
+		g_MenuAmbient.stop_anim()
 	
 #	get_tree().set_debug_collisions_hint(true)
 	
