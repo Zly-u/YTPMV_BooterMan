@@ -29,8 +29,7 @@ uniform float iteration_scaling = 0.0;
 uniform bool keep_original_on_top = false;
 uniform bool make_gradual = false;
 uniform bool use_screen_texture = true;
-
-
+uniform float scale_up = 0.0;
 
 vec3 rgb2hsb(vec3 c) {
 	vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
@@ -62,41 +61,58 @@ vec3 hsb2rgb(vec3 c)
 
 void fragment()
 {
-	vec2 scroll = scroll_direction * TIME * scrolling_speed;
-
 	COLOR = vec4(0.0, 0.0, 0.0, 1.0);
 	
 	vec2 _UV = use_screen_texture ? SCREEN_UV : UV;
+	vec2 scroll = fract(TIME * scroll_direction * scrolling_speed) * -2.0;
+	
 	for(float i = 0.0; i < float(amount); i++){
 		float diff_x = sin((frequency_horizontal * fract(_UV.y)) + (speed_horizontal * TIME) + radians(phase_offset * i)) * amplitude_horizontal;
 		float diff_y = sin((frequency_vertical   * fract(_UV.y)) + (speed_vertical   * TIME) + radians(phase_offset * i)) * amplitude_vertical;
 		
 		vec2 uv_off = fract(_UV);
+		
 		// To simulate some kind of 3D effect
 		if(make_gradual){
-			uv_off += vec2(diff_x, diff_y) * (i/float(amount));
+			uv_off += vec2(diff_x, diff_y) * (i / float(amount));
 		}else{
 			uv_off += vec2(diff_x, diff_y);
 		}
 		
-		uv_off += scroll_direction * fract(TIME);
 		uv_off = uv_off * (1.0 + iteration_scaling * i) - vec2(iteration_scaling * i / 2.0);
+		
+		// Scaling
+//		uv_off *= 1.0 + scale_up;
+		
 		if (uv_off.y <= 0.0 || uv_off.y > 1.0){
 			uv_off.y = fract(-uv_off.y);
-		}else{
-			uv_off.y = fract(uv_off.y);
 		}
 		if (uv_off.x <= 0.0 || uv_off.x > 1.0){
 			uv_off.x = fract(-uv_off.x);
-		}else{
-			uv_off.x = fract(uv_off.x);
 		}
+		uv_off = fract(uv_off);
 		
 		vec4 result;
+		vec2 scrolled_uv = uv_off+scroll;
+		
+		if (scrolled_uv.y < 0.0 && scrolled_uv.y > -1.0){
+			scrolled_uv.y *= -1.0;
+		}
+		if (scrolled_uv.y > 1.0 && scrolled_uv.y < 2.0){
+			scrolled_uv.y *= -1.0;
+		}
+
+		if (scrolled_uv.x < 0.0 && scrolled_uv.x > -1.0){
+			scrolled_uv.x *= -1.0;
+		}
+		if (scrolled_uv.x > 1.0 && scrolled_uv.x < 2.0){
+			scrolled_uv.x *= -1.0;
+		}
+		
 		if (use_screen_texture){
-			result = texture(SCREEN_TEXTURE, uv_off);
+			result = texture(SCREEN_TEXTURE, fract(scrolled_uv));
 		} else {
-			result = texture(TEXTURE, uv_off);
+			result = texture(TEXTURE, fract(scrolled_uv));
 		}
 		
 		// Hue shift

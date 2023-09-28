@@ -27,6 +27,7 @@ shader_parameter/iteration_scaling = 0.02
 shader_parameter/keep_original_on_top = false
 shader_parameter/make_gradual = false
 shader_parameter/use_screen_texture = true
+shader_parameter/scale_up = 0.0
 
 [node name="CONTROLS" type="Control"]
 layout_mode = 3
