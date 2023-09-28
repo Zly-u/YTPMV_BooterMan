@@ -1,20 +1,300 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuiv73ro2wu8l"]
+[gd_scene load_steps=9 format=3 uid="uid://cuiv73ro2wu8l"]
 
 [ext_resource type="AudioStream" uid="uid://dnps6gwwk0pjw" path="res://sounds/kolificent/66_pacman_ambient.mp3" id="1_knf3e"]
+[ext_resource type="Texture2D" uid="uid://nxe53wti5d0i" path="res://sprites/BG_field.png" id="2_6uga6"]
+[ext_resource type="Shader" path="res://shaders/BG.gdshader" id="3_ennge"]
 
 [sub_resource type="GDScript" id="GDScript_rouih"]
-script/source = "extends AudioStreamPlayer2D
+script/source = "extends Node2D
 
 
 @export var delay_before_play: float = 5.0
-func _process(delta: float) -> void:
-	if delay_before_play > 0.0:
-		delay_before_play -= delta
-		if delay_before_play <= 0:
-			play()
+
+func _ready() -> void:
+	$AnimationPlayer.play(\"Intro\")
+	var scene = get_tree().get_root().get_children()[1]
+	scene.add_child(%BgField_1)
+	scene.add_child(%SHADER_1)
+	
+
+#func _process(delta: float) -> void:
+#	if delay_before_play > 0.0:
+#		delay_before_play -= delta
+#		if delay_before_play <= 0:
+#			play()
+
+
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	print(anim_name)
+	if anim_name == \"Intro\":
+		$AnimationPlayer.play(\"music\")
 "
 
-[node name="Ambient" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_knf3e")
-panning_strength = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tset0"]
+shader = ExtResource("3_ennge")
+shader_parameter/amplitude_horizontal = 0.0
+shader_parameter/frequency_horizontal = 2.23
+shader_parameter/speed_horizontal = 1.0
+shader_parameter/amplitude_vertical = 0.0
+shader_parameter/frequency_vertical = 6.89
+shader_parameter/speed_vertical = 1.0
+shader_parameter/scroll_direction = Vector2(-0.3, 1)
+shader_parameter/scrolling_speed = 0.0
+shader_parameter/phase_offset = 0.0
+shader_parameter/hue_blend = 0.0
+shader_parameter/hue = 0.0
+shader_parameter/hue_offset = 0.0
+shader_parameter/hue_time_offset_speed = 0.0
+shader_parameter/amount = 5
+shader_parameter/iteration_scaling = 0.0
+shader_parameter/keep_original_on_top = false
+shader_parameter/make_gradual = false
+shader_parameter/use_screen_texture = true
+shader_parameter/scale_up = 0.0
+shader_parameter/RGB_Blend = 0.0
+shader_parameter/RGB_Strength = 0.0
+
+[sub_resource type="Animation" id="Animation_65j2m"]
+resource_name = "music"
+length = 140.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SHADER_1:material:shader_parameter/iteration_scaling")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.163315, 0.00771485, 0.01, -0.905045, -0.000127652, 2.41438, -3.20356e-05, 0, -0.936485, 1.39701e-05, 0.25, 0, 0, -0.25, 0, 0.163315, 0.00771485, 0.01, -0.905045, -0.000127652, 2.0006, -5.5735e-05, 0.00232111, -2.30649, 0.00552075, 0.164925, 0.00300367, 0.01, -0.905045, -0.000127652, 2.0006, -5.5735e-05, 0.00232111, -2.30649, 0.00552075, 0.108925, 0.00329134, 0.01, -0.905045, -0.000127652, 2.0006, -5.5735e-05, 0.00232111, -2.30649, 0.00552075, 0.108925, 0.00329134, 0.01, -0.905045, -0.000127652, 4.48325, -8.78023e-05, 0, -2.06702, 4.18509e-05, 2.00716, 9.16964e-05),
+"times": PackedFloat32Array(88.1999, 89.3858, 92.6966, 96.5949, 97.7807, 103.536, 104.295, 109.432, 110.194, 115.849, 116.627, 123.347)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SHADER_1:material:shader_parameter/amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(88.206)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SHADER_1:material:shader_parameter/hue")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0, 90, -0.25, 0, 0.25, 0, 90, -0.25, 0, 0.25, 0, 140, -0.25, 0, 0.25, 0, 140, -0.25, 0, 0.25, 0, 204.775, -0.25, 0, 0.25, 0, 204.775, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0, 60, -0.25, 0, 0.25, 0, 60, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0, 60, -0.25, 0, 0.25, 0, 60, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, 149.683, -0.25, 0, 0.25, 0, 210, -0.0756378, -19.9407, 0.25, 0, 210.016, -0.270134, 2.06123, 0.25, 0, 261.657, -0.0756378, -19.9407, 0.25, 0, 262.169, -0.270134, 2.06123, 0.25, 0, 349.089, -0.0756378, -19.9407, 0.25, 0, 349.601, -0.25, 0, 0.25, 0, 409.918, -0.0756378, -19.9407, 0.25, 0, 409.934, -0.270134, 2.06123, 0.25, 0, 461.575, -0.0756378, -19.9407, 0.25, 0, 461.575, -0.270134, 2.06123, 0.25, 0, 548.496, -0.0756378, -19.9407, 0.25, 0, 549.007, -0.25, 0, 0.25, 0, 609.325, -0.0756378, -19.9407, 0.25, 0, 609.341, -0.270134, 2.06123, 0.25, 0, 660.982, -0.0756378, -19.9407, 0.25, 0, 660.982, -0.270134, 2.06123, 0.25, 0, 747.903, -0.0756378, -19.9407, 0.25, 0),
+"times": PackedFloat32Array(10.2595, 38.5761, 38.6261, 54.0139, 54.567, 61.6353, 62.4716, 70.307, 71.0534, 72.2978, 72.7621, 77.6338, 77.6839, 77.9015, 78.6632, 78.9669, 79.1157, 79.3281, 79.6329, 79.8268, 85.9587, 86.2625, 86.4112, 86.6236, 86.9284, 87.1223, 101.836, 102.171, 102.355, 102.663, 102.938, 103.278, 107.508, 107.843, 108.027, 108.335, 108.589, 108.929, 114.132, 114.467, 114.651, 114.958, 115.212, 115.553)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SHADER_1:material:shader_parameter/amplitude_horizontal")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 3, 3, 3, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 13.4283, 0.00381988, 0.02, -2.20229, -0.00678378, 0.25, 0, 0.02, -0.0101547, 0, 0.0101547, 0, -0.1, -0.0101547, 0, 0.0101547, 0, 0.02, -0.027729, 0, 0.027729, 0, 0.02, -0.25, 0, 1.42898, -0.000183387, 0, -3.39021, 0.000269687, 0.25, 0),
+"times": PackedFloat32Array(10.3911, 38.0129, 71.3842, 71.4248, 71.5357, 123.558, 132.721)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SHADER_1:material:shader_parameter/amplitude_vertical")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 3, 3, 3, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 14.076, 0.00627352, 0.04, -3.50746, -0.0103053, 0.25, 0, 0.04, -0.0101547, 0, 0.0101547, 0, 0.1, -0.0101547, 0, 0.0101547, 0, 0.04, -0.027729, 0, 0.027729, 0, 0.04, -0.25, 0, 1.38233, -0.000204958, 0, -3.16629, 0.000183387, 0.25, 0),
+"times": PackedFloat32Array(10.3959, 38.0129, 71.3842, 71.4248, 71.5357, 123.558, 132.721)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SHADER_1:material:shader_parameter/hue_blend")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.0163212, 0, 0.0163212, 0, 0, -0.0163212, 0, 0.0163212, 0, 0, -0.0328465, 0, 0.0233879, 0.517793, 1, -0.0351858, 0, 0.174767, -0.0175962, 0, -0.0652542, 0.5, 0.0182266, 0.662119, 1, -0.0351858, 0, 0.154533, -0.00968814, 0, -0.111523, 0.737247, 0.0179291, 0.642348, 1, -0.0445156, 0, 1.89107, -0.0136424, 0, -2.37459, 0.00573278, 0.25, 0, 0, -0.0328465, 0, 0.0233879, 0.517793, 1, -0.0351858, 0, 0.174767, -0.0175962, 0, -0.0652542, 0.5, 0.0182266, 0.662119, 1, -0.0351858, 0, 0.154533, -0.00968814, 0, -0.111523, 0.737247, 0.0179291, 0.642348, 1, -0.0445156, 0, 1.89107, -0.0136424, 0, -1.66891, 0.0215493, 0.25, 0, 0, -0.0328465, 0, 0.0233879, 0.517793, 1, -0.0351858, 0, 0.174767, -0.0175962, 0, -0.0652542, 0.5, 0.0182266, 0.662119, 1, -0.0351858, 0, 0.154533, -0.00968814, 0, -0.111523, 0.737247, 0.0179291, 0.642348, 1, -0.0445156, 0, 1.89107, -0.0136424, 0, -1.66891, 0.0215493, 0.25, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.0859985, -0.524811, 0, -0.25, 0, 0.25, 0, 0, 0, 0, 0, 0, 1, -0.0208416, 0, 0.0208416, 0, -0.000624061, -0.0351858, 0, 0.174767, -0.0175962, 1, -0.0534477, 0, 0.0534477, 0, -0.000624061, -0.0351858, 0, 0.154533, -0.00968814, 1, -0.0839405, 0, 0.682945, -0.00187224, 0, -0.4702, 0.00249687, 0.523057, -0.00277756, 1, -0.304688, -0.00436908, 0.25, 0, 1, -0.25, 0, 0.0974579, -0.300431, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(38.4557, 38.521, 38.6524, 38.7932, 39.1233, 39.2641, 39.6729, 39.8509, 45.9863, 55.4692, 55.61, 55.9401, 56.0809, 56.4897, 56.832, 61.6498, 62.8455, 62.9863, 63.3164, 63.4572, 63.866, 64.2083, 69.0261, 71.3858, 71.4237, 71.5357, 77.9473, 78.44, 89.6897, 91.4009, 92.1182, 94.476, 94.5594, 94.7732, 95.0177, 95.2441, 95.5799, 96.8744, 98.1082, 121.985, 122.819)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SHADER_1:material:shader_parameter/hue_time_offset_speed")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 36, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(94.0702, 94.0871)
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioStreamPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_knf3e")
+}],
+"times": PackedFloat32Array(6.2937)
+}
+tracks/7/use_blend = true
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SHADER_1:material:shader_parameter/phase_offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.646049, 0.0300554, 4.93716, -1.93087, -0.040983, 1.98746, -0.0409837, 1.85519, -0.367371, 0.251367, 0.785393, -0.885246, 0, -0.503021, 0.0191264, 0.25, 0, 0, -0.25, 0, 0.851852, 0.0409844, 4.93716, -1.13702, -0.040983, 2.08058, -0.0956273, 1.89891, -0.278687, 0.273224, 0.367363, -0.459016, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.820503, 0.0300545, 4.93716, -1.43439, -0.0300548, 2.12523, -0.0409825, 1.89891, -0.633385, 0.535519, 0.41803, -0.448086, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.862442, 0.0191262, 4.95082, -1.76081, -0.0109289, 4.25635, -0.0437157, 0, -1.54546, 0.010929, 0.25, 0),
+"times": PackedFloat32Array(96.5276, 99.3418, 102.481, 103.504, 103.682, 105.87, 108.524, 109.307, 109.553, 111.741, 114.769, 115.605, 115.972, 118.503, 123.364)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SHADER_1:material:shader_parameter/RGB_Blend")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 2, -0.877617, -0.011073, 2.91823, -0.0339824, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 2, -0.877617, -0.011073, 2.91823, -0.0339824, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 2, -0.877617, -0.011073, 2.91823, -0.0339824, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 2, -0.877617, -0.011073, 2.91823, -0.0339824, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(96.6152, 98.2744, 103.46, 103.658, 105.317, 109.289, 109.551, 111.21, 115.628, 116.038, 117.697, 123.13)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SHADER_1:material:shader_parameter/RGB_Strength")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5.85911, -1.08744, -0.076365, 2.9514, -0.13173, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 5.85911, -1.11493, 0.0591831, 2.9514, -0.13173, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 5.85911, -1.11493, 0.0591831, 2.9514, -0.13173, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 5.85911, -1.11493, 0.0591831, 2.9514, -0.13173, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(96.6152, 98.4055, 103.46, 103.658, 105.448, 109.289, 109.551, 111.341, 115.628, 116.038, 117.828, 123.13)
+}
+
+[sub_resource type="Animation" id="Animation_dftiq"]
+resource_name = "Intro"
+length = 15.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SHADER_1:material:shader_parameter/hue")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(30, -0.25, 0, 0.669413, -0.291945, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.20292)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SHADER_1:material:shader_parameter/iteration_scaling")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(3, 0),
+"points": PackedFloat32Array(0.08, -0.0219602, 0.07143, 0.0219602, -0.07143, 0, -0.549907, 0.000631204, 0.054155, -0.000631203),
+"times": PackedFloat32Array(0, 1.20292)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SHADER_1:material:shader_parameter/amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.21178, 1.22108)
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/3/use_blend = true
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SHADER_1:material:shader_parameter/amplitude_horizontal")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SHADER_1:material:shader_parameter/amplitude_vertical")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a51gw"]
+_data = {
+"Intro": SubResource("Animation_dftiq"),
+"music": SubResource("Animation_65j2m")
+}
+
+[node name="Ambient" type="Node2D"]
 script = SubResource("GDScript_rouih")
+delay_before_play = 0.0
+
+[node name="BgField_1" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(112, 128)
+texture = ExtResource("2_6uga6")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 672)
+
+[node name="SHADER_1" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_tset0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 175.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.28, 1.28)
+color = Color(0.45098, 0.45098, 1, 0.211765)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a51gw")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

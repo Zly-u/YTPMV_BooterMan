@@ -9,9 +9,9 @@ extends Control
 
 func _ready() -> void:
 	%AnimatedSprite2D2.play("default")
-	var g_MenuAmbient: AudioStreamPlayer2D = get_tree().get_root().get_node("MenuAmbient")
-	if !g_MenuAmbient.playing:
-		g_MenuAmbient.play()
+#	var g_MenuAmbient: AudioStreamPlayer2D = get_tree().get_root().get_node("MenuAmbient")
+#	if !g_MenuAmbient.playing:
+#		g_MenuAmbient.play()
 
 func _process(delta: float) -> void:
 	var dir: Vector2 = Vector2(1, 0).rotated(deg_to_rad(angle_dir))

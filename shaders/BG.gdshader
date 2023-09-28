@@ -12,16 +12,19 @@ uniform vec2 scroll_direction = vec2(0.0, 0.0);
 uniform float scrolling_speed = 0.08;
 
 uniform float phase_offset = 45.0;
+uniform float hue_blend = 1.0;
 uniform float hue = 0.0;
 uniform float hue_offset = 0.0;
 uniform float hue_time_offset_speed = 1.0;
 uniform int amount = 5;
-uniform int line_width = 1;
 uniform float iteration_scaling = 0.0;
 uniform bool keep_original_on_top = false;
 uniform bool make_gradual = false;
 uniform bool use_screen_texture = true;
 uniform float scale_up = 0.0;
+
+uniform float RGB_Blend = 0.0;
+uniform float RGB_Strength = 0.0;
 
 vec3 rgb2hsb(vec3 c) {
 	vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
@@ -49,6 +52,17 @@ vec3 hsb2rgb(vec3 c)
 	vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
 	vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
 	return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+
+vec4 rgb_offset(sampler2D image, vec2 _UV, float angle, float strength){
+    vec2 offset = vec2(cos(radians(angle)), sin(radians(angle))) * (strength/1000.0);
+
+    float r  = texture(image, _UV + offset).r;
+    float g  = texture(image, _UV).g;
+    float b  = texture(image, _UV - offset).b;
+    vec4 pixel = vec4(r+g, g+b, r+b, 1.0);
+
+    return pixel;
 }
 
 void fragment()
@@ -109,10 +123,10 @@ void fragment()
 		
 		// Hue shift
 		vec3 shifted = rgb2hsb(result.rgb);
-		shifted.r += hue + TIME * hue_time_offset_speed + (hue_offset / 360.0) * i;
+		shifted.r += (hue / 360.0) + TIME * (hue_time_offset_speed / 360.0) + (hue_offset / 360.0) * i;
 		
 		// Result
-		COLOR += vec4(hsb2rgb(shifted), 1.0) / float(amount);
+		COLOR += (mix(result, vec4(hsb2rgb(shifted), 1.0), hue_blend) + rgb_offset(SCREEN_TEXTURE, scrolled_uv, 45.0, RGB_Strength)*RGB_Blend)/ float(amount);
 	}
 	
 	
