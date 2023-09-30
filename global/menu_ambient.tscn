@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cuiv73ro2wu8l"]
+[gd_scene load_steps=10 format=3 uid="uid://cuiv73ro2wu8l"]
 
 [ext_resource type="AudioStream" uid="uid://dnps6gwwk0pjw" path="res://sounds/kolificent/66_pacman_ambient.mp3" id="1_knf3e"]
 [ext_resource type="Texture2D" uid="uid://nxe53wti5d0i" path="res://sprites/BG_field.png" id="2_6uga6"]
@@ -37,19 +37,20 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tset0"]
 shader = ExtResource("3_ennge")
-shader_parameter/amplitude_horizontal = 0.00280589
+shader_parameter/amplitude_horizontal = 0.0
 shader_parameter/frequency_horizontal = 2.23
 shader_parameter/speed_horizontal = 1.0
-shader_parameter/amplitude_vertical = 0.00583064
+shader_parameter/amplitude_vertical = 0.0
 shader_parameter/frequency_vertical = 6.89
 shader_parameter/speed_vertical = 1.0
 shader_parameter/scroll_direction = Vector2(-0.3, 1)
 shader_parameter/scrolling_speed = 0.0
+shader_parameter/scrolling_shift = Vector2(0, 0)
 shader_parameter/phase_offset = 0.0
-shader_parameter/hue_blend = 0.0
-shader_parameter/hue = 747.903
+shader_parameter/hue_blend = 1.0
+shader_parameter/hue = 0.0
 shader_parameter/hue_offset = 0.0
-shader_parameter/hue_time_offset_speed = 36.0
+shader_parameter/hue_time_offset_speed = 0.0
 shader_parameter/amount = 5
 shader_parameter/iteration_scaling = 0.0
 shader_parameter/keep_original_on_top = false
@@ -128,17 +129,27 @@ tracks/5/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/6/type = "value"
+tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("BgField_1:region_rect")
-tracks/6/interp = 2
+tracks/6/path = NodePath("SHADER_1:material:shader_parameter/scrolling_shift:x")
+tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(-0.4, 0.5, 1.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Rect2(0, -288, 600, 672), Rect2(0, -65.0195, 600, 672), Rect2(0, 0, 600, 672)]
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.2)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SHADER_1:material:shader_parameter/scrolling_shift:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.4, -0.25, 0, 0.2, 0.338032, 0, -0.691, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
 }
 
 [sub_resource type="Animation" id="Animation_65j2m"]
@@ -273,7 +284,7 @@ tracks/10/keys = {
 }
 tracks/11/type = "value"
 tracks/11/imported = false
-tracks/11/enabled = true
+tracks/11/enabled = false
 tracks/11/path = NodePath("BgField_1:region_rect")
 tracks/11/interp = 2
 tracks/11/loop_wrap = false
@@ -282,6 +293,28 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Rect2(0, 0, 600, 672), Rect2(190, 884.374, 600, 672), Rect2(197.224, 894.057, 600, 672), Rect2(200, 896, 600, 672)]
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SHADER_1:material:shader_parameter/scrolling_shift:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 13.462, 0, -0.828027, -4.29833, 0.115858, 1.885, -0.0508086, -1, -8.572, 0, 0.25, 0),
+"times": PackedFloat32Array(95.72, 121.51, 132.82)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SHADER_1:material:shader_parameter/scrolling_shift:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 13.3895, 0.0671439, 2.365, -11.6247, -1.39573, 1.96202, 0.235571, 3, -5, 0, 0.25, 0),
+"times": PackedFloat32Array(95.74, 121.68, 133.03)
 }
 
 [sub_resource type="Animation" id="Animation_e3jie"]
@@ -298,6 +331,28 @@ tracks/0/keys = {
 "update": 0,
 "values": [Rect2(0, 0, 600, 672)]
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SHADER_1:material:shader_parameter/scrolling_shift:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SHADER_1:material:shader_parameter/scrolling_shift:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a51gw"]
 _data = {
@@ -305,8 +360,6 @@ _data = {
 "RESET": SubResource("Animation_e3jie"),
 "music": SubResource("Animation_65j2m")
 }
-
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_nyd3u"]
 
 [node name="Ambient" type="Node2D"]
 script = SubResource("GDScript_rouih")
@@ -341,6 +394,5 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamPolyphonic_nyd3u")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

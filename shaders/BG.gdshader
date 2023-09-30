@@ -10,6 +10,7 @@ uniform float frequency_vertical = 0.0;
 uniform float speed_vertical = 0.0;
 uniform vec2 scroll_direction = vec2(0.0, 0.0);
 uniform float scrolling_speed = 0.08;
+uniform vec2 scrolling_shift = vec2(0.0);
 
 uniform float phase_offset = 45.0;
 uniform float hue_blend = 1.0;
@@ -70,7 +71,7 @@ void fragment()
 	COLOR = vec4(0.0, 0.0, 0.0, 1.0);
 	
 	vec2 _UV = use_screen_texture ? SCREEN_UV : UV;
-	vec2 scroll = fract(TIME * scroll_direction * scrolling_speed) * -2.0;
+	vec2 scroll = fract(TIME * scroll_direction * scrolling_speed + scrolling_shift/2.0) * -2.0;
 	
 	for(float i = 0.0; i < float(amount); i++){
 		float diff_x = sin((frequency_horizontal * fract(_UV.y)) + (speed_horizontal * TIME) + radians(phase_offset * i)) * amplitude_horizontal;
@@ -126,7 +127,7 @@ void fragment()
 		shifted.r += (hue / 360.0) + TIME * (hue_time_offset_speed / 360.0) + (hue_offset / 360.0) * i;
 		
 		// Result
-		COLOR += (mix(result, vec4(hsb2rgb(shifted), 1.0), hue_blend) + rgb_offset(SCREEN_TEXTURE, scrolled_uv, 45.0, RGB_Strength)*RGB_Blend)/ float(amount);
+		COLOR += (mix(result, vec4(hsb2rgb(shifted), 1.0), hue_blend) + rgb_offset(SCREEN_TEXTURE, fract(scrolled_uv), 45.0, RGB_Strength)*RGB_Blend)/ float(amount);
 	}
 	
 	
