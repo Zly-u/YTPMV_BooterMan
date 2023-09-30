@@ -40,6 +40,42 @@ var texts: Array = [
 		font = null
 	},
 	{
+		text = "Nagashizar",
+		links = [
+			"https://files.catbox.moe/63rybw.mp4",
+			"https://www.youtube.com/@NAGASHIZARr",
+		],
+		sounds = [
+			preload("res://sounds/credits/khh.mp3")
+		]
+	},
+	{
+		text = "NAGASHIZAR games",
+		links = [
+			"https://www.youtube.com/@nagashizargames",
+		]
+	},
+	{
+		text = "NAGASHIZARIKI",
+		links = [
+			"https://www.youtube.com/@zakurenu",
+			"https://www.youtube.com/@vkasan",
+			"https://www.youtube.com/@roskuro",
+			"https://www.youtube.com/@ZarBoy",
+			"https://www.youtube.com/@TouchField",
+			"https://www.youtube.com/@Baursach",
+			"https://www.youtube.com/@hoklf4315",
+			"https://www.youtube.com/@Kolificent",
+			"https://www.youtube.com/@TerTeramus",
+			"https://www.youtube.com/@Taptishkin",
+			"https://www.youtube.com/@AmySupica",
+			"https://www.youtube.com/@Klisax",
+			"https://www.youtube.com/@UdalovVID",
+			"https://www.youtube.com/@freeman6437",
+			"https://www.youtube.com/@VerSunMV",
+		]
+	},
+	{
 		text = "Little-pixel  font",
 		links = [
 			"https://www.dafont.com/little-pixel.font"
@@ -130,6 +166,7 @@ var texts: Array = [
 			"https://files.catbox.moe/n19c7e.mp4",
 			"https://cdn.discordapp.com/attachments/850104634197409902/1029341877222260826/FaceApp_1665484609736.jpg?ex=651405d3&is=6512b453&hm=9dab78834b6eb4d55c59d8f7466cb62a6ff7b2f43bf40add3178bba94a322462&",
 			"https://www.youtube.com/watch?v=X8s88Iqi724",
+			"https://cdn.discordapp.com/attachments/689528380219326472/1157643581469765692/IMG_20230929_151105.jpg?ex=65195b19&is=65180999&hm=26b773999db4dc842d2ba838927c4fab845728bf41e63e9fa6eaa3367c7467e8&",
 		],
 		font = null,
 		sounds = [
@@ -152,7 +189,9 @@ var texts: Array = [
 			"https://files.catbox.moe/180bbr.mp4",
 			"https://files.catbox.moe/aesxmn.mp4",
 		],
-		font = null
+		sounds = [
+			preload("res://sounds/credits/stalin.mp3")
+		]
 	},
 	{
 		text = "Baursach",
@@ -171,7 +210,7 @@ var texts: Array = [
 		font = null
 	},
 	{
-		text = "Kimshumitsu",
+		text = "Kishumitsu",
 		links = [
 			"https://cdn.discordapp.com/attachments/850104634197409902/1095787603195875359/Discord_HTFlyElFyh-1.gif?ex=65147dbb&is=65132c3b&hm=53891a53e3f301f2c8787cc81778b377e07491628860e060f834924fc4dbf793&",
 			"https://cdn.discordapp.com/attachments/850104634197409902/1095658657192091678/image.png?ex=651405a4&is=6512b424&hm=a3cb430394b5da079a17a8c48d923a8c305f84640300e4aeab4e2becbd3f2dbb&",
@@ -190,12 +229,6 @@ var texts: Array = [
 		links = [
 			"https://cdn.discordapp.com/attachments/850104634197409902/1043159160805675078/image.png?ex=6514312c&is=6512dfac&hm=dd2692e2395b2294362b334d17848fb8d9c849f88143eb734f55b582646f5ab6&",
 			"https://www.youtube.com/watch?v=NPxH1Jtethg",
-		]
-	},
-	{
-		text = "Nagashizar",
-		links = [
-			"https://files.catbox.moe/63rybw.mp4",
 		]
 	},
 	{
@@ -223,6 +256,15 @@ var texts: Array = [
 		links = [
 			"https://www.reaper.fm/",
 			"https://files.catbox.moe/lexhnu.mp4",
+		]
+	},
+	{
+		text = "FL Studio",
+		links = [
+			"https://tenor.com/view/music-production-flstudio-onehousetown-eq-gif-26375563",
+		],
+		sounds = [
+			preload("res://sounds/credits/fuu_izvrashenets.mp3")
 		]
 	},
 	{
@@ -269,6 +311,15 @@ var texts: Array = [
 		text = "Hleb",
 		links = [
 			"https://files.catbox.moe/l8kvea.mp4",
+		]
+	},
+	{
+		text = "Nagash",
+		links = [
+			"https://cdn.discordapp.com/attachments/689528380219326472/1157725671410385026/logo-80.gif?ex=6519a78d&is=6518560d&hm=e5ed9719dc14b18e294e79e971b8baf3a8d5ecfafc4e4ecc56612785cee0e6d8&",
+		],
+		sounds = [
+			preload("res://sounds/credits/naga_wtf.mp3")
 		]
 	}
 ]

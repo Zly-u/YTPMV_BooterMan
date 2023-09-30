@@ -15,12 +15,14 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	var dir: Vector2 = Vector2(1, 0).rotated(deg_to_rad(angle_dir))
+#	var dir: Vector2 = Vector2(1, 0).rotated(deg_to_rad(angle_dir))
+#	%BgField.region_rect.position -= dir * field_offset_speed * delta
 #	%BgField.position.x = fmod(%BgField.position.x + dir.x * delta, 1.0)
 #	%BgField.position.y = fmod(%BgField.position.y + dir.y * delta, 1.0)
-	%BgField.region_rect.position -= dir * field_offset_speed * delta
+	
 #
 #	print(%BgField.position)
+	pass
 
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_packed(game_scene)
