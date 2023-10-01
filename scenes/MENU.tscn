@@ -204,6 +204,7 @@ theme_override_fonts/font = ExtResource("11_gssu0")
 theme_override_font_sizes/font_size = 5
 text = ">Collab  link<"
 underline = 1
+uri = "https://youtu.be/BOJlc0AY9xg"
 structured_text_bidi_override = 1
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Button_Play" to="." method="_on_button_pressed"]
