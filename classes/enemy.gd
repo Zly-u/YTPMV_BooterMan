@@ -157,9 +157,9 @@ func follow_player():
 	var first_segment_len: float = follow_spline.get_point_position(0).distance_to(follow_spline.get_point_position(1))
 	
 	if !is_weak:
-		progress += speed * get_physics_process_delta_time()
+		progress += speed * get_process_delta_time()
 	else:
-		progress += weak_speed * get_physics_process_delta_time()
+		progress += weak_speed * get_process_delta_time()
 
 	if follow_spline.point_count > 1: position = follow_spline.sample_baked(progress, false)
 	
@@ -201,9 +201,9 @@ func wander():
 	#---------------------------------------------------------------------------------
 	
 	if !is_weak:
-		progress += speed * get_physics_process_delta_time()
+		progress += speed * get_process_delta_time()
 	else:
-		progress += weak_speed * get_physics_process_delta_time()
+		progress += weak_speed * get_process_delta_time()
 
 	if follow_spline.point_count > 1: position = follow_spline.sample_baked(progress, false)
 	
@@ -232,7 +232,7 @@ func flee():
 			var point_pos = walls_map.map_to_local(point)
 			follow_spline.add_point(point_pos)
 	
-	progress += flee_speed * get_physics_process_delta_time()
+	progress += flee_speed * get_process_delta_time()
 
 	if follow_spline.point_count > 1:
 		position = follow_spline.sample_baked(progress, false)

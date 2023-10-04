@@ -25,7 +25,10 @@ func _ready() -> void:
 	start_anim()
 
 #func _process(delta: float) -> void:
-#	%BgField_1.region_rect.position = field_pos * Vector2(224, 288)
+#
+#	if Input.is_action_pressed(\"skip\"):
+#		anim.play(\"music\")
+#		anim.seek(95, true)
 
 
 
@@ -151,6 +154,65 @@ tracks/7/keys = {
 "points": PackedFloat32Array(0.4, -0.25, 0, 0.2, -0.338, 0, -0.691, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1.5)
 }
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SHADER_1:material:shader_parameter/hue_time_offset_speed")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SHADER_1:material:shader_parameter/hue_offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_e3jie"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BgField_1:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 600, 672)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SHADER_1:material:shader_parameter/scrolling_shift:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SHADER_1:material:shader_parameter/scrolling_shift:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_65j2m"]
 resource_name = "music"
@@ -210,7 +272,7 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 0, 3, 3, 3, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 14.076, 0.00627352, 0.04, -3.50746, -0.0103053, 0.25, 0, 0.04, -0.0101547, 0, 0.0101547, 0, 0.1, -0.0101547, 0, 0.0101547, 0, 0.04, -0.027729, 0, 0.027729, 0, 0.04, -0.25, 0, 1.38233, -0.000204958, 0, -3.16629, 0.000183387, 0.25, 0),
-"times": PackedFloat32Array(10.3959, 38.0129, 71.3842, 71.4248, 71.5357, 123.558, 132.721)
+"times": PackedFloat32Array(10.3959, 38.0129, 71.3842, 71.4248, 71.5357, 123.558, 132.6)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -312,46 +374,9 @@ tracks/13/path = NodePath("SHADER_1:material:shader_parameter/scrolling_shift:y"
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"handle_modes": PackedInt32Array(0, 2, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 13.3895, 0.0671439, 2.365, -11.6247, -1.39573, 1.96202, 0.235571, 3, -5, 0, 0.25, 0),
-"times": PackedFloat32Array(95.74, 121.68, 133.03)
-}
-
-[sub_resource type="Animation" id="Animation_e3jie"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BgField_1:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 0, 600, 672)]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SHADER_1:material:shader_parameter/scrolling_shift:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SHADER_1:material:shader_parameter/scrolling_shift:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 13.3895, 0.0671439, 3.35446, -11.6247, -1.39573, 1.96202, 0.235571, 4, -6, 0, 0.25, 0),
+"times": PackedFloat32Array(95.74, 121.34, 133.03)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a51gw"]
