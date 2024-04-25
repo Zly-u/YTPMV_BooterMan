@@ -77,7 +77,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="BgField" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
 texture_repeat = 3
 position = Vector2(112, 128)
@@ -87,7 +86,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 600, 672)
 
 [node name="SHADER" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_15xos")
 layout_mode = 1
 anchors_preset = 15

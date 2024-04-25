@@ -247,8 +247,8 @@ func flee():
 var spl_pos: float = 0.0
 var timer: float = 0.0
 func _draw() -> void:
-	if true: return
-	if !OS.is_debug_build(): return
+	#if true: return
+	#if !OS.is_debug_build(): return
 	
 	timer += get_process_delta_time()
 	spl_pos = 0.5+sin(timer)*0.5
@@ -269,12 +269,12 @@ func _draw() -> void:
 			bezier_points.append(follow_spline.samplef(follow_spline.point_count*(sample/bezier_samples))-position)
 		draw_polyline(bezier_points, Color.RED, 3)
 		
-#		draw_circle(follow_spline.samplef(spl_pos*follow_spline.point_count)-position, 2, Color.ORANGE)
-#		draw_circle(follow_spline.sample(0, spl_pos)-position, 2, Color.DARK_KHAKI)
+		#draw_circle(follow_spline.samplef(spl_pos*follow_spline.point_count)-position, 2, Color.ORANGE)
+		#draw_circle(follow_spline.sample(0, spl_pos)-position, 2, Color.DARK_KHAKI)
 	
-#	for val_point in valid_positions:
-#		var rec = Rect2(walls_map.map_to_local(val_point)-position-Vector2(4, 4), Vector2(8, 8))
-#		draw_rect(rec, Color.RED)
+	#for val_point in valid_positions:
+		#var rec = Rect2(walls_map.map_to_local(val_point)-position-Vector2(4, 4), Vector2(8, 8))
+		#draw_rect(rec, Color.RED)
 
 
 func _ready():

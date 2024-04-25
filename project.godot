@@ -14,7 +14,7 @@ config/name="BooterPacman"
 config/description="A game about the guy that tries to find the truth about why kids love sweets..."
 config/tags=PackedStringArray("project")
 run/main_scene="res://scenes/MENU.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://anim/Items_00001.png"
@@ -64,6 +64,7 @@ scroll_down={
 
 [layer_names]
 
+2d_physics/layer_2="Enemies"
 2d_physics/size/window_height_override=864
 2d_physics/size/window_width_override=672
 2d_physics/stretch/aspect="ignore"
