@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://0wnre555kika" path="res://sprites/field.png" id="2_iycdb"]
 [ext_resource type="AudioStream" uid="uid://m46dpj0fdt8c" path="res://sounds/zly/power_pellet.mp3" id="3_2vj0p"]
 [ext_resource type="PackedScene" uid="uid://84xgxie3ech4" path="res://classes/player.tscn" id="3_7g7py"]
-[ext_resource type="AudioStream" uid="uid://bcxydohemrvf4" path="res://sounds/roskuro/siren_v2.mp3" id="4_f4u17"]
+[ext_resource type="AudioStream" uid="uid://chwk1f02d3yd3" path="res://sounds/roskuro/siren_v3.mp3" id="4_5nb0m"]
 [ext_resource type="FontFile" uid="uid://cqh46prfs5mg7" path="res://fonts/Emulogic-zrEw.ttf" id="5_5aq8y"]
 [ext_resource type="AudioStream" uid="uid://gh36imn4amdo" path="res://sounds/roskuro/sweet_start_v2.mp3" id="5_n0mm7"]
 [ext_resource type="Texture2D" uid="uid://d01xvu25bq0kw" path="res://sprites/wall.png" id="5_sv87r"]
@@ -118,7 +118,7 @@ script = ExtResource("1_wcaae")
 game_sounds = {
 "ghost_retreat": ExtResource("2_0xmdw"),
 "power_pellet_mode": ExtResource("3_2vj0p"),
-"siren": ExtResource("4_f4u17"),
+"siren": ExtResource("4_5nb0m"),
 "start": ExtResource("5_n0mm7"),
 "win": ExtResource("6_142e1")
 }
